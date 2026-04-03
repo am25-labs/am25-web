@@ -2,6 +2,7 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
+import ProseContent from "@/components/ProseContent.astro";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
 import { Card, CardContent } from "@/components/ui/card";
 import type { ProjectContentProps } from "@/types";
@@ -21,7 +22,6 @@ type Props = ProjectContentProps;
 const {
   title,
   icon,
-  description,
   details,
   repository,
   deployment,
@@ -47,7 +47,9 @@ const {
       </div>
 
       <div class="space-y-8">
-        <p>{description}</p>
+        <ProseContent>
+          <slot />
+        </ProseContent>
 
         <h3 class="font-bold uppercase pt-8">Details</h3>
 

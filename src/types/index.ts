@@ -32,7 +32,6 @@ export interface ProjectCta {
 export interface ProjectContentProps {
   title: string;
   icon: string;
-  description: string;
   details: ProjectDetail[];
   repository?: ProjectLink;
   deployment: string;
