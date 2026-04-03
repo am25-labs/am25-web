@@ -1,0 +1,54 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridSix from "@/layouts/grids/GridSix.astro";
+import LogoTile from "@/components/LogoTile.astro";
+import type { LogoTileProps } from "@/types";
+
+const repos: LogoTileProps[] = [
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+  {
+    logo: "/placeholder-icon.svg",
+    title: "Lorem Ipsum",
+  },
+];
+---
+
+<GridContainer class="pb-16">
+  <GridTwo>
+    <div class="col-span-2">
+      <h2 class="text-muted-foreground text-sm font-bold uppercase">
+        We have worked with
+      </h2>
+    </div>
+  </GridTwo>
+
+  <GridSix gap="gap-4">
+    {
+      repos.map((repo) => (
+        <div class="col-span-1">
+          <LogoTile {...repo} />
+        </div>
+      ))
+    }
+  </GridSix>
+</GridContainer>
