@@ -2,6 +2,7 @@
 import type { NavProps, SocNavProps } from "@/types";
 import { siInstagram, siGithub } from "simple-icons";
 import BrandIcon from "@/components/BrandIcon.astro";
+import MobileMenu from "@/components/MobileMenu";
 
 const mainNav: NavProps[] = [
   {
@@ -39,8 +40,11 @@ const socNav: SocNavProps[] = [
     ><img src="/am25-logo.svg" alt="AM25 Logo" width="100" title="AM25" /></a
   >
 
-  <nav>
-    <ul class="flex items-center space-x-4">
+  <nav
+    aria-label="Main and social navigation (desktop)"
+    class="hidden md:block"
+  >
+    <ul class="flex items-center space-x-6">
       {
         mainNav.map((opt) => {
           const isExternal = opt.href.startsWith("https");
@@ -71,4 +75,8 @@ const socNav: SocNavProps[] = [
       }
     </ul>
   </nav>
+
+  <div class="md:hidden">
+    <MobileMenu items={mainNav} socItems={socNav} client:load />
+  </div>
 </header>
