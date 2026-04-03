@@ -60,12 +60,14 @@ const {
                   <TableCell>
                     {detail.href ? (
                       <span class="flex items-center">
-                        {detail.value}
-                        <a href={detail.href} target="_blank" rel="noopener">
-                          <ArrowUpRightIcon
-                            size={20}
-                            class="text-muted-foreground hover:text-am-y"
-                          />
+                        <a
+                          href={detail.href}
+                          target="_blank"
+                          rel="noopener"
+                          class="flex items-center gap-1 hover:font-bold"
+                        >
+                          {detail.value}
+                          <ArrowUpRightIcon size={20} class="text-am-y shrink-0" />
                         </a>
                       </span>
                     ) : (
