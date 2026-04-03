@@ -1,0 +1,13 @@
+---
+import type { GridProps } from "@/types";
+
+type Props = GridProps;
+
+const { class: className, gap = "gap-8" } = Astro.props;
+---
+
+<section class:list={["col-span-2 md:col-span-4", className]}>
+  <div class:list={["grid grid-cols-2 md:grid-cols-4", gap]}>
+    <slot />
+  </div>
+</section>

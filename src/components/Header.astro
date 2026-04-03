@@ -1,0 +1,69 @@
+---
+import type { NavProps, SocNavProps } from "@/types";
+import { siGithub, siNpm } from "simple-icons";
+import BrandIcon from "@/components/BrandIcon.astro";
+
+const mainNav: NavProps[] = [
+  {
+    label: "Home",
+    href: "/",
+  },
+  {
+    label: "AM",
+    href: "https://alemartir.com/about",
+  },
+];
+
+const socNav: SocNavProps[] = [
+  { href: "https://github.com/am25-labs", icon: siGithub, size: 20 },
+  { href: "https://www.npmjs.com/org/am25", icon: siNpm, size: 20 },
+];
+---
+
+<header
+  class="max-w-7xl mx-auto w-full flex items-center justify-between px-4 pt-4 pb-16"
+>
+  <a href="/"
+    ><img
+      src="/AmLogo.svg"
+      alt="AM25 Labs Logo"
+      width="72"
+      title="AM25 Labs"
+    /></a
+  >
+
+  <nav>
+    <ul class="flex items-center space-x-4">
+      {
+        mainNav.map((opt) => {
+          const isExternal = opt.href.startsWith("https");
+          return (
+            <div class="col-span-1">
+              <li>
+                <a
+                  href={opt.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener" : undefined}
+                  class="hover:underline"
+                >
+                  {opt.label}
+                </a>
+              </li>
+            </div>
+          );
+        })
+      }
+      {
+        socNav.map((opt) => {
+          return (
+            <li>
+              <a href={opt.href} target="_blank" rel="noopener">
+                <BrandIcon icon={opt.icon} size={opt.size} />
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+  </nav>
+</header>

@@ -1,0 +1,59 @@
+@theme {
+  --max-width-8xl: 104rem;
+  --max-width-9xl: 116rem;
+}
+
+/* Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #404040;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555555;
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+/* Auto-hide nativo para macOS */
+body {
+  scrollbar-gutter: stable both-edges;
+  overflow: overlay;
+}
+
+/* Disable shadows */
+@layer utilities {
+  [class*="shadow"] {
+    box-shadow: none !important;
+  }
+
+  [class*="drop-shadow"] {
+    filter: none !important;
+  }
+
+  [style*="box-shadow"] {
+    box-shadow: none !important;
+  }
+  [style*="drop-shadow"],
+  [style*="filter:"] {
+    filter: none !important;
+  }
+
+  [class*="text-shadow"],
+  [style*="text-shadow"] {
+    text-shadow: none !important;
+  }
+}

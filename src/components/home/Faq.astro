@@ -1,0 +1,56 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import { AccordionWrap } from "@/components/ui/custom/Accordion";
+import type { FaqItem } from "@/types";
+
+const faq: FaqItem[] = [
+  {
+    value: "item-1",
+    trigger: "What is AM25 Labs?",
+    content:
+      "AM25 Labs is a playground for software experimentation and applied creativity. It’s a space to explore ideas, build practical solutions, and develop tools that may evolve into real-world products.",
+  },
+  {
+    value: "item-2",
+    trigger: "What kind of projects are built here?",
+    content:
+      "Projects mainly revolve around web development, ranging from internal tools used within AM25 to public utilities and standalone services. Some experiments stay private, while others are released for broader use.",
+  },
+  {
+    value: "item-3",
+    trigger: "Are all projects open-source?",
+    content:
+      "No. Some projects are open-source and available for anyone to use, while others are proprietary. In certain cases, private solutions can still be licensed and deployed for clients when needed.",
+  },
+  {
+    value: "item-4",
+    trigger: "Who is behind AM25 Labs?",
+    content:
+      "AM25 Labs is part of AM25, a registered company. It is currently built and maintained by a single developer, with a focus on experimentation, craftsmanship, and delivering functional, well-designed solutions.",
+  },
+  {
+    value: "item-5",
+    trigger: "Why does AM25 Labs exist?",
+    content:
+      "Simply put, because creating things is the point. Every project is an opportunity to explore ideas at the intersection of technology, design, and creativity, whether or not it becomes a public release.",
+  },
+];
+---
+
+<GridContainer class="py-16">
+  <GridTwo>
+    <div class="col-span-2">
+      <h2 class="text-muted-foreground text-sm font-bold uppercase">
+        Frequently Asked Questions
+      </h2>
+    </div>
+  </GridTwo>
+
+  <GridFour>
+    <div class="col-span-2 md:col-span-4">
+      <AccordionWrap items={faq} client:load />
+    </div>
+  </GridFour>
+</GridContainer>

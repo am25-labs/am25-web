@@ -1,0 +1,151 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
+import { Card, CardContent } from "@/components/ui/card";
+import type { ProjectContentProps } from "@/types";
+import ProjectCtaDialog from "@/components/project/ProjectCtaDialog";
+import {
+  PackageIcon,
+  ServerIcon,
+  CalendarIcon,
+  RefreshCwIcon,
+  TagIcon,
+  ArrowUpRightIcon,
+  BookOpenIcon,
+} from "@lucide/astro";
+
+type Props = ProjectContentProps;
+
+const {
+  title,
+  icon,
+  description,
+  details,
+  repository,
+  deployment,
+  started,
+  updated,
+  version,
+  documentation,
+  cta,
+} = Astro.props;
+---
+
+<GridContainer class="mb-16">
+  <GridTwo />
+
+  <GridFour>
+    <div class="col-span-2 md:col-span-4">
+      <div class="flex flex-row items-center gap-4 mb-8">
+        <div class="border p-2 aspect-square">
+          <img src={icon} alt={title} class="w-6" />
+        </div>
+
+        <h1 class="text-2xl font-bold">{title}</h1>
+      </div>
+
+      <div class="space-y-8">
+        <p>{description}</p>
+
+        <h3 class="font-bold uppercase pt-8">Details</h3>
+
+        <Table>
+          <TableBody>
+            {
+              details.map((detail) => (
+                <TableRow>
+                  <TableCell className="font-bold">{detail.label}</TableCell>
+                  <TableCell>
+                    {detail.href ? (
+                      <span class="flex items-center">
+                        {detail.value}
+                        <a href={detail.href} target="_blank" rel="noopener">
+                          <ArrowUpRightIcon
+                            size={20}
+                            class="text-muted-foreground hover:text-am-y"
+                          />
+                        </a>
+                      </span>
+                    ) : (
+                      detail.value
+                    )}
+                  </TableCell>
+                </TableRow>
+              ))
+            }
+          </TableBody>
+        </Table>
+      </div>
+    </div>
+  </GridFour>
+
+  <GridTwo>
+    <div class="col-span-2">
+      {cta && <ProjectCtaDialog {cta} client:load />}
+
+      <Card>
+        <CardContent>
+          <ul class="text-xs space-y-4">
+            <li class="flex items-center gap-2" title="Repository">
+              <PackageIcon size={16} class="text-muted-foreground shrink-0" />
+              {
+                repository ? (
+                  <a
+                    href={repository.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="underline hover:text-am-y"
+                  >
+                    {repository.label}
+                  </a>
+                ) : (
+                  <span>Private</span>
+                )
+              }
+            </li>
+            <li class="flex items-center gap-2" title="Deployment">
+              <ServerIcon size={16} class="text-muted-foreground shrink-0" />
+              {deployment}
+            </li>
+            <li class="flex items-center gap-2" title="Started">
+              <CalendarIcon size={16} class="text-muted-foreground shrink-0" />
+              {started}
+            </li>
+            <li class="flex items-center gap-2" title="Updated">
+              <RefreshCwIcon size={16} class="text-muted-foreground shrink-0" />
+              {updated}
+            </li>
+            {
+              version && (
+                <li class="flex items-center gap-2" title="Version">
+                  <TagIcon size={16} class="text-muted-foreground shrink-0" />
+                  {version}
+                </li>
+              )
+            }
+            {
+              documentation && (
+                <li class="flex items-center gap-2" title="Documentation">
+                  <BookOpenIcon
+                    size={16}
+                    class="text-muted-foreground shrink-0"
+                  />
+                  <a
+                    href={documentation.href}
+                    target="_blank"
+                    rel="noopener"
+                    class="underline hover:text-am-y"
+                  >
+                    {documentation.label}
+                  </a>
+                </li>
+              )
+            }
+          </ul>
+        </CardContent>
+      </Card>
+    </div>
+  </GridTwo>
+</GridContainer>
