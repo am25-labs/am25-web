@@ -1,21 +1,49 @@
 ---
+import type { NavProps } from "@/types";
 import { Separator } from "@/components/ui/separator";
 
 const year = new Date().getFullYear();
+
+const nav: NavProps[] = [
+  {
+    label: "Privacy Policy",
+    href: "/privacy",
+  },
+  {
+    label: "Copyright",
+    href: "/copyright",
+  },
+];
 ---
 
 <Separator />
 
 <footer class="max-w-7xl mx-auto w-full px-4 py-8">
-  <div class="text-neutral-500 text-xs text-center md:text-left uppercase">
-    <a
-      href="https://alemartir.com/copyright"
-      target="_blank"
-      rel="noopener"
-      class="hover:underline"
-      title="Alejandro Mártir"
-    >
-      &copy; {year} Alejandro Mártir - AM25
-    </a>
+  <div
+    class="flex flex-col md:flex-row gap-4 md:items-center justify-between text-neutral-500 text-xs uppercase"
+  >
+    <p>&copy; {year} Alejandro Mártir - AM25</p>
+
+    <nav>
+      <ul class="flex items-center space-x-4">
+        {
+          nav.map((opt) => {
+            const isExternal = opt.href.startsWith("https");
+            return (
+              <li>
+                <a
+                  href={opt.href}
+                  target={isExternal ? "_blank" : undefined}
+                  rel={isExternal ? "noopener" : undefined}
+                  class="hover:underline"
+                >
+                  {opt.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
   </div>
 </footer>
