@@ -1,0 +1,39 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import { CalendarClockIcon } from "@lucide/astro";
+
+interface Props {
+  title: string;
+  updated: string;
+}
+
+const { title, updated } = Astro.props;
+---
+
+<GridContainer class="mb-16">
+  <GridTwo>
+    <div class="col-span-2">
+      <h1 class="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
+
+      <span
+        class="flex items-center gap-2 text-sm text-muted-foreground mt-6"
+        title="Updated At"
+      >
+        <CalendarClockIcon size={16} />
+        {updated}
+      </span>
+    </div>
+  </GridTwo>
+
+  <GridFour>
+    <div class="col-span-2 md:col-span-4">
+      <div
+        class="space-y-6 [&_h2]:text-2xl [&_h2]:font-bold [&_h2]:uppercase [&_h2]:pt-6 [&_ul]:list-disc [&_ul]:pl-5 [&_ul]:space-y-2"
+      >
+        <slot />
+      </div>
+    </div>
+  </GridFour>
+</GridContainer>
