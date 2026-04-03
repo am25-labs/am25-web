@@ -3,7 +3,7 @@ import type { GridProps } from "@/types";
 
 type Props = GridProps;
 
-const { class: className, gap = "gap-8" } = Astro.props;
+const { class: className, gap = "gap-4" } = Astro.props;
 ---
 
 <div class:list={["grid grid-cols-2 md:grid-cols-8 px-4", gap, className]}>
