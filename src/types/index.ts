@@ -1,5 +1,9 @@
 import type { SimpleIcon } from "simple-icons";
 
+export type { StrapiImage, StrapiImageWithCaption, StrapiMeta, StrapiResponse } from "./strapi";
+export type { Discipline, Work } from "./content";
+export type { RichTextBlock, RichTextTextNode, RichTextLinkNode, RichTextInlineNode, RichTextParagraphBlock, RichTextImageBlock, RichTextHeadingBlock, RichTextQuoteBlock, RichTextListBlock } from "./richtext";
+
 export interface WorkCardProps {
   logo: string;
   title: string;
