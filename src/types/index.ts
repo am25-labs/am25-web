@@ -1,5 +1,12 @@
 import type { SimpleIcon } from "simple-icons";
 
+export interface WorkCardProps {
+  logo: string;
+  title: string;
+  href: string;
+  category: string;
+}
+
 export interface FaqItem {
   value: string;
   trigger: string;
