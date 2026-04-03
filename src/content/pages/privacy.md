@@ -18,7 +18,7 @@ The analytical information is used exclusively for statistical purposes.
 
 ## Infrastructure and third-party services
 
-This website is delivered through infrastructure services provided by Cloudflare.
+This website is delivered through infrastructure services provided by [Cloudflare](https://www.cloudflare.com).
 
 Cloudflare may process limited technical data (such as IP addresses, request headers, and basic traffic metadata) as part of its role in content delivery, caching, and security. This processing is carried out in accordance with Cloudflare’s own privacy practices and is necessary for the proper functioning and protection of the website.
 
