@@ -1,0 +1,15 @@
+---
+import { getEntry, render } from "astro:content";
+import RootLayout from "@/layouts/RootLayout.astro";
+import GenericContent from "@/layouts/GenericContent.astro";
+
+const entry = await getEntry("pages", "privacy");
+if (!entry) return Astro.redirect("/404");
+const { Content } = await render(entry);
+---
+
+<RootLayout title={`${entry.data.title} | AM25`}>
+  <GenericContent title={entry.data.title} updated={entry.data.updated}>
+    <Content />
+  </GenericContent>
+</RootLayout>
