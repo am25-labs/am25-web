@@ -1,34 +1,10 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
 import WorkCard from "@/components/WorkCard.astro";
-import type { WorkCardProps } from "@/types";
+import { getWorks } from "@/lib/strapi/fetchCollection";
 
-const repos: WorkCardProps[] = [
-  {
-    logo: "/placeholder.svg",
-    title: "Lorem Ipsum",
-    href: "/",
-    category: "Design",
-  },
-  {
-    logo: "/placeholder.svg",
-    title: "Lorem Ipsum",
-    href: "/",
-    category: "Design",
-  },
-  {
-    logo: "/placeholder.svg",
-    title: "Lorem Ipsum",
-    href: "/",
-    category: "Design",
-  },
-  {
-    logo: "/placeholder.svg",
-    title: "Lorem Ipsum",
-    href: "/",
-    category: "Design",
-  },
-];
+const { data } = await getWorks({ onlyFeatured: true });
+const works = data.slice(0, 4);
 ---
 
 <GridContainer class="pb-8">
@@ -41,9 +17,14 @@ const repos: WorkCardProps[] = [
 
 <GridContainer class="pb-16">
   {
-    repos.map((repo) => (
+    works.map((work) => (
       <div class="col-span-2">
-        <WorkCard {...repo} />
+        <WorkCard
+          cover={work.cover?.url ?? ""}
+          title={work.title}
+          href={`/work/${work.slug}`}
+          category={work.disciplines?.[0]?.name ?? ""}
+        />
       </div>
     ))
   }

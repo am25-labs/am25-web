@@ -5,7 +5,7 @@ export type { Discipline, Work } from "./content";
 export type { RichTextBlock, RichTextTextNode, RichTextLinkNode, RichTextInlineNode, RichTextParagraphBlock, RichTextImageBlock, RichTextHeadingBlock, RichTextQuoteBlock, RichTextListBlock } from "./richtext";
 
 export interface WorkCardProps {
-  logo: string;
+  cover: string;
   title: string;
   href: string;
   category: string;

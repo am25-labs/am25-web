@@ -4,7 +4,7 @@ import type { WorkCardProps } from "@/types";
 
 type Props = WorkCardProps;
 
-const { logo, title, href, category } = Astro.props;
+const { cover, title, href, category } = Astro.props;
 const Tag = href ? "a" : "div";
 const isExternal = href?.startsWith("https");
 ---
@@ -17,7 +17,7 @@ const isExternal = href?.startsWith("https");
     class="group"
 >
     <Card className="aspect-square overflow-hidden p-0">
-        <img src={logo} alt={title} class="w-full h-full object-cover" />
+        <img src={cover} alt={title} class="w-full h-full object-cover" />
     </Card>
     <p class="text-xl font-bold uppercase mt-2 group-hover:underline">
         {title}
