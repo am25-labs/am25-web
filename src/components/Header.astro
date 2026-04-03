@@ -1,6 +1,6 @@
 ---
 import type { NavProps, SocNavProps } from "@/types";
-import { siGithub, siNpm } from "simple-icons";
+import { siInstagram, siGithub } from "simple-icons";
 import BrandIcon from "@/components/BrandIcon.astro";
 
 const mainNav: NavProps[] = [
@@ -8,15 +8,11 @@ const mainNav: NavProps[] = [
     label: "Home",
     href: "/",
   },
-  {
-    label: "AM",
-    href: "https://alemartir.com/about",
-  },
 ];
 
 const socNav: SocNavProps[] = [
+  { href: "https://www.instagram.com/am25std", icon: siInstagram, size: 20 },
   { href: "https://github.com/am25-labs", icon: siGithub, size: 20 },
-  { href: "https://www.npmjs.com/org/am25", icon: siNpm, size: 20 },
 ];
 ---
 
