@@ -7,7 +7,7 @@ This website is managed by AM25, S.A.S. de C.V. For questions or inquiries, plea
 
 ## Site analytics
 
-This site uses Plausible Analytics, a self-hosted, privacy-oriented tool with the sole purpose of understanding general site usage and improving the user experience.
+This site uses [Plausible Analytics](https://plausible.io), a self-hosted, privacy-oriented tool with the sole purpose of understanding general site usage and improving the user experience.
 
 - Plausible does not use cookies
 - No individual user tracking is performed
