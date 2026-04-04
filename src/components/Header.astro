@@ -3,6 +3,7 @@ import type { NavProps, SocNavProps } from "@/types";
 import { siInstagram, siGithub } from "simple-icons";
 import BrandIcon from "@/components/BrandIcon.astro";
 import MobileMenu from "@/components/MobileMenu";
+import { ArrowUpRight } from "@lucide/astro";
 
 const mainNav: NavProps[] = [
   {
@@ -54,9 +55,12 @@ const socNav: SocNavProps[] = [
                 href={opt.href}
                 target={isExternal ? "_blank" : undefined}
                 rel={isExternal ? "noopener" : undefined}
-                class="uppercase hover:underline"
+                class="flex items-center uppercase hover:underline"
               >
                 {opt.label}
+                {isExternal && (
+                  <ArrowUpRight size={20} class="text-am-y shrink-0" />
+                )}
               </a>
             </li>
           );

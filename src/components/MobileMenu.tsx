@@ -7,7 +7,7 @@ import {
   DropdownMenuSeparator,
 } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
-import { MenuIcon } from "lucide-react";
+import { MenuIcon, ArrowUpRightIcon } from "lucide-react";
 import type { NavProps, SocNavProps } from "@/types";
 import BrandIcon from "@/components/BrandIcon";
 
@@ -35,9 +35,9 @@ export default function MobileMenu({ items, socItems }: MobileMenuProps) {
                   href={opt.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener" : undefined}
-                  className="uppercase hover:underline"
+                  className=" uppercase hover:underline"
                 >
-                  {opt.label}
+                  <span className="flex items-center">{opt.label}{isExternal && <ArrowUpRightIcon className="size-5 text-am-y shrink-0" />}</span>
                 </a>
               </DropdownMenuItem>
             );
