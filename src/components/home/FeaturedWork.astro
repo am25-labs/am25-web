@@ -23,7 +23,7 @@ const works = data.slice(0, 4);
           cover={work.cover?.url ?? ""}
           title={work.title}
           href={`/work/${work.slug}`}
-          category={work.disciplines?.[0]?.name ?? ""}
+          category={work.disciplines?.map((d) => d.name).join(", ") ?? ""}
         />
       </div>
     ))
