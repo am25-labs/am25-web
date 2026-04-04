@@ -1,6 +1,7 @@
 ---
 import type { NavProps } from "@/types";
 import { Separator } from "@/components/ui/separator";
+import { ArrowUpRight } from "@lucide/astro";
 
 const year = new Date().getFullYear();
 
@@ -35,9 +36,10 @@ const nav: NavProps[] = [
                   href={opt.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener" : undefined}
-                  class="hover:underline"
+                  class="flex items-center hover:underline"
                 >
                   {opt.label}
+                  {isExternal && <ArrowUpRight size={16} class="shrink-0" />}
                 </a>
               </li>
             );
