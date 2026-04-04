@@ -37,7 +37,7 @@ const {
   <GridTwo />
 
   <GridFour>
-    <div class="col-span-2 md:col-span-4">
+    <div class="col-span-full">
       <div class="flex flex-row items-center gap-4 mb-8">
         <div class="border p-2 aspect-square">
           <img src={icon} alt={title} class="w-6" />
@@ -89,7 +89,7 @@ const {
   </GridFour>
 
   <GridTwo>
-    <div class="col-span-2">
+    <div class="col-span-full">
       {cta && <ProjectCtaDialog {cta} client:load />}
 
       <Card>
