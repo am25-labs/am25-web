@@ -15,7 +15,7 @@ const { title, updated } = Astro.props;
 
 <GridContainer class="mb-16">
   <GridTwo>
-    <div class="col-span-2">
+    <div class="col-span-full">
       <h1 class="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
 
       <span
@@ -29,7 +29,7 @@ const { title, updated } = Astro.props;
   </GridTwo>
 
   <GridFour>
-    <div class="col-span-2 md:col-span-4">
+    <div class="col-span-full">
       <ProseContent>
         <slot />
       </ProseContent>
