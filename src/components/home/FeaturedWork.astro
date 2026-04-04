@@ -2,16 +2,24 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import WorkCard from "@/components/work/WorkCard.astro";
 import { getWorks } from "@/lib/strapi/fetchCollection";
+import { ArrowRightIcon } from "@lucide/astro";
 
 const { data } = await getWorks({ onlyFeatured: true });
 const works = data.slice(0, 4);
 ---
 
-<GridContainer class="pb-8">
-  <div class="col-span-2">
-    <h2 class="text-muted-foreground text-sm font-bold uppercase">
-      Featured work
-    </h2>
+<GridContainer class="pb-4">
+  <div class="col-span-full">
+    <div class="flex items-center justify-between">
+      <h2 class="text-muted-foreground text-sm font-bold uppercase">
+        Featured work
+      </h2>
+      <a
+        href="/work/am-25"
+        class="text-muted-foreground text-sm font-bold uppercase hover:underline flex items-center"
+        >OUR BRANDING<ArrowRightIcon size={16} class="shrink-0" /></a
+      >
+    </div>
   </div>
 </GridContainer>
 
