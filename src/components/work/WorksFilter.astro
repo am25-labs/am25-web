@@ -1,0 +1,125 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import WorkCard from "@/components/work/WorkCard.astro";
+import type { Work } from "@/types";
+
+interface Props {
+  works: Work[];
+}
+
+const { works } = Astro.props;
+
+const disciplines = Array.from(
+  new Map(
+    works.flatMap((w) => w.disciplines ?? []).map((d) => [d.name, d]),
+  ).values(),
+);
+---
+
+<!-- Mobile -->
+<details class="md:hidden border-b mx-4 group">
+  <summary
+    class="flex items-center justify-between py-3 cursor-pointer list-none"
+  >
+    <span id="active-label" class="text-sm uppercase font-bold">All</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="transition-transform duration-200 group-open:rotate-180"
+    >
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </summary>
+  <div class="border-t flex flex-col py-2">
+    <button
+      class="filter-btn text-sm uppercase py-2 text-left font-bold"
+      data-filter="all"
+    >
+      All
+    </button>
+    {
+      disciplines.map((d) => (
+        <button
+          class="filter-btn text-sm py-2 text-left text-muted-foreground transition-all duration-200"
+          data-filter={d.name}
+        >
+          {d.name}
+        </button>
+      ))
+    }
+  </div>
+</details>
+
+<!-- Desktop -->
+<div class="hidden md:flex border-b mx-4 py-3 gap-6 flex-wrap">
+  <button
+    class="filter-btn text-sm uppercase font-bold cursor-pointer"
+    data-filter="all"
+  >
+    All
+  </button>
+  {
+    disciplines.map((d) => (
+      <button
+        class="filter-btn text-sm text-muted-foreground cursor-pointer transition-all duration-200"
+        data-filter={d.name}
+      >
+        {d.name}
+      </button>
+    ))
+  }
+</div>
+
+<GridContainer class="pt-4 pb-8">
+  {
+    works.map((work) => (
+      <div
+        class="col-span-2"
+        data-disciplines={work.disciplines?.map((d) => d.name).join(",")}
+      >
+        <WorkCard
+          cover={work.cover?.url ?? ""}
+          title={work.title}
+          href={`/work/${work.slug}`}
+          category={work.disciplines?.[0]?.name ?? ""}
+        />
+      </div>
+    ))
+  }
+</GridContainer>
+
+<script>
+  const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
+  const cards = document.querySelectorAll<HTMLElement>("[data-disciplines]");
+  const activeLabel = document.getElementById("active-label");
+  const details = document.querySelector<HTMLDetailsElement>("details");
+
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const filter = btn.dataset.filter!;
+
+      buttons.forEach((b) => {
+        b.classList.remove("font-bold", "text-white");
+        b.classList.add("text-muted-foreground");
+      });
+      btn.classList.add("font-bold", "text-white");
+      btn.classList.remove("text-muted-foreground");
+
+      cards.forEach((card) => {
+        const disciplines = card.dataset.disciplines ?? "";
+        card.style.display =
+          filter === "all" || disciplines.includes(filter) ? "" : "none";
+      });
+
+      if (activeLabel) activeLabel.textContent = btn.textContent;
+      if (details) details.open = false;
+    });
+  });
+</script>
