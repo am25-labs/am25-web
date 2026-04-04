@@ -4,10 +4,10 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from "@/components/ui/accordion";
-import type { FaqItem } from "@/types";
+import type { AccordionWrapItem } from "@/types";
 
 interface Props {
-  items: FaqItem[];
+  items: AccordionWrapItem[];
 }
 
 export function AccordionWrap({ items }: Props) {
