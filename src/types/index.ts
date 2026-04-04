@@ -11,7 +11,7 @@ export interface WorkCardProps {
   category: string;
 }
 
-export interface FaqItem {
+export interface AccordionItem {
   value: string;
   trigger: string;
   content: string;

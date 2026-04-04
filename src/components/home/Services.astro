@@ -1,0 +1,44 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import { AccordionWrap } from "@/components/ui/custom/Accordion";
+import type { AccordionItem } from "@/types";
+
+const services: AccordionItem[] = [
+    {
+        value: "graphic-design",
+        trigger: "Graphic Design",
+        content:
+            "We craft visual identities and design assets that communicate clearly and consistently. From branding to digital content, our approach focuses on creating cohesive, functional, and visually engaging solutions that adapt to different platforms and needs.",
+    },
+    {
+        value: "web-dev",
+        trigger: "Web/Dev",
+        content:
+            "We design and build modern websites with a strong focus on performance, usability, and scalability. From concept to deployment, we create digital experiences that are reliable, efficient, and tailored to real-world use.",
+    },
+    {
+        value: "multimedia",
+        trigger: "Multimedia",
+        content:
+            "We edit and produce multimedia content with a focus on clarity and consistency. From podcasts to video, we help shape raw material into clean, structured pieces that are ready to be shared.",
+    },
+];
+---
+
+<GridContainer class="pb-24">
+    <GridTwo>
+        <span class="col-span-full">
+            <h2 class="text-muted-foreground text-sm font-bold uppercase">
+                Main services
+            </h2>
+        </span>
+    </GridTwo>
+
+    <GridFour>
+        <div class="col-span-full">
+            <AccordionWrap items={services} client:load />
+        </div>
+    </GridFour>
+</GridContainer>
