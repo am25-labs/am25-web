@@ -1,5 +1,25 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
+import GridContainer from "@/layouts/GridContainer.astro";
+import WorkCard from "@/components/WorkCard.astro";
+import { getWorks } from "@/lib/strapi/fetchCollection";
+
+const { data: works } = await getWorks();
 ---
 
-<RootLayout title="Work | AM25" />
+<RootLayout title="Work | AM25">
+    <GridContainer class="pb-8">
+        {
+            works.map((work) => (
+                <div class="col-span-2">
+                    <WorkCard
+                        cover={work.cover?.url ?? ""}
+                        title={work.title}
+                        href={`/work/${work.slug}`}
+                        category={work.disciplines?.[0]?.name ?? ""}
+                    />
+                </div>
+            ))
+        }
+    </GridContainer>
+</RootLayout>
