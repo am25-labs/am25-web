@@ -1,0 +1,46 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import WorkHeader from "@/components/work/WorkHeader.astro";
+import WorkMeta from "@/components/work/WorkMeta.astro";
+import WorkGallery from "@/components/work/WorkGallery.astro";
+import { getWorks, getSingleWork } from "@/lib/strapi/fetchCollection";
+
+export async function getStaticPaths() {
+  const { data: works } = await getWorks();
+  return works.map((work) => ({
+    params: { slug: work.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const { data: works } = await getSingleWork(slug!);
+const work = works[0];
+---
+
+<RootLayout title={`${work.title} | AM25`}>
+  <WorkHeader
+    title={work.title}
+    cover={work.cover!}
+    description={work.description}
+  />
+
+  <WorkMeta
+    client={work.client}
+    campaign={work.campaign}
+    agency={work.agency}
+    country={work.country}
+    creative={work.creative}
+    strategy={work.strategy}
+    lead={work.lead}
+    design={work.design}
+    copy={work.copy}
+    illustration={work.illustration}
+    animation={work.animation}
+    photo={work.photo}
+    team={work.team}
+    disciplines={work.disciplines}
+  />
+
+  <WorkGallery images={work.imagesBefore} />
+  <WorkGallery quote={work.quote} images={work.imagesAfter} />
+</RootLayout>

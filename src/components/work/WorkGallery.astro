@@ -1,0 +1,53 @@
+---
+import type { StrapiImage } from "@/types";
+import GridContainer from "@/layouts/GridContainer.astro";
+
+interface Props {
+  images?: StrapiImage[];
+  quote?: string;
+}
+
+const { images: rawImages, quote } = Astro.props;
+const images = rawImages ?? [];
+
+const groups: StrapiImage[][] = [];
+for (let i = 0; i < images.length; i += 3) {
+  groups.push(images.slice(i, i + 3));
+}
+---
+
+<GridContainer class="mb-2">
+  {
+    quote && (
+      <div class="col-span-full py-16">
+        <blockquote class="text-lg md:text-xl text-center italic max-w-4xl mx-auto">
+          "{quote}"
+        </blockquote>
+      </div>
+    )
+  }
+
+  {
+    groups.map((group) => {
+      const pair = group.slice(1);
+
+      return (
+        <div class="col-span-full">
+          <img src={group[0].url} alt="" class="w-full h-auto object-contain" />
+
+          {pair.length > 0 && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              {pair.map((image, i) => (
+                <img
+                  src={image.url}
+                  alt=""
+                  class="w-full h-auto object-contain"
+                />
+              ))}
+            </div>
+          )}
+        </div>
+      );
+    })
+  }
+</GridContainer>

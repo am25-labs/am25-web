@@ -1,0 +1,34 @@
+---
+import FormatContent from "@/components/FormatContent";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import type { StrapiImage, RichTextBlock } from "@/types";
+
+interface Props {
+  title: string;
+  cover: StrapiImage;
+  description?: RichTextBlock[];
+}
+
+const { title, cover, description } = Astro.props;
+---
+
+<GridContainer>
+  <div class="col-span-full">
+    <img src={cover.url} alt={title} class="w-full h-full" />
+  </div>
+
+  <GridFour>
+    <div class="col-span-full">
+      <h1 class="text-3xl md:text-4xl font-bold uppercase">
+        {title}
+      </h1>
+    </div>
+  </GridFour>
+
+  <GridFour>
+    <div class="col-span-full">
+      {description && <FormatContent blocks={description} />}
+    </div>
+  </GridFour>
+</GridContainer>

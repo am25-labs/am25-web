@@ -1,0 +1,82 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
+import type { Discipline } from "@/types";
+
+interface Props {
+  client?: string;
+  campaign?: string;
+  agency?: string;
+  country?: string;
+  creative?: string;
+  strategy?: string;
+  lead?: string;
+  design?: string;
+  copy?: string;
+  illustration?: string;
+  animation?: string;
+  photo?: string;
+  team?: string;
+  disciplines?: Discipline[];
+}
+
+const {
+  client,
+  campaign,
+  agency,
+  country,
+  creative,
+  strategy,
+  lead,
+  design,
+  copy,
+  illustration,
+  animation,
+  photo,
+  team,
+  disciplines,
+} = Astro.props;
+
+const items = [
+  { label: "Client", value: client },
+  { label: "Campaign", value: campaign },
+  { label: "Agency", value: agency },
+  { label: "Country", value: country },
+  { label: "Creative", value: creative },
+  { label: "Strategy", value: strategy },
+  { label: "Lead", value: lead },
+  { label: "Design", value: design },
+  { label: "Copy", value: copy },
+  { label: "Illustration", value: illustration },
+  { label: "Animation", value: animation },
+  { label: "Photo", value: photo },
+  { label: "Team", value: team },
+  { label: "Disciplines", value: disciplines?.map((d) => d.name).join(", ") },
+].filter((item) => item.value);
+---
+
+{
+  items.length > 0 && (
+    <GridContainer class="mb-8">
+      <GridFour />
+
+      <GridFour>
+        <div class="col-span-full">
+          <Table>
+            <TableBody>
+              {items.map((item) => (
+                <TableRow>
+                  <TableCell className="font-bold uppercase">
+                    {item.label}
+                  </TableCell>
+                  <TableCell>{item.value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </div>
+      </GridFour>
+    </GridContainer>
+  )
+}
