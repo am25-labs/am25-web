@@ -1,6 +1,6 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
-import WorkCard from "@/components/WorkCard.astro";
+import WorkCard from "@/components/work/WorkCard.astro";
 import { getWorks } from "@/lib/strapi/fetchCollection";
 
 const { data } = await getWorks({ onlyFeatured: true });
