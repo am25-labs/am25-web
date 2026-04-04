@@ -15,7 +15,10 @@ export async function getWorks({ onlyFeatured = false } = {}): Promise<
       },
     },
     sort: ["date:desc"],
-    ...(onlyFeatured && { filters: { featured: { $eq: true } } }),
+    filters: {
+      am25: { $eq: true },
+      ...(onlyFeatured && { featured: { $eq: true } }),
+    },
   });
 }
 
@@ -58,9 +61,8 @@ export async function getSingleWork(
       },
     },
     filters: {
-      slug: {
-        $eq: slug,
-      },
+      am25: { $eq: true },
+      slug: { $eq: slug },
     },
   });
 }
