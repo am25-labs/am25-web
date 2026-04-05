@@ -2,7 +2,7 @@
 import type { NavProps, SocNavProps } from "@/types";
 import { siInstagram, siGithub } from "simple-icons";
 import BrandIcon from "@/components/BrandIcon.astro";
-import MobileMenu from "@/components/MobileMenu";
+import MobileMenu from "@/components/MobileMenu.astro";
 import { ArrowUpRight } from "@lucide/astro";
 
 const mainNav: NavProps[] = [
@@ -81,6 +81,6 @@ const socNav: SocNavProps[] = [
   </nav>
 
   <div class="md:hidden">
-    <MobileMenu items={mainNav} socItems={socNav} client:load />
+    <MobileMenu items={mainNav} socItems={socNav} />
   </div>
 </header>

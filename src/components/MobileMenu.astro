@@ -1,0 +1,95 @@
+---
+import type { NavProps, SocNavProps } from "@/types";
+import BrandIcon from "@/components/BrandIcon.astro";
+import { Menu, X, ArrowUpRight } from "@lucide/astro";
+
+interface Props {
+  items: NavProps[];
+  socItems: SocNavProps[];
+}
+
+const { items, socItems } = Astro.props;
+---
+
+<div class="relative" id="mobile-menu">
+  <button
+    id="mobile-menu-trigger"
+    class="inline-flex items-center justify-center size-9 rounded-md hover:bg-accent cursor-pointer"
+    aria-expanded="false"
+    aria-label="Main navigation (mobile)"
+  >
+    <Menu class="size-6 icon-open" />
+    <X class="size-6 icon-close hidden" />
+  </button>
+
+  <div
+    id="mobile-menu-content"
+    class="hidden absolute right-0 top-full mt-1 min-w-48 rounded-2xl border bg-popover p-1 text-popover-foreground ring-1 ring-foreground/5 z-50"
+    aria-label="Main navigation (mobile)"
+  >
+    <ul>
+      {
+        items.map((opt) => {
+          const isExternal = opt.href.startsWith("https");
+          return (
+            <li>
+              <a
+                href={opt.href}
+                target={isExternal ? "_blank" : undefined}
+                rel={isExternal ? "noopener" : undefined}
+                class="flex items-center gap-2 rounded-xl px-3 py-2 text-base uppercase hover:bg-accent hover:text-accent-foreground"
+              >
+                {opt.label}
+                {isExternal && (
+                  <ArrowUpRight size={20} class="text-am-y shrink-0" />
+                )}
+              </a>
+            </li>
+          );
+        })
+      }
+    </ul>
+
+    <div class="my-1 h-px bg-border/50 -mx-1"></div>
+
+    <ul class="flex flex-row" aria-label="Social media links">
+      {
+        socItems.map((opt) => (
+          <li>
+            <a
+              href={opt.href}
+              target="_blank"
+              rel="noopener"
+              class="flex items-center rounded-xl p-2 hover:bg-accent"
+            >
+              <BrandIcon icon={opt.icon} size={opt.size} />
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</div>
+
+<script>
+  const container = document.getElementById("mobile-menu")!;
+  const trigger = document.getElementById("mobile-menu-trigger")!;
+  const content = document.getElementById("mobile-menu-content")!;
+  const iconOpen = container.querySelector<HTMLElement>(".icon-open")!;
+  const iconClose = container.querySelector<HTMLElement>(".icon-close")!;
+
+  function setOpen(open: boolean) {
+    content.classList.toggle("hidden", !open);
+    trigger.setAttribute("aria-expanded", String(open));
+    iconOpen.classList.toggle("hidden", open);
+    iconClose.classList.toggle("hidden", !open);
+  }
+
+  trigger.addEventListener("click", () => {
+    setOpen(trigger.getAttribute("aria-expanded") !== "true");
+  });
+
+  document.addEventListener("mousedown", (e) => {
+    if (!container.contains(e.target as Node)) setOpen(false);
+  });
+</script>
