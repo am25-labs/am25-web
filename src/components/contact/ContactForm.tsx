@@ -24,7 +24,7 @@ import { SendIcon, ArrowUpRightIcon } from "lucide-react";
 import { Turnstile } from "react-turnstile";
 import { nameRegex, emailRegex } from "@/lib/validation";
 
-const SERVICE_OPTIONS = ["Graphic Design", "Web/Dev", "Multimedia"];
+const SERVICE_OPTIONS = ["Graphic Design", "Web/Dev", "Multimedia", "Outside our scope"];
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
 
 interface FormState {
