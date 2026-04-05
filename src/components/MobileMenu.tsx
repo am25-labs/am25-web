@@ -18,7 +18,7 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ items, socItems }: MobileMenuProps) {
   return (
-    <DropdownMenu>
+    <DropdownMenu modal={false}>
       <DropdownMenuTrigger asChild>
         <Button size="icon" variant="ghost">
           <MenuIcon className="size-6" />
