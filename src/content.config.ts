@@ -44,6 +44,7 @@ const pages = defineCollection({
   schema: z.object({
     title: z.string(),
     updated: z.string().optional(),
+    quote: z.string().optional(),
   }),
 });
 

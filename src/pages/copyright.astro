@@ -9,7 +9,7 @@ const { Content } = await render(entry);
 ---
 
 <RootLayout title={`${entry.data.title} | AM25`}>
-  <GenericContent title={entry.data.title} updated={entry.data.updated}>
+  <GenericContent title={entry.data.title}>
     <Content />
   </GenericContent>
 </RootLayout>

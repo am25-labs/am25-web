@@ -1,6 +1,5 @@
 ---
 title: "Copyright"
-updated: "April 2, 2026"
 ---
 
 This website and all associated projects, including but not limited to Creatyum, Claudette Vamp, and Castretto, are the intellectual property of AM25, S.A.S. DE C.V. All copyrights and related trademarks are protected by applicable national and international intellectual property laws.
