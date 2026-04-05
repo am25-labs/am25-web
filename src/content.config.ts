@@ -21,7 +21,7 @@ const projects = defineCollection({
     }).optional(),
     deployment: z.string(),
     started: z.string(),
-    updated: z.string(),
+    updated: z.string().optional(),
     version: z.string().optional(),
     documentation: z.object({
       label: z.string(),
@@ -43,7 +43,7 @@ const pages = defineCollection({
   loader: glob({ pattern: "**/*.md", base: "./src/content/pages" }),
   schema: z.object({
     title: z.string(),
-    updated: z.string(),
+    updated: z.string().optional(),
   }),
 });
 
