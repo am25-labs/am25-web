@@ -7,14 +7,14 @@ import { CalendarClockIcon } from "@lucide/astro";
 
 interface Props {
   title: string;
-  updated: string;
+  updated?: string;
 }
 
 const { title, updated } = Astro.props;
 ---
 
 <GridContainer class="mb-16">
-  <GridTwo>
+  <GridTwo class="mb-8">
     <div class="col-span-full">
       <h1 class="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
 

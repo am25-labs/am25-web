@@ -12,6 +12,7 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/node": "10.0.4",
     "@astrojs/react": "5.0.2",
     "@fontsource-variable/figtree": "5.2.10",
     "@fontsource/martian-mono": "5.2.7",
@@ -29,6 +30,7 @@
     "radix-ui": "1.4.3",
     "react": "19.2.4",
     "react-dom": "19.2.4",
+    "react-turnstile": "1.1.5",
     "rehype-external-links": "3.0.0",
     "shadcn": "4.1.1",
     "simple-icons": "16.14.0",
