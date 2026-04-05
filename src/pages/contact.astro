@@ -1,0 +1,45 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import ContactForm from "@/components/contact/ContactForm";
+import { ArrowUpRightIcon } from "@lucide/astro";
+---
+
+<RootLayout title="Contact | AM25">
+    <GridContainer class="mb-16">
+        <GridTwo class="mb-8">
+            <div class="col-span-full">
+                <h1 class="text-3xl md:text-4xl font-bold uppercase">
+                    Contact
+                </h1>
+
+                <div class="flex flex-col space-y-2 mt-6">
+                    <a
+                        href="mailto:hola@alemartir.com"
+                        target="_blank"
+                        rel="noopener"
+                        class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
+                    >
+                        Email<ArrowUpRightIcon size={24} class="shrink-0" />
+                    </a>
+                    <a
+                        href="https://www.instagram.com/am25std"
+                        target="_blank"
+                        rel="noopener"
+                        class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
+                    >
+                        Instagram<ArrowUpRightIcon size={24} class="shrink-0" />
+                    </a>
+                </div>
+            </div>
+        </GridTwo>
+
+        <GridFour>
+            <div class="col-span-full">
+                <ContactForm client:load />
+            </div>
+        </GridFour>
+    </GridContainer>
+</RootLayout>

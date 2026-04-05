@@ -20,7 +20,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
-import { SendIcon } from "lucide-react";
+import { SendIcon, ArrowUpRightIcon } from "lucide-react";
 import { Turnstile } from "react-turnstile";
 import { nameRegex, emailRegex } from "@/lib/validation";
 
@@ -112,7 +112,7 @@ export default function ContactForm() {
               How can I contact you?
             </FieldLegend>
             <FieldDescription>
-              To answer your questions, I need to be able to contact you:
+              To answer your questions, we need to be able to contact:
             </FieldDescription>
 
             <FieldGroup>
@@ -177,17 +177,15 @@ export default function ContactForm() {
             <FieldGroup>
               <Field orientation="horizontal">
                 <Checkbox defaultChecked required />
-                <FieldLabel className="text-xs inline">
-                  <span>
-                    I have read and agree to the{" "}
-                    <a
-                      href="/privacy"
-                      target="_blank"
-                      className="hover:font-bold transition-all duration-200"
-                    >
-                      Privacy Policy
-                    </a>
-                  </span>
+                <FieldLabel className="flex-wrap gap-1.5 text-xs">
+                  I have read and agree to the{" "}
+                  <a
+                    href="/privacy"
+                    target="_blank"
+                    className="inline-flex items-center hover:font-bold"
+                  >
+                    Privacy Policy<ArrowUpRightIcon size={16} className="text-am-y shrink-0" />
+                  </a>
                 </FieldLabel>
               </Field>
             </FieldGroup>
@@ -198,7 +196,7 @@ export default function ContactForm() {
                 onVerify={(token) => setCaptchaToken(token)}
                 size="flexible"
                 theme="dark"
-                language="es"
+                language="en"
               />
             </FieldGroup>
 
