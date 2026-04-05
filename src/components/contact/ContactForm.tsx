@@ -25,11 +25,13 @@ import { Turnstile } from "react-turnstile";
 import { nameRegex, emailRegex } from "@/lib/validation";
 
 const SERVICE_OPTIONS = ["Graphic Design", "Web/Dev", "Multimedia"];
+const LANGUAGE_OPTIONS = ["Spanish", "English"];
 
 interface FormState {
   name: string;
   email: string;
   service: string;
+  language: string;
 }
 
 interface StatusMessage {
@@ -38,7 +40,7 @@ interface StatusMessage {
 }
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", service: "" });
+  const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", language: "" });
   const [captchaToken, setCaptchaToken] = useState("");
   const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +52,7 @@ export default function ContactForm() {
   };
 
   const resetForm = () => {
-    setForm({ name: "", email: "", service: "" });
+    setForm({ name: "", email: "", service: "", language: "" });
     setCaptchaToken("");
     setStatusMessage(null);
     setFormKey((prev) => prev + 1);
@@ -63,6 +65,7 @@ export default function ContactForm() {
       { valid: nameRegex.test(form.name), field: "Nombre inválido." },
       { valid: emailRegex.test(form.email), field: "Correo inválido." },
       { valid: form.service !== "", field: "Selecciona un servicio." },
+      { valid: form.language !== "", field: "Selecciona un idioma." },
     ];
 
     for (const v of validations) {
@@ -116,18 +119,18 @@ export default function ContactForm() {
             </FieldDescription>
 
             <FieldGroup>
+              <Field>
+                <Input
+                  name="name"
+                  placeholder="Full Name"
+                  value={form.name}
+                  onChange={handleChange}
+                  className="rounded-none"
+                  required
+                  autoComplete="name"
+                />
+              </Field>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <Field>
-                  <Input
-                    name="name"
-                    placeholder="Full Name"
-                    value={form.name}
-                    onChange={handleChange}
-                    className="rounded-none"
-                    required
-                    autoComplete="name"
-                  />
-                </Field>
                 <Field>
                   <Input
                     name="email"
@@ -139,6 +142,25 @@ export default function ContactForm() {
                     required
                     autoComplete="email"
                   />
+                </Field>
+                <Field>
+                  <Select
+                    value={form.language}
+                    onValueChange={(value) =>
+                      setForm((prev) => ({ ...prev, language: value }))
+                    }
+                  >
+                    <SelectTrigger className="w-full rounded-none">
+                      <SelectValue placeholder="Language" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      {LANGUAGE_OPTIONS.map((lang) => (
+                        <SelectItem key={lang} value={lang}>
+                          {lang}
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
                 </Field>
               </div>
             </FieldGroup>

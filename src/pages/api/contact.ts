@@ -3,7 +3,7 @@ export const prerender = false;
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
-  const { name, email, service, token } = await request.json();
+  const { name, email, service, language, token } = await request.json();
 
   if (!token) {
     return Response.json({ error: "Turnstile token faltante" }, { status: 400 });
@@ -32,7 +32,7 @@ export const POST: APIRoute = async ({ request }) => {
       "Content-Type": "application/json",
       Authorization: `Bearer ${import.meta.env.STRAPI_FORM_TOKEN}`,
     },
-    body: JSON.stringify({ data: { name, email, service } }),
+    body: JSON.stringify({ data: { name, email, service, language } }),
   });
 
   if (!strapiRes.ok) {
