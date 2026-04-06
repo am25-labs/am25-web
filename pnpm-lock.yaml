@@ -27,8 +27,8 @@ importers:
         specifier: 1.1.6
         version: 1.1.6(react@19.2.4)
       '@itsmrtr/strapi-next-fetch':
-        specifier: 1.0.0
-        version: 1.0.0(next@16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
+        specifier: 1.1.0
+        version: 1.1.0(next@16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))
       '@lucide/astro':
         specifier: 1.7.0
         version: 1.7.0(astro@6.1.1(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1))
@@ -663,8 +663,8 @@ packages:
       '@types/node':
         optional: true
 
-  '@itsmrtr/strapi-next-fetch@1.0.0':
-    resolution: {integrity: sha512-IOTfnP/Z+9Xw+rAkD54rf5O70R6YNak8gFpqSj3ZRaYfOA+sb7JiqSbRM1/4+EZxq7nwLVVdmJM+6p4YBL9VrQ==}
+  '@itsmrtr/strapi-next-fetch@1.1.0':
+    resolution: {integrity: sha512-v0jDtJNSpyrnETPjcicjmVsMAdGlvYGvLUcKhBRLLZ/BNl6LLbOJ0bYE1+rJYWZFnX/gWaxLY2Eh1GtmJlX2Lg==}
     engines: {node: '>=18'}
     peerDependencies:
       next: '>=14'
@@ -4470,7 +4470,7 @@ snapshots:
 
   '@inquirer/type@3.0.10': {}
 
-  '@itsmrtr/strapi-next-fetch@1.0.0(next@16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
+  '@itsmrtr/strapi-next-fetch@1.1.0(next@16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4))':
     dependencies:
       next: 16.2.2(@babel/core@7.29.0)(react-dom@19.2.4(react@19.2.4))(react@19.2.4)
 
