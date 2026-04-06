@@ -1,3 +1,4 @@
-Contact: mailto:hola@am25.work
+Contact: mailto:security@am25.work
 Expires: 2027-04-06T00:00:00.000Z
+Canonical: https://am25.work/.well-known/security.txt
 Preferred-Languages: en, es
