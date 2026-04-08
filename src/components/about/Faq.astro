@@ -6,63 +6,63 @@ import { AccordionWrap } from "@/components/ui/custom/Accordion";
 import type { AccordionWrapItem } from "@/types";
 
 const faq: AccordionWrapItem[] = [
-    {
-        value: "item-1",
-        trigger: "What are we?",
-        content:
-            "An independent studio focused on graphic design and web development. We make things that are meant to work, not just exist.",
-    },
-    {
-        value: "item-2",
-        trigger: "What are we not?",
-        content:
-            "We’re not community managers or content factories. If you’re looking for constant posting and trends, that’s not you us, sorry.",
-    },
-    {
-        value: "item-3",
-        trigger: "What does AM25 mean?",
-        content:
-            "For nocturnal creatives, midnight doesn’t feel like the end of the day but the start of an extra one. AM25 is that “25th hour” where ideas tend to happen.",
-    },
-    {
-        value: "item-4",
-        trigger: "How do I hire you?",
-        content:
-            "Send a message through the contact form or email with what you need. If it makes sense, we’ll take it from there (either way, you’ll hear back from us, we don’t leave messages unanswered).",
-    },
-    {
-        value: "item-5",
-        trigger: "Outside our scope?",
-        content:
-            "Sometimes. If it’s interesting enough, we’re open to it. And if we don’t know how to do it yet, we’ll figure it out or build what’s missing along the way.",
-    },
-    {
-        value: "item-6",
-        trigger: "Do you use AI?",
-        content:
-            "Yes. We’d be stupid not to. We use it when it actually adds value, not as a shortcut or a gimmick.",
-    },
-    {
-        value: "item-7",
-        trigger: "Follow our work?",
-        content:
-            "If you’re into the occasional update or just curious, you can follow us on Instagram. We post when there’s something worth showing.",
-    },
+  {
+    value: "item-1",
+    trigger: "What are we?",
+    content:
+      "An independent studio focused on graphic design and web development. We make things that are meant to work, not just exist.",
+  },
+  {
+    value: "item-2",
+    trigger: "What are we not?",
+    content:
+      "We’re not community managers or content factories. If you’re looking for constant posting and trends, that’s not you us, sorry.",
+  },
+  {
+    value: "item-3",
+    trigger: "What does AM25 mean?",
+    content:
+      "For nocturnal creatives, midnight doesn’t feel like the end of the day but the start of an extra one. AM25 is that “25th hour” where ideas tend to happen.",
+  },
+  {
+    value: "item-4",
+    trigger: "How do I hire you?",
+    content:
+      "Send a message through the contact form or email with what you need. If it makes sense, we’ll take it from there (either way, you’ll hear back from us, we don’t leave messages unanswered).",
+  },
+  {
+    value: "item-5",
+    trigger: "Outside our scope?",
+    content:
+      "Sometimes. If it’s interesting enough, we’re open to it. And if we don’t know how to do it yet, we’ll figure it out or build what’s missing along the way.",
+  },
+  {
+    value: "item-6",
+    trigger: "Do you use AI?",
+    content:
+      "Yes. We’d be stupid not to. We use it when it actually adds value, not as a shortcut or a gimmick.",
+  },
+  {
+    value: "item-7",
+    trigger: "Follow our work?",
+    content:
+      "If you’re into the occasional update or just curious, you can follow us on Instagram. We post when there’s something worth showing.",
+  },
 ];
 ---
 
-<GridContainer class="pt-8 pb-16">
-    <GridTwo>
-        <span class="col-span-full">
-            <h2 class="text-muted-foreground text-sm font-bold uppercase">
-                Studio FAQs
-            </h2>
-        </span>
-    </GridTwo>
+<GridContainer class="pb-16">
+  <GridTwo>
+    <span class="col-span-full">
+      <h2 class="text-muted-foreground text-sm font-bold uppercase">
+        Studio FAQs
+      </h2>
+    </span>
+  </GridTwo>
 
-    <GridFour>
-        <div class="col-span-full">
-            <AccordionWrap items={faq} client:load />
-        </div>
-    </GridFour>
+  <GridFour>
+    <div class="col-span-full">
+      <AccordionWrap items={faq} client:load />
+    </div>
+  </GridFour>
 </GridContainer>
