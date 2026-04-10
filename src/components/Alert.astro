@@ -1,0 +1,76 @@
+---
+import { cn } from "@/lib/utils";
+import {
+  BellIcon,
+  InfoIcon,
+  CircleCheckIcon,
+  TriangleAlertIcon,
+  CircleXIcon,
+} from "@lucide/astro";
+
+interface Props {
+  variant?: "default" | "info" | "success" | "warning" | "destructive";
+  class?: string;
+  [key: string]: any;
+}
+
+const {
+  variant = "default",
+  class: className,
+  ...props
+} = Astro.props as Props;
+
+const variantStyles = {
+  default:
+    "bg-card text-white *:data-[slot=alert-description]:text-white [&>svg]:text-current",
+  info: "bg-[#0c1b3a] text-blue-500 *:data-[slot=alert-description]:text-blue-500 [&>svg]:text-current",
+  success:
+    "bg-[#082019] text-emerald-500 *:data-[slot=alert-description]:text-emerald-500 [&>svg]:text-current",
+  warning:
+    "bg-[#3b2d08] text-amber-400 *:data-[slot=alert-description]:text-amber-400 [&>svg]:text-current",
+  destructive:
+    "bg-[#370815] text-rose-600 *:data-[slot=alert-description]:text-rose-600 [&>svg]:text-current",
+};
+
+const variantIcons = {
+  default: BellIcon,
+  info: InfoIcon,
+  success: CircleCheckIcon,
+  warning: TriangleAlertIcon,
+  destructive: CircleXIcon,
+};
+
+const alertClass = cn(
+  "relative w-full rounded-lg border px-4 py-3 text-sm grid has-[>svg]:grid-cols-[calc(var(--spacing)*4)_1fr] grid-cols-[0_1fr] has-[>svg]:gap-x-3 gap-y-0.5 items-start [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+  variantStyles[variant],
+  className,
+);
+
+const titleClass = cn(
+  "col-start-2 line-clamp-1 min-h-4 font-bold tracking-tight",
+);
+
+const descClass = cn(
+  "text-muted-foreground col-start-2 grid justify-items-start gap-1 text-sm [&_p]:leading-relaxed",
+);
+
+const Icon = variantIcons[variant];
+---
+
+<div data-slot="alert" role="alert" class={alertClass} {...props}>
+  {Astro.slots.has("icon") ? <slot name="icon" /> : <Icon />}
+  {
+    Astro.slots.has("title") && (
+      <div data-slot="alert-title" class={titleClass}>
+        <slot name="title" />
+      </div>
+    )
+  }
+  {
+    Astro.slots.has("default") && (
+      <div data-slot="alert-description" class={descClass}>
+        <slot />
+      </div>
+    )
+  }
+</div>
