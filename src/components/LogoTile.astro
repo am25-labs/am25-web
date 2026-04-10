@@ -1,5 +1,5 @@
 ---
-import { Card, CardContent } from "@/components/ui/card";
+import Card from "@/components/ui/astro/Card.astro";
 import type { LogoTileProps } from "@/types";
 
 type Props = LogoTileProps;
@@ -16,10 +16,10 @@ const isExternal = href?.startsWith("https");
   {title}
   class="group"
 >
-  <Card className="flex justify-center aspect-square">
-    <CardContent>
+  <Card class="flex justify-center aspect-square">
+    <div slot="content">
       <img src={logo} alt={title} class="w-full p-4" />
-    </CardContent>
+    </div>
   </Card>
   <p class="text-muted-foreground text-xs mt-2 group-hover:underline">
     {title}

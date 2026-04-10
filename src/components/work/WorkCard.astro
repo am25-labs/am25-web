@@ -1,5 +1,5 @@
 ---
-import { Card } from "@/components/ui/card";
+import Card from "@/components/ui/astro/Card.astro";
 import type { WorkCardProps } from "@/types";
 
 type Props = WorkCardProps;
@@ -10,17 +10,17 @@ const isExternal = href?.startsWith("https");
 ---
 
 <Tag
-    href={href}
-    target={isExternal ? "_blank" : undefined}
-    rel={isExternal ? "noopener" : undefined}
-    {title}
-    class="group"
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener" : undefined}
+  {title}
+  class="group"
 >
-    <Card className="aspect-square overflow-hidden p-0">
-        <img src={cover} alt={title} class="w-full h-full object-cover" />
-    </Card>
-    <p class="text-xl font-bold uppercase mt-2 group-hover:underline">
-        {title}
-    </p>
-    <span class="text-muted-foreground text-xs mt-1">{category}</span>
+  <Card class="aspect-square overflow-hidden p-0">
+    <img src={cover} alt={title} class="w-full h-full object-cover" />
+  </Card>
+  <p class="text-xl font-bold uppercase mt-2 group-hover:underline">
+    {title}
+  </p>
+  <span class="text-muted-foreground text-xs mt-1">{category}</span>
 </Tag>
