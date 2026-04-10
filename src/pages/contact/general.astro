@@ -3,7 +3,6 @@ import RootLayout from "@/layouts/RootLayout.astro";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import ContactForm from "@/components/contact/ContactForm";
 import { ArrowUpRightIcon } from "@lucide/astro";
 ---
 
@@ -37,9 +36,7 @@ import { ArrowUpRightIcon } from "@lucide/astro";
     </GridTwo>
 
     <GridFour>
-      <div class="col-span-full">
-        <ContactForm client:load />
-      </div>
+      <div class="col-span-full"></div>
     </GridFour>
   </GridContainer>
 </RootLayout>

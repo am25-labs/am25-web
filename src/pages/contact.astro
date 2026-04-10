@@ -3,10 +3,9 @@ import RootLayout from "@/layouts/RootLayout.astro";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import ContactForm from "@/components/contact/ContactForm";
+import ServicesForm from "@/components/contact/ServicesForm.astro";
 import { ArrowUpRightIcon } from "@lucide/astro";
-import Alert from "@/components/Alert.astro";
-import { AlertCircleIcon } from "lucide-react";
+import Alert from "@/components/ui/astro/Alert.astro";
 ---
 
 <RootLayout title="Contact | AM25">
@@ -38,9 +37,9 @@ import { AlertCircleIcon } from "lucide-react";
 
     <GridFour>
       <div class="col-span-full">
-        <ContactForm client:load />
+        <ServicesForm />
 
-        <Alert variant="info" class="mt-8">
+        <Alert variant="info" class="mt-4">
           <span slot="title">General inquiries?</span>
           <p>
             This contact form one’s for projects. If that’s not you, <a

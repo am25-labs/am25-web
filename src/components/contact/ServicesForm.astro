@@ -1,0 +1,252 @@
+---
+import Card from "@/components/ui/astro/Card.astro";
+import Alert from "@/components/ui/astro/Alert.astro";
+import FieldSet from "@/components/ui/astro/field/FieldSet.astro";
+import FieldGroup from "@/components/ui/astro/field/FieldGroup.astro";
+import Field from "@/components/ui/astro/field/Field.astro";
+import Input from "@/components/ui/astro/Input.astro";
+import Button from "@/components/ui/astro/Button.astro";
+import Checkbox from "@/components/ui/astro/Checkbox.astro";
+import Turnstile from "@/components/contact/Turnstile.astro";
+import SelectWrap from "@/components/ui/custom/Select.tsx";
+import { Send, ArrowUpRight } from "@lucide/astro";
+
+const SERVICE_OPTIONS = [
+  "Graphic Design",
+  "Web/Dev",
+  "Multimedia",
+  "Outside our scope",
+];
+const LANGUAGE_OPTIONS = ["Spanish", "English"];
+---
+
+<form id="contact-form">
+  <Card class="bg-black">
+    <div slot="content">
+      <FieldSet>
+        <span slot="legend" class="font-bold uppercase"
+          >How can I contact you?</span
+        >
+        <span slot="description"
+          >To answer your questions, we need to be able to contact:</span
+        >
+
+        <FieldGroup>
+          <Field>
+            <Input
+              name="name"
+              placeholder="Full Name"
+              class="rounded-none"
+              required
+              autocomplete="name"
+            />
+          </Field>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <Field>
+              <Input
+                name="email"
+                type="email"
+                placeholder="Email"
+                class="rounded-none"
+                required
+                autocomplete="email"
+              />
+            </Field>
+            <Field>
+              <SelectWrap
+                client:load
+                name="language"
+                placeholder="Language"
+                options={LANGUAGE_OPTIONS}
+              />
+            </Field>
+          </div>
+        </FieldGroup>
+      </FieldSet>
+
+      <FieldSet class="mt-8">
+        <span slot="legend" class="font-bold uppercase">Choose a service</span>
+        <span slot="description">The main service that interests you:</span>
+
+        <FieldGroup>
+          <Field>
+            <SelectWrap
+              client:load
+              name="service"
+              placeholder="Service"
+              options={SERVICE_OPTIONS}
+            />
+          </Field>
+        </FieldGroup>
+
+        <FieldGroup>
+          <Field orientation="horizontal">
+            <Checkbox defaultChecked required />
+            <span slot="label" class="flex-wrap gap-1.5 text-xs">
+              I have read and agree to the
+              <a
+                href="/privacy"
+                target="_blank"
+                rel="noopener"
+                class="inline-flex items-center hover:font-bold"
+              >
+                Privacy Policy
+                <ArrowUpRight size={16} class="text-am-y shrink-0" />
+              </a>
+            </span>
+          </Field>
+        </FieldGroup>
+
+        <FieldGroup>
+          <Turnstile
+            sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
+            size="flexible"
+            theme="dark"
+            language="en"
+          />
+        </FieldGroup>
+
+        <div id="form-status-success" class="hidden">
+          <Alert variant="success">
+            <span slot="title" id="status-text-success"></span>
+          </Alert>
+        </div>
+        <div id="form-status-error" class="hidden">
+          <Alert variant="destructive">
+            <span slot="title" id="status-text-error"></span>
+          </Alert>
+        </div>
+      </FieldSet>
+    </div>
+
+    <div slot="footer">
+      <Field orientation="horizontal">
+        <Button
+          id="submit-btn"
+          type="submit"
+          size="lg"
+          class="rounded-full font-bold uppercase"
+        >
+          <Send /><span id="submit-text">Send</span>
+        </Button>
+        <Button
+          type="reset"
+          variant="secondary"
+          size="lg"
+          class="rounded-full font-bold uppercase"
+        >
+          Cancel
+        </Button>
+      </Field>
+    </div>
+  </Card>
+</form>
+
+<script>
+  import { nameRegex, emailRegex } from "@/lib/validation";
+
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const statusSuccess = document.getElementById(
+    "form-status-success",
+  ) as HTMLDivElement;
+  const statusError = document.getElementById(
+    "form-status-error",
+  ) as HTMLDivElement;
+  const statusTextSuccess = document.getElementById(
+    "status-text-success",
+  ) as HTMLSpanElement;
+  const statusTextError = document.getElementById(
+    "status-text-error",
+  ) as HTMLSpanElement;
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text") as HTMLSpanElement;
+
+  let captchaToken = "";
+
+  document.addEventListener("turnstile:verified", (e: Event) => {
+    captchaToken = (e as CustomEvent<string>).detail;
+  });
+
+  document.addEventListener("turnstile:expired", () => {
+    captchaToken = "";
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const data = Object.fromEntries(new FormData(form));
+
+    const validations = [
+      { valid: nameRegex.test(data.name as string), msg: "Nombre inválido." },
+      { valid: emailRegex.test(data.email as string), msg: "Correo inválido." },
+      { valid: !!data.service, msg: "Selecciona un servicio." },
+      { valid: !!data.language, msg: "Selecciona un idioma." },
+    ];
+
+    for (const v of validations) {
+      if (!v.valid) {
+        showStatus("error", v.msg);
+        return;
+      }
+    }
+
+    if (!captchaToken) {
+      showStatus("error", "Por favor completa el captcha.");
+      return;
+    }
+
+    setSubmitting(true);
+    clearStatus();
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: data.name,
+          email: data.email,
+          service: data.service,
+          language: data.language,
+          token: captchaToken,
+        }),
+      });
+
+      const json = await res.json();
+
+      if (res.ok) {
+        showStatus("success", "Enviado con éxito.");
+        form.reset();
+        captchaToken = "";
+        (window as any).turnstile?.reset?.();
+        setTimeout(clearStatus, 3000);
+      } else {
+        showStatus("error", json.error || "Error al enviar. Intenta de nuevo.");
+      }
+    } catch {
+      showStatus("error", "Error de red. Intenta más tarde.");
+    }
+
+    setSubmitting(false);
+  });
+
+  function showStatus(type: "success" | "error", text: string) {
+    clearStatus();
+    if (type === "success") {
+      statusTextSuccess.textContent = text;
+      statusSuccess.classList.remove("hidden");
+    } else {
+      statusTextError.textContent = text;
+      statusError.classList.remove("hidden");
+    }
+  }
+
+  function clearStatus() {
+    statusSuccess.classList.add("hidden");
+    statusError.classList.add("hidden");
+  }
+
+  function setSubmitting(submitting: boolean) {
+    submitBtn.disabled = submitting;
+    submitText.textContent = submitting ? "Sending..." : "Send";
+  }
+</script>
