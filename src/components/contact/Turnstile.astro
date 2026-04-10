@@ -1,0 +1,35 @@
+---
+interface Props {
+  sitekey: string;
+  size?: "normal" | "compact" | "flexible" | "invisible";
+  theme?: "light" | "dark" | "auto";
+  language?: string;
+}
+
+const { sitekey, size = "normal", theme = "auto", language = "auto" } = Astro.props;
+---
+
+<div
+  class="cf-turnstile"
+  data-sitekey={sitekey}
+  data-callback="__onTurnstileVerify"
+  data-expired-callback="__onTurnstileExpire"
+  data-size={size}
+  data-theme={theme}
+  data-language={language}
+></div>
+
+<script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer
+></script>
+
+<script is:inline>
+  function __onTurnstileVerify(token) {
+    document.dispatchEvent(
+      new CustomEvent("turnstile:verified", { detail: token }),
+    );
+  }
+
+  function __onTurnstileExpire() {
+    document.dispatchEvent(new CustomEvent("turnstile:expired"));
+  }
+</script>
