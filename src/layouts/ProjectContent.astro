@@ -4,7 +4,7 @@ import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import ProseContent from "@/components/ProseContent.astro";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
-import { Card, CardContent } from "@/components/ui/card";
+import Card from "@/components/ui/astro/Card.astro";
 import type { ProjectContentProps } from "@/types";
 import ProjectCtaDialog from "@/components/project/ProjectCtaDialog";
 import {
@@ -93,7 +93,7 @@ const {
       {cta && <ProjectCtaDialog {cta} client:load />}
 
       <Card>
-        <CardContent>
+        <div slot="content">
           <ul class="text-xs space-y-4">
             <li class="flex items-center gap-2" title="Repository">
               <PackageIcon size={16} class="text-muted-foreground shrink-0" />
@@ -151,7 +151,7 @@ const {
               )
             }
           </ul>
-        </CardContent>
+        </div>
       </Card>
     </div>
   </GridTwo>
