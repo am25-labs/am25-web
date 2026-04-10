@@ -24,7 +24,12 @@ import { SendIcon, ArrowUpRightIcon } from "lucide-react";
 import { Turnstile } from "react-turnstile";
 import { nameRegex, emailRegex } from "@/lib/validation";
 
-const SERVICE_OPTIONS = ["Graphic Design", "Web/Dev", "Multimedia", "Outside our scope"];
+const SERVICE_OPTIONS = [
+  "Graphic Design",
+  "Web/Dev",
+  "Multimedia",
+  "Outside our scope",
+];
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
 
 interface FormState {
@@ -40,9 +45,16 @@ interface StatusMessage {
 }
 
 export default function ContactForm() {
-  const [form, setForm] = useState<FormState>({ name: "", email: "", service: "", language: "" });
+  const [form, setForm] = useState<FormState>({
+    name: "",
+    email: "",
+    service: "",
+    language: "",
+  });
   const [captchaToken, setCaptchaToken] = useState("");
-  const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(null);
+  const [statusMessage, setStatusMessage] = useState<StatusMessage | null>(
+    null,
+  );
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formKey, setFormKey] = useState(0);
 
@@ -76,7 +88,10 @@ export default function ContactForm() {
     }
 
     if (!captchaToken) {
-      setStatusMessage({ type: "error", text: "Por favor completa el captcha." });
+      setStatusMessage({
+        type: "error",
+        text: "Por favor completa el captcha.",
+      });
       return;
     }
 
@@ -97,10 +112,16 @@ export default function ContactForm() {
         resetForm();
         setTimeout(() => setStatusMessage(null), 3000);
       } else {
-        setStatusMessage({ type: "error", text: data.error || "Error al enviar. Intenta de nuevo." });
+        setStatusMessage({
+          type: "error",
+          text: data.error || "Error al enviar. Intenta de nuevo.",
+        });
       }
     } catch {
-      setStatusMessage({ type: "error", text: "Error de red. Intenta más tarde." });
+      setStatusMessage({
+        type: "error",
+        text: "Error de red. Intenta más tarde.",
+      });
     }
 
     setIsSubmitting(false);
@@ -204,9 +225,14 @@ export default function ContactForm() {
                   <a
                     href="/privacy"
                     target="_blank"
+                    rel="noopener"
                     className="inline-flex items-center hover:font-bold"
                   >
-                    Privacy Policy<ArrowUpRightIcon size={16} className="text-am-y shrink-0" />
+                    Privacy Policy
+                    <ArrowUpRightIcon
+                      size={16}
+                      className="text-am-y shrink-0"
+                    />
                   </a>
                 </FieldLabel>
               </Field>
