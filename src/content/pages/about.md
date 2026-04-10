@@ -1,5 +1,5 @@
 ---
-title: "About us"
+title: "About Us"
 quote: "We are an independent creative studio specializing in graphic and web design. In every project, we strive for the perfect balance between good taste and meeting our clients' needs and objectives."
 ---
 
