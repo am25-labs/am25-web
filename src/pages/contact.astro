@@ -5,41 +5,52 @@ import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import ContactForm from "@/components/contact/ContactForm";
 import { ArrowUpRightIcon } from "@lucide/astro";
+import Alert from "@/components/Alert.astro";
+import { AlertCircleIcon } from "lucide-react";
 ---
 
 <RootLayout title="Contact | AM25">
-    <GridContainer class="mb-16">
-        <GridTwo class="mb-8">
-            <div class="col-span-full">
-                <h1 class="text-3xl md:text-4xl font-bold uppercase">
-                    Contact
-                </h1>
+  <GridContainer class="mb-16">
+    <GridTwo class="mb-8">
+      <div class="col-span-full">
+        <h1 class="text-3xl md:text-4xl font-bold uppercase">Contact</h1>
 
-                <div class="flex flex-col space-y-2 mt-6">
-                    <a
-                        href="mailto:hola@am25.work"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
-                    >
-                        Email<ArrowUpRightIcon size={24} class="shrink-0" />
-                    </a>
-                    <a
-                        href="https://www.instagram.com/am25std"
-                        target="_blank"
-                        rel="noopener"
-                        class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
-                    >
-                        Instagram<ArrowUpRightIcon size={24} class="shrink-0" />
-                    </a>
-                </div>
-            </div>
-        </GridTwo>
+        <div class="flex flex-col space-y-2 mt-6">
+          <a
+            href="mailto:hola@am25.work"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
+          >
+            Email<ArrowUpRightIcon size={24} class="shrink-0" />
+          </a>
+          <a
+            href="https://www.instagram.com/am25std"
+            target="_blank"
+            rel="noopener"
+            class="flex items-center text-neutral-500 text-lg md:text-xl w-fit hover:underline"
+          >
+            Instagram<ArrowUpRightIcon size={24} class="shrink-0" />
+          </a>
+        </div>
+      </div>
+    </GridTwo>
 
-        <GridFour>
-            <div class="col-span-full">
-                <ContactForm client:load />
-            </div>
-        </GridFour>
-    </GridContainer>
+    <GridFour>
+      <div class="col-span-full">
+        <ContactForm client:load />
+
+        <Alert variant="info" class="mt-8">
+          <span slot="title">General inquiries?</span>
+          <p>
+            This contact form one’s for projects. If that’s not you, <a
+              href="/contact/general"
+              class="inline-flex items-center hover:font-bold"
+              >go here<ArrowUpRightIcon size={18} class="shrink-0" />
+            </a> instead.
+          </p>
+        </Alert>
+      </div>
+    </GridFour>
+  </GridContainer>
 </RootLayout>
