@@ -1,6 +1,7 @@
 export const prerender = false;
 
 import type { APIRoute } from "astro";
+import { sendMail } from "@/lib/mailer";
 
 export const POST: APIRoute = async ({ request }) => {
   const { name, email, language, subject, message, token } =
@@ -33,21 +34,13 @@ export const POST: APIRoute = async ({ request }) => {
     );
   }
 
-  const strapiRes = await fetch(
-    `${import.meta.env.STRAPI_API_URL}/api/contacts`,
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${import.meta.env.STRAPI_FORM_TOKEN}`,
-      },
-      body: JSON.stringify({
-        data: { name, email, language, subject, message },
-      }),
-    },
-  );
-
-  if (!strapiRes.ok) {
+  try {
+    await sendMail({
+      to: "hola@am25.work",
+      subject: `${subject} from ${name}`,
+      text: `Name: ${name}\nEmail: ${email}\nLanguage: ${language}\nSubject: ${subject}\n\n${message}`,
+    });
+  } catch {
     return Response.json({ error: "Error al enviar" }, { status: 500 });
   }
 
