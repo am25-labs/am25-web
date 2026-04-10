@@ -1,0 +1,43 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  class?: string;
+  legendVariant?: "legend" | "label";
+  [key: string]: any;
+}
+
+const { class: className, legendVariant = "legend", ...props } = Astro.props as Props;
+---
+
+<fieldset
+  data-slot="field-set"
+  class={cn(
+    "flex flex-col gap-6 has-[>[data-slot=checkbox-group]]:gap-3 has-[>[data-slot=radio-group]]:gap-3",
+    className,
+  )}
+  {...props}
+>
+  {
+    Astro.slots.has("legend") && (
+      <legend
+        data-slot="field-legend"
+        data-variant={legendVariant}
+        class="mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base"
+      >
+        <slot name="legend" />
+      </legend>
+    )
+  }
+  {
+    Astro.slots.has("description") && (
+      <p
+        data-slot="field-description"
+        class="text-left text-sm leading-normal font-normal text-muted-foreground [[data-variant=legend]+&]:-mt-1.5 last:mt-0 nth-last-2:-mt-1 [&>a]:underline [&>a]:underline-offset-4 [&>a:hover]:text-primary"
+      >
+        <slot name="description" />
+      </p>
+    )
+  }
+  <slot />
+</fieldset>
