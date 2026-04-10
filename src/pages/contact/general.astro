@@ -4,6 +4,7 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { ArrowUpRightIcon } from "@lucide/astro";
+import Alert from "@/components/ui/astro/Alert.astro";
 ---
 
 <RootLayout title="General Inquiries | AM25">
@@ -36,7 +37,15 @@ import { ArrowUpRightIcon } from "@lucide/astro";
     </GridTwo>
 
     <GridFour>
-      <div class="col-span-full"></div>
+      <div class="col-span-full">
+        <Alert variant="info">
+          <span slot="title">Not available yet</span>
+          <p>
+            The general inquiries form is on the way. For now, this is all you
+            get.
+          </p>
+        </Alert>
+      </div>
     </GridFour>
   </GridContainer>
 </RootLayout>
