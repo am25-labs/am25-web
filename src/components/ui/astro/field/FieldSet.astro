@@ -7,7 +7,11 @@ interface Props {
   [key: string]: any;
 }
 
-const { class: className, legendVariant = "legend", ...props } = Astro.props as Props;
+const {
+  class: className,
+  legendVariant = "legend",
+  ...props
+} = Astro.props as Props;
 ---
 
 <fieldset
@@ -23,7 +27,7 @@ const { class: className, legendVariant = "legend", ...props } = Astro.props as 
       <legend
         data-slot="field-legend"
         data-variant={legendVariant}
-        class="mb-3 font-medium data-[variant=label]:text-sm data-[variant=legend]:text-base"
+        class="mb-3 font-bold data-[variant=label]:text-sm data-[variant=legend]:text-base"
       >
         <slot name="legend" />
       </legend>
