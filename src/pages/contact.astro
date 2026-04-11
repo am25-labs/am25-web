@@ -39,16 +39,15 @@ import Alert from "@/components/ui/astro/Alert.astro";
       <div class="col-span-full">
         <ServicesForm />
 
-        <Alert variant="info" class="mt-4">
-          <span slot="title">General inquiries?</span>
-          <p>
-            This contact form one’s for projects. If that’s not you, <a
-              href="/contact/general"
-              class="inline-flex items-center hover:font-bold"
-              >go here<ArrowUpRightIcon size={18} class="shrink-0" />
-            </a> instead.
-          </p>
-        </Alert>
+        <a href="/contact/general">
+          <Alert variant="info" class="mt-4">
+            <span slot="title">General inquiries?</span>
+            <p>
+              This contact form one’s for projects. If that’s not you, GO HERE
+              INSTEAD.
+            </p>
+          </Alert>
+        </a>
       </div>
     </GridFour>
   </GridContainer>
