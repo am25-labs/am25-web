@@ -10,10 +10,10 @@ const mainNav: NavProps[] = [
     label: "Home",
     href: "/",
   },
-  // {
-  //   label: "Work",
-  //   href: "/work",
-  // },
+  {
+    label: "Work",
+    href: "/work",
+  },
   {
     label: "About",
     href: "/about",
@@ -35,7 +35,7 @@ const socNav: SocNavProps[] = [
 ---
 
 <header
-  class="bg-black sticky top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
+  class="bg-black fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
 >
   <a href="/"
     ><img src="/am25-logo.svg" alt="AM25 Logo" width="100" title="AM25" /></a
@@ -84,4 +84,4 @@ const socNav: SocNavProps[] = [
     <MobileMenu items={mainNav} socItems={socNav} />
   </div>
 </header>
-<div class="pb-12"></div>
+<div class="pb-32"></div>
