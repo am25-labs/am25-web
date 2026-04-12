@@ -1,9 +1,9 @@
 ---
 title: "Terms & Conditions"
-updated: "April 8, 2026"
+updated: "April 12, 2026"
 ---
 
-These terms govern the use of payment links issued by AM25, S.A.S. de C.V. (hereinafter "AM25"). By completing a payment through an AM25 payment link, you agree to these terms.
+These terms govern the use of payment links issued by **AM25, S.A.S. de C.V.** (hereinafter "AM25"). By completing a payment through an AM25 payment link, you agree to these terms.
 
 For questions or inquiries, please contact via [email](mailto:hola@am25.work).
 

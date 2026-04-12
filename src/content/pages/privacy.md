@@ -1,18 +1,18 @@
 ---
 title: "Privacy Policy"
-updated: "April 8, 2026"
+updated: "April 12, 2026"
 ---
 
-This website is managed by AM25, S.A.S. de C.V. For questions or inquiries, please contact via [email](mailto:hola@am25.work).
+This website is managed by **AM25, S.A.S. de C.V.** (hereinafter “AM25”). For questions or inquiries, please contact via [email](mailto:hola@am25.work).
 
 ## Site analytics
 
 This site uses [Plausible Analytics](https://plausible.io), a self-hosted, privacy-oriented tool with the sole purpose of understanding general site usage and improving the user experience.
 
-- Plausible does not use cookies
-- No individual user tracking is performed
-- No full IP addresses are stored
-- The data collected is aggregated and anonymous
+- Plausible does not use cookies.
+- No individual user tracking is performed.
+- No full IP addresses are stored.
+- The data collected is aggregated and anonymous.
 
 The analytical information is used exclusively for statistical purposes.
 
@@ -28,9 +28,9 @@ AM25 uses [Wompi](https://wompi.sv) (operated by Bancoagrícola) to process card
 
 When you complete a payment through an AM25 payment link, the following data is collected and transmitted to Wompi for the sole purpose of processing the transaction:
 
-- Card details (number, expiration date, and CVV)
-- Cardholder name and email address
-- Billing address and phone number
+- Card details (number, expiration date, and CVV).
+- Cardholder name and email address.
+- Billing address and phone number.
 
 AM25 does not store card numbers, CVV codes, or any sensitive payment credentials. Transaction records (amount, status, and Wompi transaction ID) are retained for accounting and legal compliance purposes.
 
@@ -48,9 +48,9 @@ This website does not actively collect personal data through tracking systems or
 
 If you submit information voluntarily (e.g., via contact forms or payment links), you may request:
 
-- Access to your data
-- Deletion of your data
-- Limitation or objection to processing
+- Access to your data.
+- Deletion of your data.
+- Limitation or objection to processing.
 
 To exercise these rights, please contact via [email](mailto:hola@am25.work).
 
