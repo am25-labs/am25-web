@@ -44,6 +44,7 @@ export async function getSingleWork(
       "illustration",
       "animation",
       "photo",
+      "developer",
       "team",
     ],
     populate: {

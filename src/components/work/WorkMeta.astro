@@ -18,6 +18,7 @@ interface Props {
   illustration?: string;
   animation?: string;
   photo?: string;
+  developer?: string;
   team?: string;
   disciplines?: Discipline[];
 }
@@ -35,6 +36,7 @@ const {
   illustration,
   animation,
   photo,
+  developer,
   team,
   disciplines,
 } = Astro.props;
@@ -52,6 +54,7 @@ const items = [
   { label: "Illustration", value: illustration },
   { label: "Animation", value: animation },
   { label: "Photo", value: photo },
+  { label: "Developer", value: developer },
   { label: "Team", value: team },
   { label: "Disciplines", value: disciplines?.map((d) => d.name).join(", ") },
 ].filter((item) => item.value);
