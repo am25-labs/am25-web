@@ -1,7 +1,6 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import GridTwo from "@/layouts/grids/GridTwo.astro";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
 import type { Discipline } from "@/types";
 
@@ -62,8 +61,8 @@ const items = [
 
 {
   items.length > 0 && (
-    <GridContainer class="mb-8">
-      <GridTwo />
+    <GridContainer class="my-0">
+      <GridFour />
 
       <GridFour>
         <div class="col-span-full">
