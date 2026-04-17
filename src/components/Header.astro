@@ -1,6 +1,7 @@
 ---
 import type { NavProps, SocNavProps } from "@/types";
 import { siInstagram, siGithub } from "simple-icons";
+import { siLinkedin } from "@/icons/custom";
 import BrandIcon from "@/components/BrandIcon.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
 import { ArrowUpRight } from "@lucide/astro";
@@ -31,6 +32,7 @@ const mainNav: NavProps[] = [
 const socNav: SocNavProps[] = [
   { href: "https://www.instagram.com/am25std", icon: siInstagram, size: 20 },
   { href: "https://github.com/am25-labs", icon: siGithub, size: 20 },
+  { href: "https://www.linkedin.com/company/am25", icon: siLinkedin, size: 20 },
 ];
 ---
 

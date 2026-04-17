@@ -1,4 +1,7 @@
 import type { SimpleIcon } from "simple-icons";
+import type { CustomIcon } from "@/icons/custom";
+
+export type BrandIconData = SimpleIcon | CustomIcon;
 
 export type {
   StrapiImage,
@@ -42,7 +45,7 @@ export interface GridProps {
 }
 
 export interface BrandIconProps {
-  icon: SimpleIcon;
+  icon: BrandIconData;
   size?: number;
   "aria-label"?: string;
 }
@@ -55,7 +58,7 @@ export interface LogoTileProps {
 
 export interface SocNavProps {
   href: string;
-  icon: SimpleIcon;
+  icon: BrandIconData;
   size?: number;
 }
 

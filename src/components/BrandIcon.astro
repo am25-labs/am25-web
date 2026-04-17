@@ -4,13 +4,14 @@ import type { BrandIconProps } from "@/types";
 type Props = BrandIconProps;
 
 const { icon, size = 24, "aria-label": ariaLabel } = Astro.props;
+const viewBox = "viewBox" in icon ? (icon.viewBox ?? "0 0 24 24") : "0 0 24 24";
 ---
 
 <svg
   role="img"
   width={size}
   height={size}
-  viewBox="0 0 24 24"
+  viewBox={viewBox}
   fill="currentColor"
   aria-label={ariaLabel ?? icon.title}
   xmlns="http://www.w3.org/2000/svg"
