@@ -1,5 +1,135 @@
 ---
+import { Separator } from "@/components/ui/separator";
+import Card from "@/components/ui/astro/Card.astro";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import GridSix from "@/layouts/grids/GridSix.astro";
 import RootLayout from "@/layouts/RootLayout.astro";
 ---
 
-<RootLayout title="Our Branding | AM25" />
+<RootLayout title="Our Branding | AM25" variant="yellow">
+  <GridContainer>
+    <GridSix>
+      <div class="col-span-full mb-32">
+        <p class="text-4xl md:text-7xl leading-tight font-bold uppercase">
+          We are an independent creative studio.
+        </p>
+      </div>
+    </GridSix>
+
+    <GridFour>
+      <div class="col-span-full mb-8">
+        <h2 class="text-2xl font-bold uppercase mb-4">Graphic</h2>
+        <p class="text-lg">
+          Identity, editorial, and digital-first systems built to last beyond
+          launch.
+        </p>
+      </div>
+    </GridFour>
+
+    <GridFour>
+      <div class="col-span-full mb-16">
+        <h2 class="text-2xl font-bold uppercase mb-4">Web-Dev</h2>
+        <p class="text-lg">
+          Sites and small products. Built lean, maintained honestly, shipped on
+          time.
+        </p>
+      </div>
+    </GridFour>
+
+    <Separator className="col-span-full" />
+
+    <GridSix>
+      <div class="col-span-full my-32 md:my-48">
+        <h2 class="text-3xl md:text-5xl leading-tight">
+          Good taste, meeting the brief. <span class="text-[#A6A600]"
+            >No need to be louder.</span
+          >
+        </h2>
+      </div>
+    </GridSix>
+
+    <Separator className="col-span-full" />
+
+    <GridSix>
+      <div class="col-span-full my-16">
+        <h2 class="text-lg font-bold uppercase mb-8">How we think</h2>
+
+        <p class="text-3xl leading-tight mb-8">
+          Business is important — we’re not going to lie to ourselves, or to
+          you, by saying otherwise. Creativity and its exploration are equally
+          important.
+        </p>
+
+        <p>Both pay the rent. One of them is why we stayed.</p>
+      </div>
+    </GridSix>
+
+    <GridSix>
+      <div class="col-span-full my-16">
+        <p class="text-3xl md:text-4xl leading-tight font-bold uppercase">
+          Two forces.<br />One decision at a time.
+        </p>
+      </div>
+    </GridSix>
+
+    <GridFour>
+      <div class="col-span-full mb-8">
+        <h2 class="text-2xl font-bold uppercase mb-4">Client objectives</h2>
+        <p class="text-lg">
+          Measurable. Specific. The reason the project exists at all.
+        </p>
+      </div>
+    </GridFour>
+
+    <GridFour>
+      <div class="col-span-full mb-16">
+        <h2 class="text-2xl font-bold uppercase mb-4">Good taste</h2>
+        <p class="text-lg">The part that keeps the work from being ignored.</p>
+      </div>
+    </GridFour>
+
+    <Separator className="col-span-full" />
+
+    <div class="col-span-full my-16">
+      <h2 class="text-lg font-bold uppercase mb-8">The rules we keep.</h2>
+
+      <div
+        class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border"
+      >
+        <Card class="ring-0 min-h-48">
+          <div slot="content" class="flex flex-col gap-4 py-4">
+            <span class="text-2xl tracking-widest tabular-nums">01</span>
+            <span class="text-lg leading-tight"
+              >No fluff. The obvious thing, said plainly.</span
+            >
+          </div>
+        </Card>
+        <Card class="ring-0 min-h-48">
+          <div slot="content" class="flex flex-col gap-4 py-4">
+            <span class="text-2xl tracking-widest tabular-nums">02</span>
+            <span class="text-lg leading-tight"
+              >No exclamation marks. They read as desperate.</span
+            >
+          </div>
+        </Card>
+        <Card class="ring-0 min-h-48">
+          <div slot="content" class="flex flex-col gap-4 py-4">
+            <span class="text-2xl tracking-widest tabular-nums">03</span>
+            <span class="text-lg leading-tight"
+              >Specifics over abstractions — real names, real numbers.</span
+            >
+          </div>
+        </Card>
+        <Card class="ring-0 min-h-48">
+          <div slot="content" class="flex flex-col gap-4 py-4">
+            <span class="text-2xl tracking-widest tabular-nums">04</span>
+            <span class="text-lg leading-tight"
+              >Flatness without reason reads as lazy.</span
+            >
+          </div>
+        </Card>
+      </div>
+    </div>
+  </GridContainer>
+</RootLayout>
