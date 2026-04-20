@@ -11,19 +11,9 @@ const { Content } = await render(entry);
 ---
 
 <RootLayout title={`${entry.data.title} | AM25`}>
-    <!-- <GridContainer class="mb-4">
-        <div class="col-span-full">
-            <img
-                src="placeholder.svg"
-                alt="Cover"
-                class="w-full h-full"
-            />
-        </div>
-    </GridContainer> -->
+  <GenericContent title={entry.data.title} quote={entry.data.quote}>
+    <Content />
+  </GenericContent>
 
-    <GenericContent title={entry.data.title} quote={entry.data.quote}>
-        <Content />
-    </GenericContent>
-
-    <Faq />
+  <Faq />
 </RootLayout>

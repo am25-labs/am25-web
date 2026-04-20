@@ -29,11 +29,10 @@ const linkIconSvg = {
     height: "20",
     viewBox: "0 0 24 24",
     fill: "none",
-    stroke: "#ffff00",
     strokeWidth: "2",
     strokeLinecap: "round",
     strokeLinejoin: "round",
-    class: "inline-block align-middle shrink-0",
+    class: "link-icon inline-block align-middle shrink-0",
   },
   children: linkIconChildren,
 };

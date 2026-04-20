@@ -16,13 +16,13 @@ const isExternal = href?.startsWith("https");
   {title}
   class="group"
 >
-  <Card class="flex justify-center aspect-square">
+  <Card class="flex justify-center aspect-square group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black">
     <div slot="content">
-      <img src={logo} alt={title} class="w-full p-4" />
+      <img src={logo} alt={title} class="w-full p-4 group-data-[variant=yellow]:brightness-0" />
     </div>
   </Card>
   <p
-    class="text-muted-foreground text-xs text-center mt-2 group-hover:underline"
+    class="text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black text-xs text-center mt-2 group-hover:underline"
   >
     {title}
   </p>

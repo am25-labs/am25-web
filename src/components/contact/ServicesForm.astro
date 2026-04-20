@@ -21,13 +21,17 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
 ---
 
 <form id="services-form">
-  <Card class="bg-black">
+  <Card
+    class="bg-black group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:ring-black group-data-[variant=light]:bg-white group-data-[variant=light]:ring-black"
+  >
     <div slot="content">
       <FieldSet>
-        <span slot="legend" class="font-bold uppercase"
+        <span
+          slot="legend"
+          class="font-bold uppercase group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           >How can I contact you?</span
         >
-        <span slot="description"
+        <span slot="description" class="group-data-[variant=yellow]:text-black"
           >To answer your questions, we need to be able to contact:</span
         >
 
@@ -65,8 +69,14 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
       </FieldSet>
 
       <FieldSet class="mt-8">
-        <span slot="legend" class="font-bold uppercase">Choose a service</span>
-        <span slot="description">The main service that interests you:</span>
+        <span
+          slot="legend"
+          class="font-bold uppercase group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
+          >Choose a service</span
+        >
+        <span slot="description" class="group-data-[variant=yellow]:text-black"
+          >The main service that interests you:</span
+        >
 
         <FieldGroup>
           <Field>
@@ -82,7 +92,10 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
         <FieldGroup>
           <Field orientation="horizontal">
             <Checkbox defaultChecked required />
-            <span slot="label" class="flex-wrap gap-1.5 text-xs">
+            <span
+              slot="label"
+              class="flex-wrap gap-1.5 text-xs group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
+            >
               I have read and agree to the
               <a
                 href="/privacy"
@@ -91,7 +104,10 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
                 class="inline-flex items-center hover:font-bold"
               >
                 Privacy Policy
-                <ArrowUpRightIcon size={16} class="text-am-y shrink-0" />
+                <ArrowUpRightIcon
+                  size={16}
+                  class="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+                />
               </a>
             </span>
           </Field>
@@ -131,7 +147,7 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
         </Button>
         <Button
           type="reset"
-          variant="secondary"
+          variant="outline"
           size="lg"
           class="rounded-full font-bold uppercase"
         >

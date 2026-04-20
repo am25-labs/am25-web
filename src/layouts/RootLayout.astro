@@ -6,7 +6,13 @@ import type { RootLayoutProps } from "@/types";
 
 type Props = RootLayoutProps;
 
-const { title = "AM25 | Design & Web Studio" } = Astro.props;
+const { title = "AM25 | Design & Web Studio", variant = "default" } = Astro.props;
+
+const variantClasses = {
+  default: "bg-black text-white",
+  yellow: "bg-am-y text-black",
+  light: "bg-white text-black",
+};
 ---
 
 <html lang="en">
@@ -24,7 +30,7 @@ const { title = "AM25 | Design & Web Studio" } = Astro.props;
     ></script>
   </head>
 
-  <body class="bg-black text-white font-martian min-h-dvh flex flex-col">
+  <body class={`${variantClasses[variant]} font-martian min-h-dvh flex flex-col group`} data-variant={variant}>
     <Header />
 
     <main class="max-w-7xl mx-auto w-full flex-1">

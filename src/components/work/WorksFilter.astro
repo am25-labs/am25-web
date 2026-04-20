@@ -60,7 +60,7 @@ const disciplines = Array.from(
 <!-- Desktop -->
 <div class="hidden md:flex border-b mx-4 py-3 gap-6 flex-wrap">
   <button
-    class="filter-btn text-sm uppercase font-bold cursor-pointer"
+    class="filter-btn text-sm uppercase font-bold cursor-pointer group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
     data-filter="all"
   >
     All
@@ -68,7 +68,7 @@ const disciplines = Array.from(
   {
     disciplines.map((d) => (
       <button
-        class="filter-btn text-sm text-muted-foreground cursor-pointer transition-all duration-200"
+        class="filter-btn text-sm text-muted-foreground cursor-pointer transition-all duration-200 group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
         data-filter={d.name}
       >
         {d.name}

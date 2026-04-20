@@ -37,10 +37,10 @@ const socNav: SocNavProps[] = [
 ---
 
 <header
-  class="bg-black fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
+  class="bg-black group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white fixed top-0 left-0 right-0 z-50 max-w-7xl mx-auto w-full flex items-center justify-between p-4"
 >
   <a href="/"
-    ><img src="/am25-logo.svg" alt="AM25 Logo" width="100" title="AM25" /></a
+    ><img src="/am25-logo.svg" alt="AM25 Logo" width="100" title="AM25" class="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0" /></a
   >
 
   <nav
@@ -61,7 +61,10 @@ const socNav: SocNavProps[] = [
               >
                 {opt.label}
                 {isExternal && (
-                  <ArrowUpRight size={20} class="text-am-y shrink-0" />
+                  <ArrowUpRight
+                    size={20}
+                    class="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+                  />
                 )}
               </a>
             </li>

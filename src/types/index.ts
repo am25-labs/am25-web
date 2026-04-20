@@ -70,4 +70,5 @@ export interface NavProps {
 
 export interface RootLayoutProps {
   title?: string;
+  variant?: "default" | "yellow" | "light";
 }
