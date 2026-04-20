@@ -39,7 +39,7 @@ const disciplines = Array.from(
   </summary>
   <div class="border-t flex flex-col py-2">
     <button
-      class="filter-btn text-sm uppercase py-2 text-left font-bold"
+      class="filter-btn text-sm uppercase py-2 text-left font-bold group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
       data-filter="all"
     >
       All
@@ -47,7 +47,7 @@ const disciplines = Array.from(
     {
       disciplines.map((d) => (
         <button
-          class="filter-btn text-sm py-2 text-left text-muted-foreground transition-all duration-200"
+          class="filter-btn text-sm py-2 text-left text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           data-filter={d.name}
         >
           {d.name}
