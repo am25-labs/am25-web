@@ -14,7 +14,7 @@ const isExternal = href?.startsWith("https");
   target={isExternal ? "_blank" : undefined}
   rel={isExternal ? "noopener" : undefined}
   {title}
-  class="group"
+  class="group/tile"
 >
   <Card class="flex justify-center aspect-square group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black">
     <div slot="content">
@@ -22,7 +22,7 @@ const isExternal = href?.startsWith("https");
     </div>
   </Card>
   <p
-    class="text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black text-xs text-center mt-2 group-hover:underline"
+    class="text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black text-xs text-center mt-2 group-hover/tile:underline"
   >
     {title}
   </p>
