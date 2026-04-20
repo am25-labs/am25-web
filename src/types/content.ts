@@ -27,6 +27,7 @@ export interface Work {
   illustration?: string;
   animation?: string;
   photo?: string;
+  developer?: string;
   team?: string;
   imagesBefore?: StrapiImage[];
   imagesAfter?: StrapiImage[];
