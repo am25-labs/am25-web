@@ -16,9 +16,15 @@ const isExternal = href?.startsWith("https");
   {title}
   class="group/tile"
 >
-  <Card class="flex justify-center aspect-square group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black">
+  <Card
+    class="flex justify-center aspect-square group-data-[variant=yellow]:bg-am-y group-data-[variant=light]:bg-white group-data-[variant=yellow]:ring-black group-data-[variant=light]:ring-black"
+  >
     <div slot="content">
-      <img src={logo} alt={title} class="w-full p-4 group-data-[variant=yellow]:brightness-0" />
+      <img
+        src={logo}
+        alt={title}
+        class="w-full p-4 group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+      />
     </div>
   </Card>
   <p
