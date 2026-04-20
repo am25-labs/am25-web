@@ -5,13 +5,18 @@ import type { PageDescriptionProps } from "@/types";
 
 type Props = PageDescriptionProps;
 
-const { description } = Astro.props;
+const { description, variant = "default" } = Astro.props;
+
+const variantClasses = {
+  default: "text-3xl leading-normal",
+  display: "text-4xl md:text-5xl leading-tight font-bold uppercase",
+};
 ---
 
 <GridContainer class="pb-16">
   <GridSix>
     <div class="col-span-full">
-      <p class="text-3xl leading-normal">{description}</p>
+      <p class={variantClasses[variant]}>{description}</p>
     </div>
   </GridSix>
 </GridContainer>

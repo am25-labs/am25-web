@@ -37,6 +37,7 @@ export interface AccordionWrapItem {
 
 export interface PageDescriptionProps {
   description: string;
+  variant?: "default" | "display";
 }
 
 export interface GridProps {
