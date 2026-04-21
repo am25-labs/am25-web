@@ -10,7 +10,7 @@ import RootLayout from "@/layouts/RootLayout.astro";
 <RootLayout title="Our Branding | AM25" variant="yellow">
   <GridContainer>
     <GridSix>
-      <div class="col-span-full mb-32">
+      <div class="col-span-full mb-48">
         <p class="text-4xl md:text-7xl leading-tight font-bold uppercase">
           We are an independent creative studio.
         </p>
@@ -42,9 +42,8 @@ import RootLayout from "@/layouts/RootLayout.astro";
     <GridSix>
       <div class="col-span-full my-32 md:my-48">
         <h2 class="text-3xl md:text-5xl leading-tight">
-          Good taste, meeting the brief. <span class="text-[#A6A600]"
-            >No need to be louder.</span
-          >
+          <span class="font-bold">Good taste, meeting the brief.</span> No need to
+          be louder.
         </h2>
       </div>
     </GridSix>
@@ -64,6 +63,8 @@ import RootLayout from "@/layouts/RootLayout.astro";
         <p>Both pay the rent. One of them is why we stayed.</p>
       </div>
     </GridSix>
+
+    <Separator className="col-span-full" />
 
     <GridSix>
       <div class="col-span-full my-16">
@@ -89,10 +90,8 @@ import RootLayout from "@/layouts/RootLayout.astro";
       </div>
     </GridFour>
 
-    <Separator className="col-span-full" />
-
-    <div class="col-span-full my-16">
-      <h2 class="text-lg font-bold uppercase mb-8">The rules we keep.</h2>
+    <div class="col-span-full mb-16">
+      <h2 class="text-lg font-bold uppercase mb-8">The rules we keep</h2>
 
       <div
         class="grid grid-cols-1 md:grid-cols-2 gap-px bg-border border border-border"
