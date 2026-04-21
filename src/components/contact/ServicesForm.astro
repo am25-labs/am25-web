@@ -9,6 +9,7 @@ import Button from "@/components/ui/astro/Button.astro";
 import Checkbox from "@/components/ui/astro/Checkbox.astro";
 import Turnstile from "@/components/contact/Turnstile.astro";
 import SelectWrap from "@/components/ui/custom/Select.tsx";
+import Textarea from "@/components/ui/astro/Textarea.astro";
 import { SendIcon, ArrowUpRightIcon } from "@lucide/astro";
 
 const SERVICE_OPTIONS = [
@@ -77,13 +78,16 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
         >
 
         <FieldGroup>
-          <Field>
+          <Field class="-mb-3">
             <SelectWrap
               client:load
               name="service"
               placeholder="Service"
               options={SERVICE_OPTIONS}
             />
+          </Field>
+          <Field>
+            <Textarea name="message" placeholder="Type your message here" />
           </Field>
         </FieldGroup>
 
@@ -195,6 +199,12 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
       { valid: emailRegex.test(data.email as string), msg: "Correo inválido." },
       { valid: !!data.language, msg: "Selecciona un idioma." },
       { valid: !!data.service, msg: "Selecciona un servicio." },
+      {
+        valid:
+          (data.message as string).trim().length >= 10 &&
+          (data.message as string).trim().length <= 1000,
+        msg: "El mensaje debe tener al menos 10 caracteres y no más de 1000.",
+      },
     ];
 
     for (const v of validations) {
@@ -221,6 +231,7 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
           email: data.email,
           language: data.language,
           service: data.service,
+          message: data.message,
           token: captchaToken,
         }),
       });

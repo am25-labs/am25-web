@@ -4,7 +4,7 @@ import type { APIRoute } from "astro";
 import { sendMail } from "@/lib/mailer";
 
 export const POST: APIRoute = async ({ request }) => {
-  const { name, email, language, service, token } = await request.json();
+  const { name, email, language, service, message, token } = await request.json();
 
   if (!token) {
     return Response.json(
@@ -37,7 +37,7 @@ export const POST: APIRoute = async ({ request }) => {
     await sendMail({
       to: "projects@am25.work",
       subject: `Service Inquiry from ${name}`,
-      text: `Name: ${name}\nEmail: ${email}\nLanguage: ${language}\nService: ${service}`,
+      text: `Name: ${name}\nEmail: ${email}\nLanguage: ${language}\nService: ${service}\nMessage: ${message}`,
     });
   } catch {
     return Response.json({ error: "Error al enviar" }, { status: 500 });
