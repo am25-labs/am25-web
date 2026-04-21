@@ -30,7 +30,9 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
           class="font-bold uppercase group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           >How can I contact you?</span
         >
-        <span slot="description" class="group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
+        <span
+          slot="description"
+          class="group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           >To answer your questions, we need to be able to contact:</span
         >
 
@@ -73,7 +75,9 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
           class="font-bold uppercase group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           >Choose a subject</span
         >
-        <span slot="description" class="group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
+        <span
+          slot="description"
+          class="group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
           >The main reason for your message:</span
         >
 
@@ -119,7 +123,7 @@ const LANGUAGE_OPTIONS = ["Spanish", "English"];
           <Turnstile
             sitekey={import.meta.env.PUBLIC_TURNSTILE_SITE_KEY}
             size="flexible"
-            theme="dark"
+            theme="light"
             language="en"
           />
         </FieldGroup>
