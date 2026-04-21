@@ -35,7 +35,7 @@ export default function SelectWrap({ name, placeholder, options }: Props) {
         <SelectTrigger className="w-full rounded-none group-data-[variant=yellow]:bg-input/10 group-data-[variant=yellow]:text-black group-data-[variant=yellow]:data-placeholder:text-black group-data-[variant=light]:bg-input/10 group-data-[variant=light]:text-black">
           <SelectValue placeholder={placeholder} />
         </SelectTrigger>
-        <SelectContent className="group-data-[variant=yellow]:text-am-y group-data-[variant=light]:text-white">
+        <SelectContent className="group-data-[variant=yellow]:[--popover:oklch(0.145_0_0)] group-data-[variant=yellow]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=yellow]:[--accent:oklch(0.269_0_0)] group-data-[variant=yellow]:[--accent-foreground:oklch(0.985_0_0)] group-data-[variant=light]:[--popover:oklch(0.145_0_0)] group-data-[variant=light]:[--popover-foreground:oklch(0.985_0_0)] group-data-[variant=light]:[--accent:oklch(0.269_0_0)] group-data-[variant=light]:[--accent-foreground:oklch(0.985_0_0)]">
           {options.map((opt) => (
             <SelectItem key={opt} value={opt}>
               {opt}
