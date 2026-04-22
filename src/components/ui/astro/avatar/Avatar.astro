@@ -1,0 +1,83 @@
+---
+import { cn } from "@/lib/utils";
+
+interface Props {
+  class?: string;
+  size?: "default" | "sm" | "lg";
+  src?: string;
+  alt?: string;
+  fallback?: string;
+  [key: string]: any;
+}
+
+const {
+  class: className,
+  size = "default",
+  src,
+  alt = "",
+  fallback,
+  ...props
+} = Astro.props as Props;
+---
+
+<div
+  data-slot="avatar"
+  data-size={size}
+  class={cn(
+    "group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
+    className,
+  )}
+  {...props}
+>
+  {
+    src && (
+      <img
+        data-slot="avatar-image"
+        data-avatar-image
+        src={src}
+        alt={alt}
+        class="aspect-square size-full rounded-full object-cover"
+      />
+    )
+  }
+  <span
+    data-slot="avatar-fallback"
+    data-avatar-fallback
+    class={cn(
+      "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
+      src && "hidden",
+    )}
+  >
+    <slot name="fallback">{fallback}</slot>
+  </span>
+  {
+    Astro.slots.has("badge") && (
+      <span
+        data-slot="avatar-badge"
+        class={cn(
+          "absolute right-0 bottom-0 z-10 inline-flex items-center justify-center rounded-full bg-primary text-primary-foreground bg-blend-color ring-2 ring-background select-none",
+          "group-data-[size=sm]/avatar:size-2 group-data-[size=sm]/avatar:[&>svg]:hidden",
+          "group-data-[size=default]/avatar:size-2.5 group-data-[size=default]/avatar:[&>svg]:size-2",
+          "group-data-[size=lg]/avatar:size-3 group-data-[size=lg]/avatar:[&>svg]:size-2",
+        )}
+      >
+        <slot name="badge" />
+      </span>
+    )
+  }
+  <slot />
+</div>
+
+<script>
+  document.querySelectorAll("[data-avatar-image]").forEach((img) => {
+    const fallback = img.nextElementSibling as HTMLElement | null;
+    img.addEventListener("error", () => {
+      (img as HTMLElement).classList.add("hidden");
+      fallback?.classList.remove("hidden");
+    });
+    img.addEventListener("load", () => {
+      (img as HTMLElement).classList.remove("hidden");
+      fallback?.classList.add("hidden");
+    });
+  });
+</script>
