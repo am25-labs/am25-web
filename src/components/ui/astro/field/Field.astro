@@ -36,7 +36,7 @@ const orientationClasses: Record<Orientation, string> = {
     Astro.slots.has("label") && (
       <label
         data-slot="field-label"
-        class="group/field-label peer/field-label flex w-fit gap-2 leading-snug select-none group-data-[disabled=true]/field:opacity-50 has-data-checked:border-primary/30 has-data-checked:bg-primary/5 has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 dark:has-data-checked:border-primary/20 dark:has-data-checked:bg-primary/10 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col"
+        class="group/field-label peer/field-label flex w-fit gap-2 leading-snug select-none group-data-[disabled=true]/field:opacity-50 has-data-checked:border-primary/20 has-data-checked:bg-primary/10 has-[>[data-slot=field]]:rounded-xl has-[>[data-slot=field]]:border *:data-[slot=field]:p-4 group-data-[variant=light]:has-data-checked:border-primary/30 group-data-[variant=light]:has-data-checked:bg-primary/5 group-data-[variant=yellow]:has-data-checked:border-primary/30 group-data-[variant=yellow]:has-data-checked:bg-primary/5 has-[>[data-slot=field]]:w-full has-[>[data-slot=field]]:flex-col"
       >
         <slot name="label" />
       </label>

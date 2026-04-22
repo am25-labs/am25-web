@@ -25,7 +25,7 @@ const { class: className, ...props } = Astro.props as Props;
       "focus-visible:border-ring focus-visible:ring-[3px] focus-visible:ring-ring/50",
       "checked:border-primary checked:bg-primary",
       "disabled:cursor-not-allowed disabled:opacity-50",
-      "dark:bg-input/30",
+      "bg-input/30 group-data-[variant=light]:bg-transparent group-data-[variant=yellow]:bg-transparent",
       className,
     )}
     {...props}
