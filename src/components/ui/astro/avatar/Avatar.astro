@@ -4,6 +4,8 @@ import { cn } from "@/lib/utils";
 interface Props {
   class?: string;
   size?: "default" | "sm" | "lg";
+  full?: boolean;
+  shape?: "circle" | "square";
   src?: string;
   alt?: string;
   fallback?: string;
@@ -13,18 +15,26 @@ interface Props {
 const {
   class: className,
   size = "default",
+  full = false,
+  shape = "circle",
   src,
   alt = "",
   fallback,
   ...props
 } = Astro.props as Props;
+
+const isSquare = shape === "square";
 ---
 
 <div
   data-slot="avatar"
   data-size={size}
   class={cn(
-    "group/avatar relative flex size-8 shrink-0 rounded-full select-none after:absolute after:inset-0 after:rounded-full after:border after:border-border after:mix-blend-darken data-[size=lg]:size-10 data-[size=sm]:size-6 dark:after:mix-blend-lighten",
+    "group/avatar relative flex shrink-0 select-none after:absolute after:inset-0 after:border after:border-border after:mix-blend-lighten",
+    full
+      ? "w-full aspect-square"
+      : "size-8 data-[size=lg]:size-10 data-[size=sm]:size-6",
+    isSquare ? "rounded-none after:rounded-none" : "rounded-full after:rounded-full",
     className,
   )}
   {...props}
@@ -36,7 +46,10 @@ const {
         data-avatar-image
         src={src}
         alt={alt}
-        class="aspect-square size-full rounded-full object-cover"
+        class={cn(
+          "aspect-square size-full object-cover",
+          isSquare ? "rounded-none" : "rounded-full",
+        )}
       />
     )
   }
@@ -44,7 +57,8 @@ const {
     data-slot="avatar-fallback"
     data-avatar-fallback
     class={cn(
-      "flex size-full items-center justify-center rounded-full bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
+      "flex size-full items-center justify-center bg-muted text-sm text-muted-foreground group-data-[size=sm]/avatar:text-xs",
+      isSquare ? "rounded-none" : "rounded-full",
       src && "hidden",
     )}
   >
