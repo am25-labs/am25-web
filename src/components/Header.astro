@@ -1,39 +1,36 @@
 ---
 import type { NavProps, SocNavProps } from "@/types";
 import { siInstagram, siGithub } from "simple-icons";
-import { siLinkedin } from "@/icons/custom";
+import { siLinkedin, siFlaskConical } from "@/icons/custom";
 import BrandIcon from "@/components/BrandIcon.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
-import { ArrowUpRight } from "@lucide/astro";
+import { ArrowUpRightIcon } from "@lucide/astro";
 
 const mainNav: NavProps[] = [
   {
     label: "Home",
     href: "/",
   },
-  // {
-  //   label: "Work",
-  //   href: "/work",
-  // },
+  {
+    label: "Work",
+    href: "/work",
+  },
   {
     label: "About",
     href: "/about",
-  },
-  {
-    label: "Notes",
-    href: "/notes",
   },
   {
     label: "Contact",
     href: "/contact",
   },
   {
-    label: "Labs",
-    href: "https://labs.am25.work",
+    label: "Notes",
+    href: "/notes",
   },
 ];
 
 const socNav: SocNavProps[] = [
+  { href: "https://labs.am25.work", icon: siFlaskConical, size: 20 },
   { href: "https://www.instagram.com/am25std", icon: siInstagram, size: 20 },
   { href: "https://github.com/am25-labs", icon: siGithub, size: 20 },
   { href: "https://www.linkedin.com/company/am25", icon: siLinkedin, size: 20 },
@@ -71,7 +68,7 @@ const socNav: SocNavProps[] = [
               >
                 {opt.label}
                 {isExternal && (
-                  <ArrowUpRight
+                  <ArrowUpRightIcon
                     size={20}
                     class="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
                   />
