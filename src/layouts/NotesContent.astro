@@ -1,0 +1,45 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
+import FormatContent from "@/components/FormatContent";
+import type { RichTextBlock } from "@/types";
+
+interface Props {
+  title: string;
+  publishedAt?: string;
+  cover?: string;
+  content: RichTextBlock[];
+}
+
+const { title, publishedAt, cover, content } = Astro.props;
+---
+
+<GridContainer class="mb-16">
+  <GridTwo class="mb-8">
+    <div class="col-span-full">
+      <h1 class="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
+
+      <span
+        class="flex items-center gap-2 text-sm text-muted-foreground mt-6"
+        title="Updated At"
+      >
+        Posted {publishedAt}
+      </span>
+    </div>
+  </GridTwo>
+
+  <GridFour>
+    <div class="col-span-full">
+      {
+        cover && (
+          <div class="aspect-square relative md:aspect-video">
+            <img src={cover} alt={title} class="object-cover w-full h-full" />
+          </div>
+        )
+      }
+
+      <FormatContent blocks={content} />
+    </div>
+  </GridFour>
+</GridContainer>
