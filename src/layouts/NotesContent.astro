@@ -3,15 +3,17 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { ProseRenderer } from "@/components/ProseRenderer";
+import type { Author } from "@/types";
 
 interface Props {
   title: string;
   publishedAt?: string;
   cover: string | null;
   content: string;
+  author: Author;
 }
 
-const { title, publishedAt, cover, content } = Astro.props;
+const { title, publishedAt, cover, content, author } = Astro.props;
 ---
 
 <GridContainer class="mb-16">
@@ -25,6 +27,21 @@ const { title, publishedAt, cover, content } = Astro.props;
       >
         Posted {publishedAt}
       </span>
+      <div class="flex items-center gap-2 mt-3">
+        {
+          author.avatar_url && (
+            <img
+              src={author.avatar_url}
+              alt={`${author.first_name} ${author.last_name}`}
+              class="w-6 h-6 rounded-full object-cover"
+            />
+          )
+        }
+        <span class="text-sm text-muted-foreground">
+          {author.first_name}
+          {author.last_name}
+        </span>
+      </div>
     </div>
   </GridTwo>
 

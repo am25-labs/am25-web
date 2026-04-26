@@ -23,6 +23,7 @@ if (!note) return Astro.redirect("/notes");
     publishedAt={formatDate(note.published_at)}
     cover={note.cover}
     content={note.content}
+    author={note.author}
   />
 
   <div class="px-4 pb-16">
