@@ -2,6 +2,7 @@
 import RootLayout from "@/layouts/RootLayout.astro";
 import CategoriesFilter from "@/components/content/CategoriesFilter.astro";
 import { getNotes } from "@/lib/plank/fetch";
+import { BannerPoweredBy } from "@/components/PoweredBy";
 
 const { data: notes } = await getNotes();
 const entries = notes.map((n) => ({
@@ -14,5 +15,24 @@ const entries = notes.map((n) => ({
 ---
 
 <RootLayout title="Notes | AM25">
-  {entries.length > 0 && <CategoriesFilter entries={entries} baseHref="/notes" />}
+  {
+    entries.length > 0 && (
+      <CategoriesFilter entries={entries} baseHref="/notes" />
+    )
+  }
+
+  <div class="px-4 py-16">
+    <a
+      href="https://labs.am25.work/project/plank/"
+      target="_blank"
+      rel="noopener"
+    >
+      <BannerPoweredBy
+        logoSrc="/plank-logo-w.svg"
+        logoAlt="Plank CMS"
+        text="Powered by Plank CMS"
+        mode="dark"
+      /></a
+    >
+  </div>
 </RootLayout>
