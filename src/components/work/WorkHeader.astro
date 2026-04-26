@@ -1,5 +1,5 @@
 ---
-import FormatContent from "@/components/FormatContent";
+import { PlankRenderer } from "@am25/plank-react-renderer";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 interface Props {
@@ -28,7 +28,7 @@ const { title, cover, description } = Astro.props;
 
   <GridFour class="mt-4">
     <div class="col-span-full">
-      {description && <FormatContent content={description} />}
+      {description && <PlankRenderer content={description} />}
     </div>
   </GridFour>
 </GridContainer>

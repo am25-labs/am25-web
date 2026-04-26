@@ -2,7 +2,7 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import FormatContent from "@/components/FormatContent";
+import { PlankRenderer } from "@am25/plank-react-renderer";
 interface Props {
   title: string;
   publishedAt?: string;
@@ -37,7 +37,7 @@ const { title, publishedAt, cover, content } = Astro.props;
         )
       }
 
-      <FormatContent content={content} />
+      <PlankRenderer content={content} />
     </div>
   </GridFour>
 </GridContainer>
