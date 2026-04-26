@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@am25/plank-client':
+        specifier: 0.1.0
+        version: 0.1.0
       '@astrojs/node':
         specifier: 10.0.4
         version: 10.0.4(astro@6.1.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1))
@@ -89,6 +92,9 @@ importers:
         version: 8.0.0
 
 packages:
+
+  '@am25/plank-client@0.1.0':
+    resolution: {integrity: sha512-sMnDaIqjmmrXx4xfrJD5AczaEv6KZcsp7tReWbYONzuCBbVWrT1dANfFc3HIhaCV8kg2urdHGQjg0YOWsU4p0A==}
 
   '@astrojs/compiler@3.0.1':
     resolution: {integrity: sha512-z97oYbdebO5aoWzuJ/8q5hLK232+17KcLZ7cJ8BCWk6+qNzVxn/gftC0KzMBUTD8WAaBkPpNSQK6PXLnNrZ0CA==}
@@ -3929,6 +3935,8 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@am25/plank-client@0.1.0': {}
 
   '@astrojs/compiler@3.0.1': {}
 
