@@ -1,7 +1,7 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
 import WorksFilter from "@/components/work/WorksFilter.astro";
-import { getWorks } from "@/lib/strapi/fetchCollection";
+import { getWorks } from "@/lib/plank/fetch";
 
 const { data: works } = await getWorks();
 ---

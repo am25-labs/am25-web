@@ -1,7 +1,7 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
 import WorkCard from "@/components/work/WorkCard.astro";
-import { getWorks } from "@/lib/strapi/fetchCollection";
+import { getWorks } from "@/lib/plank/fetch";
 import { ArrowRightIcon } from "@lucide/astro";
 
 const { data } = await getWorks({ onlyFeatured: true });

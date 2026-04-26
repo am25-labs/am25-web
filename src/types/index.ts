@@ -3,12 +3,7 @@ import type { CustomIcon } from "@/icons/custom";
 
 export type BrandIconData = SimpleIcon | CustomIcon;
 
-export type {
-  StrapiImage,
-  StrapiImageWithCaption,
-  StrapiMeta,
-  StrapiResponse,
-} from "./strapi";
+export type { PlankListResponse, PlankParams } from "@am25/plank-client";
 export type { Discipline, Work } from "./content";
 export type {
   RichTextBlock,

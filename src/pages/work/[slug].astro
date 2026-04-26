@@ -3,7 +3,7 @@ import RootLayout from "@/layouts/RootLayout.astro";
 import WorkHeader from "@/components/work/WorkHeader.astro";
 import WorkMeta from "@/components/work/WorkMeta.astro";
 import WorkGallery from "@/components/work/WorkGallery.astro";
-import { getWorks, getSingleWork } from "@/lib/strapi/fetchCollection";
+import { getWorks, getSingleWork } from "@/lib/plank/fetch";
 
 export async function getStaticPaths() {
   const { data: works } = await getWorks();
