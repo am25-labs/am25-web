@@ -1,0 +1,37 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import NotesContent from "@/layouts/NotesContent.astro";
+import { getNotes, getSingleNote } from "@/lib/plank/fetch";
+import { BannerPoweredBy } from "@/components/PoweredBy";
+
+export async function getStaticPaths() {
+  const { data: notes } = await getNotes();
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const note = await getSingleNote(slug!);
+if (!note) return Astro.redirect("/notes");
+---
+
+<RootLayout title={`${note.title} | AM25`}>
+  <NotesContent
+    title={note.title}
+    publishedAt={note.updated_at}
+    cover={note.cover}
+    content={note.content}
+  />
+
+  <div class="px-4 pb-16">
+    <a href="/plank">
+      <BannerPoweredBy
+        logoSrc="/plank-logo-w.svg"
+        logoAlt="Plank CMS"
+        text="Published via Plank CMS"
+        mode="dark"
+      /></a
+    >
+  </div>
+</RootLayout>

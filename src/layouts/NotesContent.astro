@@ -6,7 +6,7 @@ import { ProseRenderer } from "@/components/ProseRenderer";
 interface Props {
   title: string;
   publishedAt?: string;
-  cover?: string;
+  cover: string | null;
   content: string;
 }
 
@@ -31,7 +31,7 @@ const { title, publishedAt, cover, content } = Astro.props;
     <div class="col-span-full">
       {
         cover && (
-          <div class="aspect-square relative md:aspect-video">
+          <div class="aspect-square relative md:aspect-video mb-8">
             <img src={cover} alt={title} class="object-cover w-full h-full" />
           </div>
         )
