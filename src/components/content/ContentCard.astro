@@ -1,10 +1,11 @@
 ---
 import Card from "@/components/ui/astro/Card.astro";
 import type { ContentCardProps } from "@/types";
+import { formatDate } from "@/lib/utils";
 
 type Props = ContentCardProps;
 
-const { cover, title, href, category } = Astro.props;
+const { cover, title, href, category, publishedAt } = Astro.props;
 const Tag = href ? "a" : "div";
 const isExternal = href?.startsWith("https");
 ---
@@ -22,8 +23,17 @@ const isExternal = href?.startsWith("https");
   <p class="text-xl font-bold uppercase mt-2 group-hover/card:underline">
     {title}
   </p>
-  <span
-    class="text-muted-foreground group-data-[variant=yellow]:text-black text-xs mt-1"
-    >{category}</span
-  >
+  <div class="flex flex-col gap-1 mt-1">
+    <span
+      class="text-muted-foreground group-data-[variant=yellow]:text-black text-xs"
+      >{category}</span
+    >
+    {
+      publishedAt && (
+        <span class="text-muted-foreground group-data-[variant=yellow]:text-black text-xs">
+          {formatDate(publishedAt)}
+        </span>
+      )
+    }
+  </div>
 </Tag>

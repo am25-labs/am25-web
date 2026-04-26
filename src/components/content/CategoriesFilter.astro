@@ -14,6 +14,7 @@ interface Entry {
   slug: string;
   cover: string | null;
   categories: Category[];
+  publishedAt?: string;
 }
 
 interface Props {
@@ -24,9 +25,7 @@ interface Props {
 const { entries, baseHref } = Astro.props;
 
 const categories = Array.from(
-  new Map(
-    entries.flatMap((e) => e.categories).map((c) => [c.id, c]),
-  ).values(),
+  new Map(entries.flatMap((e) => e.categories).map((c) => [c.id, c])).values(),
 );
 ---
 
@@ -103,6 +102,7 @@ const categories = Array.from(
           title={entry.title}
           href={`${baseHref}/${entry.slug}`}
           category={entry.categories.map((c) => c.title).join(", ")}
+          publishedAt={entry.publishedAt}
         />
       </div>
     ))

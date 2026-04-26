@@ -22,6 +22,7 @@ export interface ContentCardProps {
   title: string;
   href: string;
   category: string;
+  publishedAt?: string;
 }
 
 export interface AccordionWrapItem {

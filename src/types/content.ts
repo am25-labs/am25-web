@@ -16,7 +16,7 @@ export interface NoteCategory {
   slug: string;
 }
 
-// --- Collections ---
+// Collections
 
 export interface Work {
   id: string;
@@ -59,11 +59,12 @@ export interface Note {
   category: NoteCategory | null;
   status: string;
   author: Author;
+  published_at: string;
   created_at: string;
   updated_at: string;
 }
 
-// --- Single Types ---
+// Single Types
 
 export interface Service {
   label: string;

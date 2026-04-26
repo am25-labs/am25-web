@@ -3,6 +3,7 @@ import RootLayout from "@/layouts/RootLayout.astro";
 import NotesContent from "@/layouts/NotesContent.astro";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
 import { BannerPoweredBy } from "@/components/PoweredBy";
+import { formatDate } from "@/lib/utils";
 
 export async function getStaticPaths() {
   const { data: notes } = await getNotes();
@@ -19,7 +20,7 @@ if (!note) return Astro.redirect("/notes");
 <RootLayout title={`${note.title} | AM25`}>
   <NotesContent
     title={note.title}
-    publishedAt={note.updated_at}
+    publishedAt={formatDate(note.published_at)}
     cover={note.cover}
     content={note.content}
   />
