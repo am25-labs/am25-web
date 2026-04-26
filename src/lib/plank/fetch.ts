@@ -1,7 +1,14 @@
-import type { Work, Note, Home, About, LegalPage } from "@/types/index";
+import type {
+  Work,
+  Note,
+  Home,
+  About,
+  LegalPage,
+  PlankPage,
+} from "@/types/index";
 import plank from "./client";
 
-// --- Collections ---
+// Collections
 
 export async function getWorks({ onlyFeatured = false } = {}) {
   return await plank.collection<Work>("works").findMany({
@@ -36,7 +43,7 @@ export async function getSingleNote(slug: string) {
   return result.data[0];
 }
 
-// --- Single Types ---
+// Single Types
 
 export async function getHome() {
   return await plank.single<Home>("home").find();
@@ -44,6 +51,10 @@ export async function getHome() {
 
 export async function getAbout(): Promise<About> {
   return await plank.single<About>("about").find();
+}
+
+export async function getPlank() {
+  return await plank.single<PlankPage>("plank").find();
 }
 
 export async function getPrivacy() {

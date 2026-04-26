@@ -46,6 +46,7 @@ export interface Work {
   work_team: string | null;
   disciplines: Discipline[];
   author: Author;
+  published_at: string;
   created_at: string;
   updated_at: string;
 }
@@ -77,6 +78,7 @@ export interface Home {
   services: Service[];
   status: string;
   author: Author;
+  published_at: string;
   created_at: string;
   updated_at: string;
 }
@@ -93,6 +95,7 @@ export interface About {
   faq: FaqItem[];
   status: string;
   author: Author;
+  published_at: string;
   created_at: string;
   updated_at: string;
 }
@@ -103,6 +106,17 @@ export interface LegalPage {
   date?: string;
   status: string;
   author: Author;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface PlankPage {
+  id: string;
+  logo: string | null;
+  content: string;
+  status: string;
+  published_at: string;
   created_at: string;
   updated_at: string;
 }

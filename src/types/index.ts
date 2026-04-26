@@ -15,6 +15,7 @@ export type {
   FaqItem,
   About,
   LegalPage,
+  PlankPage,
 } from "./content";
 
 export interface ContentCardProps {

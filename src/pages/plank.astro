@@ -1,19 +1,29 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
-import GenericContent from "@/layouts/GenericContent.astro";
+import GridContainer from "@/layouts/GridContainer.astro";
+import GridTwo from "@/layouts/grids/GridTwo.astro";
+import GridFour from "@/layouts/grids/GridFour.astro";
 import { ProseRenderer } from "@/components/ProseRenderer";
-import { getPrivacy } from "@/lib/plank/fetch";
-import { formatDate } from "@/lib/utils";
+import { getPlank } from "@/lib/plank/fetch";
 
-const entry = await getPrivacy();
+const entry = await getPlank();
 const title = "Plank CMS";
 ---
 
 <RootLayout title={`${title} | AM25`}>
-  <GenericContent
-    title={title}
-    updated={formatDate(entry.date ?? entry.updated_at)}
-  >
-    <ProseRenderer content={entry.content} />
-  </GenericContent>
+  <GridContainer>
+    <GridTwo />
+
+    <GridFour>
+      <div class="col-span-full">
+        <div class="flex flex-col items-center justify-center gap-16 mb-8">
+          <img src={entry.logo} alt="Plank CMS" class="h-48" />
+
+          <h1 class="text-3xl md:text-4xl font-bold uppercase">Plank CMS</h1>
+        </div>
+
+        <ProseRenderer content={entry.content} />
+      </div>
+    </GridFour>
+  </GridContainer>
 </RootLayout>
