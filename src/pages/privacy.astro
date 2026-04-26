@@ -6,10 +6,14 @@ import { getPrivacy } from "@/lib/plank/fetch";
 import { formatDate } from "@/lib/utils";
 
 const entry = await getPrivacy();
+const title = "Privacy Policy";
 ---
 
-<RootLayout title="Privacy | AM25">
-  <GenericContent title="Privacy" updated={formatDate(entry.date ?? entry.updated_at)}>
+<RootLayout title={`${title} | AM25`}>
+  <GenericContent
+    title={title}
+    updated={formatDate(entry.date ?? entry.updated_at)}
+  >
     <PlankRenderer content={entry.content} />
   </GenericContent>
 </RootLayout>

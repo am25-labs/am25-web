@@ -8,10 +8,11 @@ import { getAbout } from "@/lib/plank/fetch";
 import type { About } from "@/types";
 
 const entry: About = await getAbout();
+const title = "About Us";
 ---
 
-<RootLayout title="About | AM25">
-  <GenericContent title="About" quote={entry.quote}>
+<RootLayout title={`${title} | AM25`}>
+  <GenericContent title={title} quote={entry.quote}>
     <PlankRenderer content={entry.description} />
 
     <a href="/branding">
