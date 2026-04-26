@@ -71,7 +71,7 @@ export default defineConfig({
     ],
   },
 
-  output: "hybrid",
+  output: "static",
   adapter: node({ mode: "standalone" }),
   integrations: [react()],
 });
