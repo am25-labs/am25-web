@@ -3,58 +3,17 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { AccordionWrap } from "@/components/ui/custom/Accordion";
-import type { AccordionWrapItem } from "@/types";
+import type { FaqItem } from "@/types";
 
-const faq: AccordionWrapItem[] = [
-  {
-    value: "item-0",
-    trigger: "First, the language",
-    content:
-      "Spanish is our native language, but (hello internet), we now live in a globalized world, so we have to adapt. We're from a small country in Central America, so yes, if you speak Spanish you can (and should) speak to us in Spanish.",
-  },
-  {
-    value: "item-1",
-    trigger: "What are we?",
-    content:
-      "An independent studio focused on graphic design and web development. We make things that are meant to work, not just exist.",
-  },
-  {
-    value: "item-2",
-    trigger: "And what are we not?",
-    content:
-      "We're not community managers or a social media content factory. If you're looking for constant posts and viral trends, unfortunately, we're not what you're looking for. We're sorry.",
-  },
-  {
-    value: "item-3",
-    trigger: "What does AM25 mean?",
-    content:
-      "For nocturnal creatives, midnight doesn’t feel like the end of the day but the start of an extra one. AM25 is that “25th hour” where ideas tend to happen.",
-  },
-  {
-    value: "item-4",
-    trigger: "How do I hire you?",
-    content:
-      "Send a message through the contact form or email with what you need. If it makes sense, we’ll take it from there (either way, you’ll hear back from us, we don’t leave messages unanswered).",
-  },
-  {
-    value: "item-5",
-    trigger: "Outside our scope?",
-    content:
-      "Sometimes. If it’s interesting enough, we’re open to it. And if we don’t know how to do it yet, we’ll figure it out or build what’s missing along the way.",
-  },
-  {
-    value: "item-6",
-    trigger: "Do you use AI?",
-    content:
-      "Yes. We’d be stupid not to. We use it when it actually adds value, not as a shortcut or a gimmick.",
-  },
-  {
-    value: "item-7",
-    trigger: "Follow our work?",
-    content:
-      "If you’re into the occasional update or just curious, you can follow us on Instagram. We post when there’s something worth showing.",
-  },
-];
+interface Props {
+  items: FaqItem[];
+}
+
+const { items } = Astro.props;
+const accordionItems = items.map((item) => ({
+  label: item.label,
+  content: item.description,
+}));
 ---
 
 <GridContainer class="pb-16">
@@ -70,7 +29,7 @@ const faq: AccordionWrapItem[] = [
 
   <GridFour>
     <div class="col-span-full">
-      <AccordionWrap items={faq} client:load />
+      <AccordionWrap items={accordionItems} client:load />
     </div>
   </GridFour>
 </GridContainer>

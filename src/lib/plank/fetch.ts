@@ -42,7 +42,7 @@ export async function getHome() {
   return await plank.single<Home>("home").find();
 }
 
-export async function getAbout() {
+export async function getAbout(): Promise<About> {
   return await plank.single<About>("about").find();
 }
 

@@ -1,18 +1,16 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
 import PageDescription from "@/components/PageDescription.astro";
-import FeaturedClients from "@/components/home/FeaturedClients.astro";
-import Services from "@/components/home/Services.astro";
 import FeaturedWork from "@/components/home/FeaturedWork.astro";
+import Services from "@/components/home/Services.astro";
+import { getHome } from "@/lib/plank/fetch";
+
+const { quote, services } = await getHome();
 ---
 
 <RootLayout>
-  <PageDescription
-    description="We are an independent creative studio."
-    variant="display"
-  />
+  <PageDescription description={quote} variant="display" />
 
   <FeaturedWork />
-  <Services />
-  <!-- <FeaturedClients /> -->
+  <Services services={services} />
 </RootLayout>

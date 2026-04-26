@@ -25,8 +25,7 @@ export interface ContentCardProps {
 }
 
 export interface AccordionWrapItem {
-  value: string;
-  trigger: string;
+  label: string;
   content: string;
 }
 
