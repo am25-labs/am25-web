@@ -1,17 +1,31 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
-import WorkCard from "@/components/work/WorkCard.astro";
-import type { Work, Discipline } from "@/types";
+import ContentCard from "@/components/content/ContentCard.astro";
 
-interface Props {
-  works: Work[];
+interface Category {
+  id: string;
+  title: string;
+  slug: string;
 }
 
-const { works } = Astro.props;
+interface Entry {
+  id: string;
+  title: string;
+  slug: string;
+  cover: string | null;
+  categories: Category[];
+}
 
-const disciplines = Array.from(
+interface Props {
+  entries: Entry[];
+  baseHref: string;
+}
+
+const { entries, baseHref } = Astro.props;
+
+const categories = Array.from(
   new Map(
-    works.flatMap((w) => w.disciplines).map((d) => [d.id, d]),
+    entries.flatMap((e) => e.categories).map((c) => [c.id, c]),
   ).values(),
 );
 ---
@@ -45,12 +59,12 @@ const disciplines = Array.from(
       All
     </button>
     {
-      disciplines.map((d) => (
+      categories.map((c) => (
         <button
           class="filter-btn text-sm py-2 text-left text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
-          data-filter={d.slug}
+          data-filter={c.slug}
         >
-          {d.title}
+          {c.title}
         </button>
       ))
     }
@@ -66,12 +80,12 @@ const disciplines = Array.from(
     All
   </button>
   {
-    disciplines.map((d) => (
+    categories.map((c) => (
       <button
         class="filter-btn text-sm text-muted-foreground cursor-pointer transition-all duration-200 group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
-        data-filter={d.slug}
+        data-filter={c.slug}
       >
-        {d.title}
+        {c.title}
       </button>
     ))
   }
@@ -79,16 +93,16 @@ const disciplines = Array.from(
 
 <GridContainer class="pt-4 pb-8">
   {
-    works.map((work) => (
+    entries.map((entry) => (
       <div
         class="col-span-2"
-        data-disciplines={work.disciplines.map((d) => d.slug).join(",")}
+        data-categories={entry.categories.map((c) => c.slug).join(",")}
       >
-        <WorkCard
-          cover={work.cover ?? ""}
-          title={work.title}
-          href={`/work/${work.slug}`}
-          category={work.disciplines.map((d) => d.title).join(", ")}
+        <ContentCard
+          cover={entry.cover ?? ""}
+          title={entry.title}
+          href={`${baseHref}/${entry.slug}`}
+          category={entry.categories.map((c) => c.title).join(", ")}
         />
       </div>
     ))
@@ -97,7 +111,7 @@ const disciplines = Array.from(
 
 <script>
   const buttons = document.querySelectorAll<HTMLButtonElement>(".filter-btn");
-  const cards = document.querySelectorAll<HTMLElement>("[data-disciplines]");
+  const cards = document.querySelectorAll<HTMLElement>("[data-categories]");
   const activeLabel = document.getElementById("active-label");
   const details = document.querySelector<HTMLDetailsElement>("details");
 
@@ -113,9 +127,9 @@ const disciplines = Array.from(
       btn.classList.remove("text-muted-foreground");
 
       cards.forEach((card) => {
-        const disciplines = card.dataset.disciplines ?? "";
+        const categories = card.dataset.categories ?? "";
         card.style.display =
-          filter === "all" || disciplines.includes(filter) ? "" : "none";
+          filter === "all" || categories.includes(filter) ? "" : "none";
       });
 
       if (activeLabel) activeLabel.textContent = btn.textContent;

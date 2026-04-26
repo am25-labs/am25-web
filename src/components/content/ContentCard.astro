@@ -1,8 +1,8 @@
 ---
 import Card from "@/components/ui/astro/Card.astro";
-import type { WorkCardProps } from "@/types";
+import type { ContentCardProps } from "@/types";
 
-type Props = WorkCardProps;
+type Props = ContentCardProps;
 
 const { cover, title, href, category } = Astro.props;
 const Tag = href ? "a" : "div";

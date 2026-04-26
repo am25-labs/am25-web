@@ -1,5 +1,18 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
+import CategoriesFilter from "@/components/content/CategoriesFilter.astro";
+import { getNotes } from "@/lib/plank/fetch";
+
+const { data: notes } = await getNotes();
+const entries = notes.map((n) => ({
+  id: n.id,
+  title: n.title,
+  slug: n.slug,
+  cover: n.cover,
+  categories: n.category ? [n.category] : [],
+}));
 ---
 
-<RootLayout title="Notes | AM25" />
+<RootLayout title="Notes | AM25">
+  {entries.length > 0 && <CategoriesFilter entries={entries} baseHref="/notes" />}
+</RootLayout>

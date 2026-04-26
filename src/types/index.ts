@@ -17,7 +17,7 @@ export type {
   LegalPage,
 } from "./content";
 
-export interface WorkCardProps {
+export interface ContentCardProps {
   cover: string;
   title: string;
   href: string;

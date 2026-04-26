@@ -1,11 +1,18 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
-import WorksFilter from "@/components/work/WorksFilter.astro";
+import CategoriesFilter from "@/components/content/CategoriesFilter.astro";
 import { getWorks } from "@/lib/plank/fetch";
 
 const { data: works } = await getWorks();
+const entries = works.map((w) => ({
+  id: w.id,
+  title: w.title,
+  slug: w.slug,
+  cover: w.cover,
+  categories: w.disciplines,
+}));
 ---
 
 <RootLayout title="Work | AM25">
-  {works.length > 0 && <WorksFilter works={works} />}
+  {entries.length > 0 && <CategoriesFilter entries={entries} baseHref="/work" />}
 </RootLayout>
