@@ -3,20 +3,20 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
 interface Props {
-  client?: string;
-  campaign?: string;
-  agency?: string;
-  country?: string;
-  creative?: string;
-  strategy?: string;
-  lead_design?: string;
-  design?: string;
-  copy?: string;
-  illustration?: string;
-  animation?: string;
-  photo?: string;
-  developer?: string;
-  work_team?: string;
+  client?: string | null;
+  campaign?: string | null;
+  agency?: string | null;
+  country?: string | null;
+  creative?: string | null;
+  strategy?: string | null;
+  lead_design?: string | null;
+  design?: string | null;
+  copy?: string | null;
+  illustration?: string | null;
+  animation?: string | null;
+  photo?: string | null;
+  developer?: string | null;
+  work_team?: string | null;
 }
 
 const {

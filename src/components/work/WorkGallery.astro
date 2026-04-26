@@ -2,8 +2,8 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 
 interface Props {
-  images?: string[];
-  quote?: string;
+  images?: string[] | null;
+  quote?: string | null;
 }
 
 const { images: rawImages, quote } = Astro.props;

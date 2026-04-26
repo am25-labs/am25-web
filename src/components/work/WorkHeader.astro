@@ -4,8 +4,8 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 interface Props {
   title: string;
-  cover: string;
-  description?: string;
+  cover: string | null;
+  description?: string | null;
 }
 
 const { title, cover, description } = Astro.props;
