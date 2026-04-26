@@ -2,7 +2,7 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import { CalendarClockIcon } from "@lucide/astro";
+import { RefreshCwIcon } from "@lucide/astro";
 
 interface Props {
   title: string;
@@ -24,7 +24,7 @@ const { title, updated, quote } = Astro.props;
             class="flex items-center gap-2 text-sm text-muted-foreground mt-6"
             title="Updated At"
           >
-            <CalendarClockIcon size={16} />
+            <RefreshCwIcon size={16} />
             {updated}
           </span>
         )
