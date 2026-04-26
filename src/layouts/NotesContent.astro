@@ -4,6 +4,7 @@ import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { ProseRenderer } from "@/components/ProseRenderer";
 import type { Author } from "@/types";
+import { BannerPoweredBy } from "@/components/PoweredBy";
 
 interface Props {
   title: string;
@@ -56,6 +57,17 @@ const { title, publishedAt, cover, content, author } = Astro.props;
       }
 
       <ProseRenderer content={content} />
+
+      <div class="pt-8">
+        <a href="/plank">
+          <BannerPoweredBy
+            logoSrc="/plank-logo-w.svg"
+            logoAlt="Plank CMS"
+            text="Published via Plank CMS"
+            mode="dark"
+          /></a
+        >
+      </div>
     </div>
   </GridFour>
 </GridContainer>

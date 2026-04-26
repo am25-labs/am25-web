@@ -2,7 +2,6 @@
 import RootLayout from "@/layouts/RootLayout.astro";
 import NotesContent from "@/layouts/NotesContent.astro";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
-import { BannerPoweredBy } from "@/components/PoweredBy";
 import { formatDate } from "@/lib/utils";
 
 export async function getStaticPaths() {
@@ -25,15 +24,4 @@ if (!note) return Astro.redirect("/notes");
     content={note.content}
     author={note.author}
   />
-
-  <div class="px-4 pb-16">
-    <a href="/plank">
-      <BannerPoweredBy
-        logoSrc="/plank-logo-w.svg"
-        logoAlt="Plank CMS"
-        text="Published via Plank CMS"
-        mode="dark"
-      /></a
-    >
-  </div>
 </RootLayout>
