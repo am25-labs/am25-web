@@ -5,13 +5,14 @@ import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { ProseRenderer } from "@/components/ProseRenderer";
 import { getPlank } from "@/lib/plank/fetch";
+import { BannerPoweredBy } from "@/components/PoweredBy";
 
 const entry = await getPlank();
 const title = "Plank CMS";
 ---
 
 <RootLayout title={`${title} | AM25`}>
-  <GridContainer>
+  <GridContainer class="mb-16">
     <GridTwo />
 
     <GridFour>
@@ -23,6 +24,21 @@ const title = "Plank CMS";
         </div>
 
         <ProseRenderer content={entry.content} />
+
+        <div class="pt-8">
+          <a
+            href="https://labs.am25.work/project/plank/"
+            target="_blank"
+            rel="noopener"
+          >
+            <BannerPoweredBy
+              logoSrc="/plank-logo-w.svg"
+              logoAlt="Plank CMS"
+              text="Try Plank CMS for free"
+              mode="dark"
+            /></a
+          >
+        </div>
       </div>
     </GridFour>
   </GridContainer>
