@@ -39,6 +39,7 @@ if (!work) return Astro.redirect("/work");
     photo={work.photo}
     developer={work.developer}
     work_team={work.work_team}
+    disciplines={work.disciplines?.map((d) => d.title).join(", ") || null}
   />
 
   <WorkGallery images={work.images_before} />
