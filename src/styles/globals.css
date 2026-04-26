@@ -4,6 +4,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @import "@fontsource-variable/figtree";
+@import "@am25/plank-react-renderer/styles.css";
 @import "@/styles/customs.css";
 
 @theme inline {

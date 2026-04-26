@@ -1,5 +1,5 @@
 ---
-import { PlankRenderer } from "@am25/plank-react-renderer";
+import { ProseRenderer } from "@/components/ProseRenderer";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 interface Props {
@@ -28,7 +28,7 @@ const { title, cover, description } = Astro.props;
 
   <GridFour class="mt-4">
     <div class="col-span-full">
-      {description && <PlankRenderer content={description} />}
+      {description && <ProseRenderer content={description} />}
     </div>
   </GridFour>
 </GridContainer>

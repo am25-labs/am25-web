@@ -1,4 +1,4 @@
-import { PlankRenderer } from "@am25/plank-react-renderer";
+import { ProseRenderer } from "@/components/ProseRenderer";
 import {
   Accordion,
   AccordionItem,
@@ -24,7 +24,7 @@ export function AccordionWrap({ items }: Props) {
             {item.label}
           </AccordionTrigger>
           <AccordionContent>
-            <PlankRenderer content={item.content} />
+            <ProseRenderer content={item.content} />
           </AccordionContent>
         </AccordionItem>
       ))}

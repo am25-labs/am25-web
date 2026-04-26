@@ -3,7 +3,7 @@ import RootLayout from "@/layouts/RootLayout.astro";
 import GenericContent from "@/layouts/GenericContent.astro";
 import Alert from "@/components/ui/astro/Alert.astro";
 import Faq from "@/components/about/Faq.astro";
-import { PlankRenderer } from "@am25/plank-react-renderer";
+import { ProseRenderer } from "@/components/ProseRenderer";
 import { getAbout } from "@/lib/plank/fetch";
 import type { About } from "@/types";
 
@@ -13,7 +13,7 @@ const title = "About Us";
 
 <RootLayout title={`${title} | AM25`}>
   <GenericContent title={title} quote={entry.quote}>
-    <PlankRenderer content={entry.description} />
+    <ProseRenderer content={entry.description} />
 
     <a href="/branding">
       <Alert variant="info" class="mt-8">

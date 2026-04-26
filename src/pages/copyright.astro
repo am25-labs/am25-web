@@ -1,7 +1,7 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
 import GenericContent from "@/layouts/GenericContent.astro";
-import { PlankRenderer } from "@am25/plank-react-renderer";
+import { ProseRenderer } from "@/components/ProseRenderer";
 import { getCopyright } from "@/lib/plank/fetch";
 
 const entry = await getCopyright();
@@ -10,6 +10,6 @@ const title = "Copyright";
 
 <RootLayout title={`${title} | AM25`}>
   <GenericContent title={title}>
-    <PlankRenderer content={entry.content} />
+    <ProseRenderer content={entry.content} />
   </GenericContent>
 </RootLayout>

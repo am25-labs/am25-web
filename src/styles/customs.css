@@ -34,6 +34,11 @@ body {
   overflow: overlay;
 }
 
+/* Plank CMS customs */
+.plank-renderer a {
+  text-decoration: none;
+}
+
 /* Link icons */
 .link-icon {
   stroke: var(--color-am-y);
