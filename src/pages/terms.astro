@@ -1,15 +1,15 @@
 ---
-import { getEntry, render } from "astro:content";
 import RootLayout from "@/layouts/RootLayout.astro";
 import GenericContent from "@/layouts/GenericContent.astro";
+import { PlankRenderer } from "@am25/plank-react-renderer";
+import { getTerms } from "@/lib/plank/fetch";
+import { formatDate } from "@/lib/utils";
 
-const entry = await getEntry("pages", "terms");
-if (!entry) return Astro.redirect("/404");
-const { Content } = await render(entry);
+const entry = await getTerms();
 ---
 
-<RootLayout title={`${entry.data.title} | AM25`}>
-  <GenericContent title={entry.data.title} updated={entry.data.updated}>
-    <Content />
+<RootLayout title="Terms | AM25">
+  <GenericContent title="Terms" updated={formatDate(entry.date ?? entry.updated_at)}>
+    <PlankRenderer content={entry.content} />
   </GenericContent>
 </RootLayout>
