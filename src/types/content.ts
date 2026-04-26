@@ -1,8 +1,10 @@
-export interface WorkAuthor {
+export interface Author {
   first_name: string;
   last_name: string;
   avatar_url: string;
 }
+
+// --- Collections ---
 
 export interface Work {
   id: string;
@@ -30,7 +32,62 @@ export interface Work {
   photo?: string;
   developer?: string;
   work_team?: string;
-  author?: WorkAuthor;
+  author: Author;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface Note {
+  id: string;
+  title: string;
+  slug: string;
+  cover: string;
+  content: string;
+  status: string;
+  author: Author;
+  created_at: string;
+  updated_at: string;
+}
+
+// --- Single Types ---
+
+export interface Service {
+  label: string;
+  content: string;
+}
+
+export interface Home {
+  id: string;
+  quote: string;
+  services: Service[];
+  status: string;
+  author: Author;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FaqItem {
+  label: string;
+  description: string;
+}
+
+export interface About {
+  id: string;
+  quote: string;
+  description: string;
+  faq: FaqItem[];
+  status: string;
+  author: Author;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface LegalPage {
+  id: string;
+  content: string;
+  date?: string;
+  status: string;
+  author: Author;
   created_at: string;
   updated_at: string;
 }

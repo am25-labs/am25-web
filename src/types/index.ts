@@ -4,7 +4,16 @@ import type { CustomIcon } from "@/icons/custom";
 export type BrandIconData = SimpleIcon | CustomIcon;
 
 export type { PlankListResponse, PlankParams } from "@am25/plank-client";
-export type { Work, WorkAuthor } from "./content";
+export type {
+  Author,
+  Work,
+  Note,
+  Service,
+  Home,
+  FaqItem,
+  About,
+  LegalPage,
+} from "./content";
 export type {
   RichTextBlock,
   RichTextTextNode,
