@@ -1,7 +1,7 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
 import WorkCard from "@/components/work/WorkCard.astro";
-import type { Work } from "@/types";
+import type { Work, Discipline } from "@/types";
 
 interface Props {
   works: Work[];
@@ -11,7 +11,7 @@ const { works } = Astro.props;
 
 const disciplines = Array.from(
   new Map(
-    works.flatMap((w) => w.disciplines ?? []).map((d) => [d.name, d]),
+    works.flatMap((w) => w.disciplines).map((d) => [d.id, d]),
   ).values(),
 );
 ---
@@ -48,9 +48,9 @@ const disciplines = Array.from(
       disciplines.map((d) => (
         <button
           class="filter-btn text-sm py-2 text-left text-muted-foreground group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
-          data-filter={d.name}
+          data-filter={d.slug}
         >
-          {d.name}
+          {d.title}
         </button>
       ))
     }
@@ -69,9 +69,9 @@ const disciplines = Array.from(
     disciplines.map((d) => (
       <button
         class="filter-btn text-sm text-muted-foreground cursor-pointer transition-all duration-200 group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black"
-        data-filter={d.name}
+        data-filter={d.slug}
       >
-        {d.name}
+        {d.title}
       </button>
     ))
   }
@@ -82,13 +82,13 @@ const disciplines = Array.from(
     works.map((work) => (
       <div
         class="col-span-2"
-        data-disciplines={work.disciplines?.map((d) => d.name).join(",")}
+        data-disciplines={work.disciplines.map((d) => d.slug).join(",")}
       >
         <WorkCard
-          cover={work.cover?.url ?? ""}
+          cover={work.cover ?? ""}
           title={work.title}
           href={`/work/${work.slug}`}
-          category={work.disciplines?.map((d) => d.name).join(", ") ?? ""}
+          category={work.disciplines.map((d) => d.title).join(", ")}
         />
       </div>
     ))

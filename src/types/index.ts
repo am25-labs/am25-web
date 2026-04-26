@@ -6,6 +6,8 @@ export type BrandIconData = SimpleIcon | CustomIcon;
 export type { PlankListResponse, PlankParams } from "@am25/plank-client";
 export type {
   Author,
+  Discipline,
+  NoteCategory,
   Work,
   Note,
   Service,

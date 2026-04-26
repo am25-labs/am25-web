@@ -1,7 +1,19 @@
 export interface Author {
   first_name: string;
   last_name: string;
-  avatar_url: string;
+  avatar_url: string | null;
+}
+
+export interface Discipline {
+  id: string;
+  title: string;
+  slug: string;
+}
+
+export interface NoteCategory {
+  id: string;
+  title: string;
+  slug: string;
 }
 
 // --- Collections ---
@@ -12,26 +24,27 @@ export interface Work {
   slug: string;
   featured: boolean;
   status: string;
-  date: string;
-  cover: string;
-  description?: string;
-  quote?: string;
-  images_before?: string[];
-  images_after?: string[];
-  client?: string;
-  campaign?: string;
-  agency?: string;
-  country?: string;
-  creative?: string;
-  strategy?: string;
-  lead_design?: string;
-  design?: string;
-  copy?: string;
-  illustration?: string;
-  animation?: string;
-  photo?: string;
-  developer?: string;
-  work_team?: string;
+  date: string | null;
+  cover: string | null;
+  description: string | null;
+  quote: string | null;
+  images_before: string[] | null;
+  images_after: string[] | null;
+  client: string | null;
+  campaign: string | null;
+  agency: string | null;
+  country: string | null;
+  creative: string | null;
+  strategy: string | null;
+  lead_design: string | null;
+  design: string | null;
+  copy: string | null;
+  illustration: string | null;
+  animation: string | null;
+  photo: string | null;
+  developer: string | null;
+  work_team: string | null;
+  disciplines: Discipline[];
   author: Author;
   created_at: string;
   updated_at: string;
@@ -41,8 +54,9 @@ export interface Note {
   id: string;
   title: string;
   slug: string;
-  cover: string;
+  cover: string | null;
   content: string;
+  category: NoteCategory | null;
   status: string;
   author: Author;
   created_at: string;
