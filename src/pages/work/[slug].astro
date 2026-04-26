@@ -13,14 +13,13 @@ export async function getStaticPaths() {
 }
 
 const { slug } = Astro.params;
-const { data: works } = await getSingleWork(slug!);
-const work = works[0];
+const work = await getSingleWork(slug!);
 ---
 
 <RootLayout title={`${work.title} | AM25`}>
   <WorkHeader
     title={work.title}
-    cover={work.cover!}
+    cover={work.cover}
     description={work.description}
   />
 
@@ -31,17 +30,16 @@ const work = works[0];
     country={work.country}
     creative={work.creative}
     strategy={work.strategy}
-    lead={work.lead}
+    lead_design={work.lead_design}
     design={work.design}
     copy={work.copy}
     illustration={work.illustration}
     animation={work.animation}
     photo={work.photo}
     developer={work.developer}
-    team={work.team}
-    disciplines={work.disciplines}
+    work_team={work.work_team}
   />
 
-  <WorkGallery images={work.imagesBefore} />
-  <WorkGallery quote={work.quote} images={work.imagesAfter} />
+  <WorkGallery images={work.images_before} />
+  <WorkGallery quote={work.quote} images={work.images_after} />
 </RootLayout>

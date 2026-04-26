@@ -1,16 +1,15 @@
 ---
-import type { StrapiImage } from "@/types";
 import GridContainer from "@/layouts/GridContainer.astro";
 
 interface Props {
-  images?: StrapiImage[];
+  images?: string[];
   quote?: string;
 }
 
 const { images: rawImages, quote } = Astro.props;
 const images = rawImages ?? [];
 
-const groups: StrapiImage[][] = [];
+const groups: string[][] = [];
 for (let i = 0; i < images.length; i += 3) {
   groups.push(images.slice(i, i + 3));
 }
@@ -33,13 +32,13 @@ for (let i = 0; i < images.length; i += 3) {
 
       return (
         <div class="col-span-full">
-          <img src={group[0].url} alt="" class="w-full h-auto object-contain" />
+          <img src={group[0]} alt="" class="w-full h-auto object-contain" />
 
           {pair.length > 0 && (
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
-              {pair.map((image, i) => (
+              {pair.map((image) => (
                 <img
-                  src={image.url}
+                  src={image}
                   alt=""
                   class="w-full h-auto object-contain"
                 />

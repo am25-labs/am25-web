@@ -2,12 +2,10 @@
 import FormatContent from "@/components/FormatContent";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
-import type { StrapiImage, RichTextBlock } from "@/types";
-
 interface Props {
   title: string;
-  cover: StrapiImage;
-  description?: RichTextBlock[];
+  cover: string;
+  description?: string;
 }
 
 const { title, cover, description } = Astro.props;
@@ -16,7 +14,7 @@ const { title, cover, description } = Astro.props;
 <GridContainer>
   <div class="col-span-full">
     <div class="aspect-square relative md:aspect-video">
-      <img src={cover.url} alt={title} class="object-cover w-full h-full" />
+      <img src={cover} alt={title} class="object-cover w-full h-full" />
     </div>
   </div>
 
@@ -30,7 +28,7 @@ const { title, cover, description } = Astro.props;
 
   <GridFour class="mt-4">
     <div class="col-span-full">
-      {description && <FormatContent blocks={description} />}
+      {description && <FormatContent content={description} />}
     </div>
   </GridFour>
 </GridContainer>

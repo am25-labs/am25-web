@@ -3,13 +3,11 @@ import GridContainer from "@/layouts/GridContainer.astro";
 import GridTwo from "@/layouts/grids/GridTwo.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import FormatContent from "@/components/FormatContent";
-import type { RichTextBlock } from "@/types";
-
 interface Props {
   title: string;
   publishedAt?: string;
   cover?: string;
-  content: RichTextBlock[];
+  content: string;
 }
 
 const { title, publishedAt, cover, content } = Astro.props;
@@ -39,7 +37,7 @@ const { title, publishedAt, cover, content } = Astro.props;
         )
       }
 
-      <FormatContent blocks={content} />
+      <FormatContent content={content} />
     </div>
   </GridFour>
 </GridContainer>

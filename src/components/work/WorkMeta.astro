@@ -2,8 +2,6 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
 import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
-import type { Discipline } from "@/types";
-
 interface Props {
   client?: string;
   campaign?: string;
@@ -11,15 +9,14 @@ interface Props {
   country?: string;
   creative?: string;
   strategy?: string;
-  lead?: string;
+  lead_design?: string;
   design?: string;
   copy?: string;
   illustration?: string;
   animation?: string;
   photo?: string;
   developer?: string;
-  team?: string;
-  disciplines?: Discipline[];
+  work_team?: string;
 }
 
 const {
@@ -29,15 +26,14 @@ const {
   country,
   creative,
   strategy,
-  lead,
+  lead_design,
   design,
   copy,
   illustration,
   animation,
   photo,
   developer,
-  team,
-  disciplines,
+  work_team,
 } = Astro.props;
 
 const items = [
@@ -47,15 +43,14 @@ const items = [
   { label: "Country", value: country },
   { label: "Creative", value: creative },
   { label: "Strategy", value: strategy },
-  { label: "Lead", value: lead },
+  { label: "Lead", value: lead_design },
   { label: "Design", value: design },
   { label: "Copy", value: copy },
   { label: "Illustration", value: illustration },
   { label: "Animation", value: animation },
   { label: "Photo", value: photo },
   { label: "Developer", value: developer },
-  { label: "Team", value: team },
-  { label: "Disciplines", value: disciplines?.map((d) => d.name).join(", ") },
+  { label: "Team", value: work_team },
 ].filter((item) => item.value);
 ---
 

@@ -14,17 +14,6 @@ export type {
   About,
   LegalPage,
 } from "./content";
-export type {
-  RichTextBlock,
-  RichTextTextNode,
-  RichTextLinkNode,
-  RichTextInlineNode,
-  RichTextParagraphBlock,
-  RichTextImageBlock,
-  RichTextHeadingBlock,
-  RichTextQuoteBlock,
-  RichTextListBlock,
-} from "./richtext";
 
 export interface WorkCardProps {
   cover: string;
