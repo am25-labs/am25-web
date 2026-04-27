@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@am25/plank-client": "0.1.0",
-    "@am25/plank-react-renderer": "0.3.0",
+    "@am25/plank-react-renderer": "0.4.0",
     "@astrojs/node": "10.0.4",
     "@astrojs/react": "5.0.2",
     "@fontsource-variable/figtree": "5.2.10",
