@@ -2,6 +2,9 @@ export interface Author {
   first_name: string;
   last_name: string;
   avatar_url: string | null;
+  job_title: string | null;
+  organization: string | null;
+  country: string | null;
 }
 
 export interface Discipline {

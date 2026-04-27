@@ -23,25 +23,34 @@ const { title, publishedAt, cover, content, author } = Astro.props;
       <h1 class="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
 
       <span
-        class="flex items-center gap-2 text-sm text-muted-foreground mt-6"
+        class="flex items-center gap-2 text-muted-foreground mt-4 mb-12"
         title="Updated At"
       >
         Posted {publishedAt}
       </span>
-      <div class="flex items-center gap-2 mt-3">
-        {
-          author.avatar_url && (
-            <img
-              src={author.avatar_url}
-              alt={`${author.first_name} ${author.last_name}`}
-              class="w-6 h-6 rounded-full object-cover"
-            />
-          )
-        }
-        <span class="text-sm text-muted-foreground">
-          {author.first_name}
-          {author.last_name}
-        </span>
+
+      <div class="flex flex-col">
+        <div class="flex items-center gap-2">
+          {
+            author.avatar_url && (
+              <img
+                src={author.avatar_url}
+                alt={`${author.first_name} ${author.last_name}`}
+                class="w-6 h-6 rounded-full object-cover"
+              />
+            )
+          }
+          <span class="font-bold">
+            {author.first_name}
+            {author.last_name}
+          </span>
+        </div>
+        <span class="text-muted-foreground text-sm ml-8"
+          >{author.job_title}</span
+        >
+        <span class="text-muted-foreground text-sm ml-8"
+          >{author.organization}</span
+        >
       </div>
     </div>
   </GridTwo>
