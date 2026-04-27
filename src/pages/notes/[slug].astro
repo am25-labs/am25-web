@@ -1,15 +1,8 @@
 ---
 import RootLayout from "@/layouts/RootLayout.astro";
 import NotesContent from "@/layouts/NotesContent.astro";
-import { getNotes, getSingleNote } from "@/lib/plank/fetch";
+import { getSingleNote } from "@/lib/plank/fetch";
 import { formatDate } from "@/lib/utils";
-
-export async function getStaticPaths() {
-  const { data: notes } = await getNotes();
-  return notes.map((note) => ({
-    params: { slug: note.slug },
-  }));
-}
 
 const { slug } = Astro.params;
 const note = await getSingleNote(slug!);
