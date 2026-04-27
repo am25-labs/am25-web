@@ -26,8 +26,12 @@ function withCache<T>(
   });
 }
 
-const TTL_WORK = 24 * 60 * 60 * 1000;
-const TTL_NOTES = 5 * 60 * 1000;
+const SECOND = 1000;
+const MINUTE = 60 * SECOND;
+const HOUR = 60 * MINUTE;
+
+const TTL_WORK = 4 * HOUR;
+const TTL_NOTES = 5 * MINUTE;
 
 // Collections
 
