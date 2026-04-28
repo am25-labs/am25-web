@@ -5,11 +5,14 @@ import { ArrowUpRightIcon } from "lucide-react";
 const components: NodeComponents = {
   heading: ({ level, children }) => {
     const Tag = `h${level}` as "h1" | "h2" | "h3";
-    return (
-      <Tag className={level === 2 ? "text-2xl uppercase pt-6" : undefined}>
-        {children}
-      </Tag>
-    );
+    const className =
+      level === 2
+        ? "text-2xl uppercase pt-6"
+        : level === 3
+          ? "text-xl uppercase pt-4"
+          : undefined;
+
+    return <Tag className={className}>{children}</Tag>;
   },
   bulletList: ({ children }) => (
     <ul className="list-disc pl-10 py-4 space-y-2 marker:text-am-y">
