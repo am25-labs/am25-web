@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@am25/plank-client':
-        specifier: 0.1.0
-        version: 0.1.0
+        specifier: 0.2.0
+        version: 0.2.0
       '@am25/plank-react-renderer':
         specifier: 0.5.0
         version: 0.5.0(react@19.2.4)
@@ -96,8 +96,8 @@ importers:
 
 packages:
 
-  '@am25/plank-client@0.1.0':
-    resolution: {integrity: sha512-sMnDaIqjmmrXx4xfrJD5AczaEv6KZcsp7tReWbYONzuCBbVWrT1dANfFc3HIhaCV8kg2urdHGQjg0YOWsU4p0A==}
+  '@am25/plank-client@0.2.0':
+    resolution: {integrity: sha512-U3UEOAaLc9k7tmFhB6vIa1k0atEkw/AMTErXffJ9RVUo3FYria5/luMRM/2iB66Cx74onx9ydw9qsUdBmrrvFA==}
 
   '@am25/plank-react-renderer@0.5.0':
     resolution: {integrity: sha512-so5++TjtLv+IVlPX74hwSa+k94VIrgpuYlUOdouOJdWHUWNnbFLtq+xmCiHrUFLCr+k7Px1JeqJezR7+27HSNw==}
@@ -3944,7 +3944,7 @@ packages:
 
 snapshots:
 
-  '@am25/plank-client@0.1.0': {}
+  '@am25/plank-client@0.2.0': {}
 
   '@am25/plank-react-renderer@0.5.0(react@19.2.4)':
     dependencies:
