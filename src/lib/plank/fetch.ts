@@ -33,6 +33,10 @@ const HOUR = 60 * MINUTE;
 const TTL_WORK = 4 * HOUR;
 const TTL_NOTES = 5 * MINUTE;
 
+type LocaleOptions = {
+  locale?: string;
+};
+
 // Collections
 
 export async function getWorks({ onlyFeatured = false } = {}) {
@@ -57,21 +61,23 @@ export async function getSingleWork(slug: string) {
   });
 }
 
-export async function getNotes() {
-  return withCache("notes", TTL_NOTES, () =>
+export async function getNotes({ locale }: LocaleOptions = {}) {
+  return withCache(`notes:${locale ?? "default"}`, TTL_NOTES, () =>
     plank.collection<Note>("notes").findMany({
       status: "published",
       sort: "created_at",
       order: "desc",
+      ...(locale && { locale }),
     }),
   );
 }
 
-export async function getSingleNote(slug: string) {
-  return withCache(`note:${slug}`, TTL_NOTES, async () => {
+export async function getSingleNote(slug: string, { locale }: LocaleOptions = {}) {
+  return withCache(`note:${slug}:${locale ?? "default"}`, TTL_NOTES, async () => {
     const result = await plank.collection<Note>("notes").findMany({
       status: "published",
       slug,
+      ...(locale && { locale }),
     });
     return result.data[0];
   });
