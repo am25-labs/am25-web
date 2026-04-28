@@ -30,8 +30,7 @@ export function BannerPoweredBy({
       <img
         src={logoSrc}
         alt={logoAlt}
-        className="h-10 w-auto"
-        style={isDark ? {} : { filter: "invert(1)" }}
+        className={`h-10 w-auto ${isDark ? "" : "brightness-0"}`}
       />
     </div>
   );
