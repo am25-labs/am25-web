@@ -13,6 +13,6 @@ const noteForTitle = enNote ?? esNote;
 if (!noteForTitle) return Astro.redirect("/notes");
 ---
 
-<RootLayout title={`${noteForTitle.title} | AM25`}>
+<RootLayout title={`${noteForTitle.title} | AM25`} variant="light">
   <LocalizedNoteTabs enNote={enNote} esNote={esNote} client:load />
 </RootLayout>

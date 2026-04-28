@@ -76,10 +76,18 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
                 onValueChange={(next) => setLocale(next as Locale)}
               >
                 <TabsList>
-                  <TabsTrigger value="en" disabled={!enNote}>
+                  <TabsTrigger
+                    value="en"
+                    disabled={!enNote}
+                    className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
+                  >
                     EN
                   </TabsTrigger>
-                  <TabsTrigger value="es" disabled={!esNote}>
+                  <TabsTrigger
+                    value="es"
+                    disabled={!esNote}
+                    className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
+                  >
                     ES
                   </TabsTrigger>
                 </TabsList>
@@ -110,7 +118,7 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
                   logoSrc="/plank-logo-w.svg"
                   logoAlt="Plank CMS"
                   text="Published via Plank CMS"
-                  mode="dark"
+                  mode="light"
                 />
               </a>
             </div>

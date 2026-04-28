@@ -13,6 +13,14 @@ const entries = works.map((w) => ({
 }));
 ---
 
-<RootLayout title="Work | AM25">
-  {entries.length > 0 && <CategoriesFilter entries={entries} baseHref="/work" />}
+<RootLayout title="Work | AM25" variant="yellow">
+  <div class="col-span-full mb-16 px-4">
+    <h1 class="text-6xl md:text-9xl font-bold uppercase">Work</h1>
+  </div>
+
+  {
+    entries.length > 0 && (
+      <CategoriesFilter entries={entries} baseHref="/work" />
+    )
+  }
 </RootLayout>
