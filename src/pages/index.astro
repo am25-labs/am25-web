@@ -6,6 +6,7 @@ import PageDescription from "@/components/PageDescription.astro";
 import FeaturedWork from "@/components/home/FeaturedWork.astro";
 import Services from "@/components/home/Services.astro";
 import { getHome } from "@/lib/plank/fetch";
+import RecentEntries from "@/components/home/RecentEntries.astro";
 
 const { quote, services } = await getHome();
 ---
@@ -15,4 +16,5 @@ const { quote, services } = await getHome();
 
   <FeaturedWork />
   <Services services={services} />
+  <RecentEntries />
 </RootLayout>

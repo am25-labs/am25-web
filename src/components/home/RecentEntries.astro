@@ -1,0 +1,51 @@
+---
+import GridContainer from "@/layouts/GridContainer.astro";
+import NoteCard from "@/components/content/NoteCard.astro";
+import { ArrowRightIcon } from "@lucide/astro";
+
+import { getNotes } from "@/lib/plank/fetch";
+
+const { data: notes } = await getNotes();
+const entries = notes.map((n) => ({
+  id: n.id,
+  title: n.title,
+  slug: n.slug,
+  cover: n.cover,
+  categories: n.category ? [n.category] : [],
+  publishedAt: n.published_at,
+  author: n.author,
+}));
+---
+
+<GridContainer class="pb-4">
+  <div class="col-span-full">
+    <div class="flex items-center justify-between">
+      <h2
+        class="text-muted-foreground group-data-[variant=yellow]:text-black text-sm font-bold uppercase"
+      >
+        Recent entries
+      </h2>
+      <a
+        href="/notes"
+        class="text-muted-foreground group-data-[variant=yellow]:text-black text-sm font-bold uppercase hover:underline flex items-center"
+        >View all<ArrowRightIcon size={16} class="shrink-0" /></a
+      >
+    </div>
+  </div>
+</GridContainer>
+
+<GridContainer class="pb-24">
+  {
+    entries.map((entry) => (
+      <div class="col-span-2">
+        <NoteCard
+          title={entry.title}
+          href={`/notes/${entry.slug}`}
+          category={entry.categories.map((d) => d.title).join(", ")}
+          publishedAt={entry.publishedAt}
+          author={entry.author}
+        />
+      </div>
+    ))
+  }
+</GridContainer>
