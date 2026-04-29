@@ -34,19 +34,19 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
 
   return (
     <div className="grid grid-cols-2 md:grid-cols-8 px-4 gap-4 mb-16">
-      <section className="col-span-2">
+      <section className="col-span-2 mb-8">
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-full">
             <h1 className="text-3xl md:text-4xl font-bold uppercase">
               {activeNote.title}
             </h1>
 
-            <span
+            <p
               className="flex items-center gap-2 text-muted-foreground mt-4"
               title="Updated At"
             >
-              Posted {formatDateInEnglish(activeNote.published_at)}
-            </span>
+              {formatDateInEnglish(activeNote.published_at)}
+            </p>
 
             <div className="flex flex-col mt-8">
               <div className="flex items-center gap-2">
@@ -100,20 +100,10 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
       <section className="col-span-2 md:col-span-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <div className="col-span-full">
-            {activeNote.cover && (
-              <div className="aspect-square relative md:aspect-video mb-8">
-                <img
-                  src={activeNote.cover}
-                  alt={activeNote.title}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-            )}
-
             <ProseRenderer content={activeNote.content} />
 
             <div className="pt-8">
-              <a href="/plank">
+              <a href="/plank" target="_blank">
                 <BannerPoweredBy
                   logoSrc="/plank-logo-w.svg"
                   logoAlt="Plank CMS"
