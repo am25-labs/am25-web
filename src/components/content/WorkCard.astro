@@ -1,9 +1,9 @@
 ---
 import Card from "@/components/ui/astro/Card.astro";
-import type { ContentCardProps } from "@/types";
+import type { WorkCardProps } from "@/types";
 import { formatDate } from "@/lib/utils";
 
-type Props = ContentCardProps;
+type Props = WorkCardProps;
 
 const { cover, title, href, category, publishedAt } = Astro.props;
 const Tag = href ? "a" : "div";
@@ -18,7 +18,13 @@ const isExternal = href?.startsWith("https");
   class="group/card"
 >
   <Card class="aspect-square overflow-hidden p-0">
-    <img src={cover} alt={title} class="w-full h-full object-cover" />
+    {
+      cover ? (
+        <img src={cover} alt={title} class="w-full h-full object-cover" />
+      ) : (
+        <div class="w-full h-full bg-muted-foreground/10" />
+      )
+    }
   </Card>
   <p class="text-xl font-bold uppercase mt-2 group-hover/card:underline">
     {title}

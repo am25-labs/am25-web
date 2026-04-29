@@ -19,7 +19,7 @@ export type {
 } from "./content";
 
 export interface WorkCardProps {
-  cover: string;
+  cover?: string | null;
   title: string;
   href: string;
   category: string;
