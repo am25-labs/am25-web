@@ -2,11 +2,10 @@
 import GridContainer from "@/layouts/GridContainer.astro";
 import NoteCard from "@/components/content/NoteCard.astro";
 import { ArrowRightIcon } from "@lucide/astro";
-
 import { getNotes } from "@/lib/plank/fetch";
 
 const { data: notes } = await getNotes();
-const entries = notes.map((n) => ({
+const entries = (notes ?? []).slice(0, 4).map((n) => ({
   id: n.id,
   title: n.title,
   slug: n.slug,
