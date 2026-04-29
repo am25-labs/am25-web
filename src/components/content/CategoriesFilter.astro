@@ -105,7 +105,6 @@ const categories = Array.from(
             title={entry.title}
             href={`${baseHref}/${entry.slug}`}
             category={entry.categories.map((c) => c.title).join(", ")}
-            publishedAt={entry.publishedAt}
           />
         ) : (
           <NoteCard
