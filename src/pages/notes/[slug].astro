@@ -9,10 +9,16 @@ const [enNote, esNote] = await Promise.all([
   getSingleNote(slug!, { locale: "es" }),
 ]);
 
-const noteForTitle = enNote ?? esNote;
-if (!noteForTitle) return Astro.redirect("/notes");
+const noteForOG = enNote ?? esNote;
+if (!noteForOG) return Astro.redirect("/notes");
 ---
 
-<RootLayout title={`${noteForTitle.title} | AM25`} variant="light">
+<RootLayout
+  title={`${noteForOG.title} - AM25`}
+  description="We are an independent creative studio."
+  image={noteForOG.cover ?? "https://am25.work/og-image.jpg"}
+  url={`https://am25.work/notes/${slug}`}
+  variant="light"
+>
   <LocalizedNoteTabs enNote={enNote} esNote={esNote} client:load />
 </RootLayout>

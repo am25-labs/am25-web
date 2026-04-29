@@ -13,7 +13,12 @@ const entry: About = await getAbout();
 const title = "About Us";
 ---
 
-<RootLayout title={`${title} | AM25`}>
+<RootLayout
+  title={`${title} - AM25`}
+  description="We are an independent creative studio."
+  image="https://am25.work/og-image.jpg"
+  url="https://am25.work/about"
+>
   <GenericContent title={title} quote={entry.quote}>
     <ProseRenderer content={entry.description} />
 

@@ -10,7 +10,12 @@ const entry = await getCopyright();
 const title = "Copyright";
 ---
 
-<RootLayout title={`${title} | AM25`}>
+<RootLayout
+  title={`${title} - AM25`}
+  description="We are an independent creative studio."
+  image="https://am25.work/og-image.jpg"
+  url="https://am25.work/copyright"
+>
   <GenericContent title={title}>
     <ProseRenderer content={entry.content} />
   </GenericContent>

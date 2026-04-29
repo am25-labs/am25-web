@@ -6,7 +6,13 @@ import type { RootLayoutProps } from "@/types";
 
 type Props = RootLayoutProps;
 
-const { title = "AM25 | Design & Web Studio", variant = "default" } = Astro.props;
+const {
+  title = "AM25",
+  description,
+  image,
+  url,
+  variant = "default",
+} = Astro.props;
 
 const variantClasses = {
   default: "bg-black text-white",
@@ -28,9 +34,25 @@ const variantClasses = {
       data-domain="am25.work"
       src="https://analytics.alemartir.com/js/script.outbound-links.tagged-events.js"
     ></script>
+
+    <!-- Open Graph -->
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+
+    <!-- Twitter (porque claro, también quieren lo suyo) -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
   </head>
 
-  <body class={`${variantClasses[variant]} font-martian min-h-dvh flex flex-col group`} data-variant={variant}>
+  <body
+    class={`${variantClasses[variant]} font-martian min-h-dvh flex flex-col group`}
+    data-variant={variant}
+  >
     <Header />
 
     <main class="max-w-7xl mx-auto w-full flex-1">

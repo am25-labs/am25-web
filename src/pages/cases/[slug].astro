@@ -10,7 +10,12 @@ const work = await getSingleWork(slug!);
 if (!work) return Astro.redirect("/work");
 ---
 
-<RootLayout title={`${work.title} | AM25`}>
+<RootLayout
+  title={`${work.title} - AM25`}
+  description="We are an independent creative studio."
+  image={work.cover ?? "https://am25.work/og-image.jpg"}
+  url={`https://am25.work/cases/${slug}`}
+>
   <WorkHeader
     title={work.title}
     cover={work.cover}

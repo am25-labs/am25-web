@@ -11,7 +11,12 @@ import RecentEntries from "@/components/home/RecentEntries.astro";
 const { quote, services } = await getHome();
 ---
 
-<RootLayout>
+<RootLayout
+  title="AM25 - Design & Web Studio"
+  description="We are an independent creative studio."
+  image="https://am25.work/og-image.jpg"
+  url="https://am25.work"
+>
   <PageDescription description={quote} variant="display" />
 
   <FeaturedWork />
