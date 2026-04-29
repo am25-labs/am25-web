@@ -18,12 +18,22 @@ export type {
   PlankPage,
 } from "./content";
 
-export interface ContentCardProps {
+export interface WorkCardProps {
   cover: string;
   title: string;
   href: string;
   category: string;
   publishedAt?: string;
+}
+
+import type { Author } from "./content";
+
+export interface NoteCardProps {
+  title: string;
+  href: string;
+  category: string;
+  publishedAt?: string;
+  author?: Author | null;
 }
 
 export interface AccordionWrapItem {

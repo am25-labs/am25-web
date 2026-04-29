@@ -1,0 +1,70 @@
+---
+import Card from "@/components/ui/astro/Card.astro";
+import type { NoteCardProps } from "@/types";
+import { formatDate } from "@/lib/utils";
+
+type Props = NoteCardProps;
+
+const { title, href, category, publishedAt, author } = Astro.props;
+const Tag = href ? "a" : "div";
+const isExternal = href?.startsWith("https");
+---
+
+<Tag
+  href={href}
+  target={isExternal ? "_blank" : undefined}
+  rel={isExternal ? "noopener" : undefined}
+  {title}
+  class="group/card"
+>
+  <Card class="aspect-5/4 overflow-hidden relative">
+    <div slot="content">
+      <div
+        class="absolute inset-0 flex flex-col justify-between p-6 group-data-[size=sm]/card:p-4"
+      >
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <span
+              class="text-muted-foreground group-data-[variant=yellow]:text-black text-xs"
+              >{category}</span
+            >
+            {
+              publishedAt && (
+                <span class="text-muted-foreground group-data-[variant=yellow]:text-black text-xs">
+                  {formatDate(publishedAt)}
+                </span>
+              )
+            }
+          </div>
+          <p class="text-2xl font-bold uppercase group-hover/card:underline">
+            {title}
+          </p>
+        </div>
+
+        {
+          author && (
+            <div class="flex items-center gap-3">
+              {author.avatar_url && (
+                <img
+                  src={author.avatar_url}
+                  alt={`${author.first_name} ${author.last_name}`}
+                  class="w-6 h-6 rounded-full object-cover"
+                />
+              )}
+              <div>
+                <div class="font-bold">
+                  {author.first_name} {author.last_name}
+                </div>
+                {author.job_title && (
+                  <div class="text-muted-foreground text-xs">
+                    {author.job_title}
+                  </div>
+                )}
+              </div>
+            </div>
+          )
+        }
+      </div>
+    </div>
+  </Card>
+</Tag>

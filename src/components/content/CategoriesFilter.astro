@@ -1,6 +1,6 @@
 ---
 import GridContainer from "@/layouts/GridContainer.astro";
-import ContentCard from "@/components/content/ContentCard.astro";
+import NoteCard from "@/components/content/NoteCard.astro";
 
 interface Category {
   id: string;
@@ -15,6 +15,7 @@ interface Entry {
   cover: string | null;
   categories: Category[];
   publishedAt?: string;
+  author?: any;
 }
 
 interface Props {
@@ -97,12 +98,12 @@ const categories = Array.from(
         class="col-span-2"
         data-categories={entry.categories.map((c) => c.slug).join(",")}
       >
-        <ContentCard
-          cover={entry.cover ?? ""}
+        <NoteCard
           title={entry.title}
           href={`${baseHref}/${entry.slug}`}
           category={entry.categories.map((c) => c.title).join(", ")}
           publishedAt={entry.publishedAt}
+          author={entry.author}
         />
       </div>
     ))
