@@ -5,7 +5,6 @@ import { Table, TableBody, TableRow, TableCell } from "@/components/ui/table";
 interface Props {
   client?: string | null;
   campaign?: string | null;
-  agency?: string | null;
   country?: string | null;
   creative?: string | null;
   strategy?: string | null;
@@ -15,7 +14,7 @@ interface Props {
   illustration?: string | null;
   animation?: string | null;
   photo?: string | null;
-  developer?: string | null;
+  develop?: string | null;
   work_team?: string | null;
   disciplines?: string | null;
 }
@@ -23,7 +22,6 @@ interface Props {
 const {
   client,
   campaign,
-  agency,
   country,
   creative,
   strategy,
@@ -33,7 +31,7 @@ const {
   illustration,
   animation,
   photo,
-  developer,
+  develop,
   work_team,
   disciplines,
 } = Astro.props;
@@ -41,7 +39,6 @@ const {
 const items = [
   { label: "Client", value: client },
   { label: "Campaign", value: campaign },
-  { label: "Agency", value: agency },
   { label: "Country", value: country },
   { label: "Creative", value: creative },
   { label: "Strategy", value: strategy },
@@ -51,7 +48,7 @@ const items = [
   { label: "Illustration", value: illustration },
   { label: "Animation", value: animation },
   { label: "Photo", value: photo },
-  { label: "Developer", value: developer },
+  { label: "Develop", value: develop },
   { label: "Team", value: work_team },
   { label: "Disciplines", value: disciplines },
 ].filter((item) => item.value);

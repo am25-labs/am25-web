@@ -25,9 +25,6 @@ export interface Work {
   id: string;
   title: string;
   slug: string;
-  featured: boolean;
-  status: string;
-  date: string | null;
   cover: string | null;
   description: string | null;
   quote: string | null;
@@ -35,7 +32,6 @@ export interface Work {
   images_after: string[] | null;
   client: string | null;
   campaign: string | null;
-  agency: string | null;
   country: string | null;
   creative: string | null;
   strategy: string | null;
@@ -45,9 +41,13 @@ export interface Work {
   illustration: string | null;
   animation: string | null;
   photo: string | null;
-  developer: string | null;
+  develop: string | null;
+  date: string | null;
+  featured: boolean;
+  case: boolean;
   work_team: string | null;
   disciplines: Discipline[];
+  status: string;
   author: Author;
   published_at: string;
   created_at: string;
