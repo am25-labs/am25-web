@@ -57,17 +57,20 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
                     className="w-6 h-6 rounded-full object-cover"
                   />
                 )}
-                <span className="font-bold">
-                  {activeNote.author.first_name}
-                  {activeNote.author.last_name}
-                </span>
+                <div className="">
+                  <p className="font-bold">
+                    {activeNote.author.first_name} {activeNote.author.last_name}
+                  </p>
+                  <span className="text-muted-foreground text-sm">
+                    {activeNote.author.job_title}
+                  </span>
+                </div>
               </div>
-              <span className="text-muted-foreground text-sm ml-8">
-                {activeNote.author.job_title}
-              </span>
-              <span className="text-muted-foreground text-sm ml-8">
-                {activeNote.author.organization}
-              </span>
+              {activeNote.author.organization && (
+                <span className="text-muted-foreground text-sm ml-8">
+                  {activeNote.author.organization}
+                </span>
+              )}
             </div>
 
             <div className="mt-12">
