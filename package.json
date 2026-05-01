@@ -13,14 +13,14 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@plank-cms/client": "0.3.0",
-    "@plank-cms/react-renderer": "0.6.0",
     "@astrojs/node": "10.0.4",
     "@astrojs/react": "5.0.2",
     "@fontsource-variable/figtree": "5.2.10",
     "@fontsource/martian-mono": "5.2.7",
     "@itsmrtr/strapi-next-fetch": "1.1.0",
     "@lucide/astro": "1.7.0",
+    "@plank-cms/client": "0.4.0",
+    "@plank-cms/react-renderer": "0.6.0",
     "@tailwindcss/vite": "4.2.2",
     "@types/react": "19.2.14",
     "@types/react-dom": "19.2.3",

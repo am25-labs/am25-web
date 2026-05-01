@@ -127,7 +127,7 @@ export interface PlankPage {
 export interface NavigationItem {
   label: string;
   href: string;
-  icon?: string;
+  items?: NavigationItem[];
 }
 
 export interface Navigation {
