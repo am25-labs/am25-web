@@ -102,7 +102,7 @@ async function getNavigation() {
 
 export async function getMainNav() {
   const navigation = await getNavigation();
-  return navigation.main_nav;
+  return navigation.main_nav ?? [];
 }
 
 export async function getFooterNav() {

@@ -132,7 +132,7 @@ export interface NavigationItem {
 
 export interface Navigation {
   id: string;
-  main_nav: NavigationItem[];
+  main_nav?: NavigationItem[];
   footer_nav?: NavigationItem[];
   status: string;
   published_at: string;
