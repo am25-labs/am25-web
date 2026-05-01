@@ -123,3 +123,19 @@ export interface PlankPage {
   created_at: string;
   updated_at: string;
 }
+
+export interface NavigationItem {
+  label: string;
+  href: string;
+  icon?: string;
+}
+
+export interface Navigation {
+  id: string;
+  main_nav: NavigationItem[];
+  footer_nav?: NavigationItem[];
+  status: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+}

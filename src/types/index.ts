@@ -16,6 +16,8 @@ export type {
   About,
   LegalPage,
   PlankPage,
+  Navigation,
+  NavigationItem,
 } from "./content";
 
 export interface WorkCardProps {
@@ -69,11 +71,7 @@ export interface SocNavProps {
   size?: number;
 }
 
-export interface NavProps {
-  label: string;
-  href: string;
-  icon?: string;
-}
+export type NavProps = NavigationItem;
 
 export interface RootLayoutProps {
   title?: string;

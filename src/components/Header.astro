@@ -5,29 +5,9 @@ import { siLinkedin, siFlaskConical } from "@/icons/custom";
 import BrandIcon from "@/components/BrandIcon.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
 import { ArrowUpRightIcon } from "@lucide/astro";
+import { getMainNav } from "@/lib/plank/fetch";
 
-const mainNav: NavProps[] = [
-  {
-    label: "Home",
-    href: "/",
-  },
-  {
-    label: "Work",
-    href: "/cases",
-  },
-  {
-    label: "About",
-    href: "/about",
-  },
-  {
-    label: "Contact",
-    href: "/contact",
-  },
-  {
-    label: "Notes",
-    href: "/notes",
-  },
-];
+const mainNav: NavProps[] = await getMainNav();
 
 const socNav: SocNavProps[] = [
   { href: "https://labs.am25.work", icon: siFlaskConical, size: 20 },
