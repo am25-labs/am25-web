@@ -69,36 +69,34 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
                 </div>
               </div>
             </div>
-
-            <div className="mt-12">
-              <Tabs
-                value={locale}
-                onValueChange={(next) => setLocale(next as Locale)}
-              >
-                <TabsList>
-                  <TabsTrigger
-                    value="en"
-                    disabled={!enNote}
-                    className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
-                  >
-                    EN
-                  </TabsTrigger>
-                  <TabsTrigger
-                    value="es"
-                    disabled={!esNote}
-                    className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
-                  >
-                    ES
-                  </TabsTrigger>
-                </TabsList>
-              </Tabs>
-            </div>
           </div>
         </div>
       </section>
 
       <section className="col-span-2 md:col-span-4">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <Tabs
+            value={locale}
+            onValueChange={(next) => setLocale(next as Locale)}
+          >
+            <TabsList>
+              <TabsTrigger
+                value="en"
+                disabled={!enNote}
+                className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
+              >
+                EN
+              </TabsTrigger>
+              <TabsTrigger
+                value="es"
+                disabled={!esNote}
+                className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
+              >
+                ES
+              </TabsTrigger>
+            </TabsList>
+          </Tabs>
+
           <div className="col-span-full">
             <ProseRenderer content={activeNote.content} />
 
