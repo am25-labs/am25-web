@@ -1,4 +1,4 @@
-import { createPlankClient } from "@am25/plank-client";
+import { createPlankClient } from "@plank-cms/client";
 
 const plank = createPlankClient({
   url: import.meta.env.PLANK_URL,

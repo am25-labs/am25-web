@@ -3,7 +3,7 @@ import type { CustomIcon } from "@/icons/custom";
 
 export type BrandIconData = SimpleIcon | CustomIcon;
 
-export type { PlankListResponse, PlankParams } from "@am25/plank-client";
+export type { PlankListResponse, PlankParams } from "@plank-cms/client";
 export type {
   Author,
   Discipline,

@@ -1,5 +1,5 @@
-import { PlankRenderer } from "@am25/plank-react-renderer";
-import type { NodeComponents, TiptapDoc } from "@am25/plank-react-renderer";
+import { PlankRenderer } from "@plank-cms/react-renderer";
+import type { NodeComponents, TiptapDoc } from "@plank-cms/react-renderer";
 import { ArrowUpRightIcon } from "lucide-react";
 
 const components: NodeComponents = {
