@@ -71,7 +71,7 @@ export interface SocNavProps {
   size?: number;
 }
 
-export type NavProps = NavigationItem;
+export type NavProps = import("./content").NavigationItem;
 
 export interface RootLayoutProps {
   title?: string;
