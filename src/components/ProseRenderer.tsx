@@ -15,6 +15,16 @@ const components: NodeComponents = {
             : undefined;
     return <Tag className={className}>{children}</Tag>;
   },
+  bulletList: ({ children }) => (
+    <ul className="marker:text-am-y group-data-[variant=yellow]:marker:text-black group-data-[variant=light]:marker:text-black">
+      {children}
+    </ul>
+  ),
+  orderedList: ({ children }) => (
+    <ol className="marker:text-am-y group-data-[variant=yellow]:marker:text-black group-data-[variant=light]:marker:text-black">
+      {children}
+    </ol>
+  ),
   link: ({ href, target, rel, children }) => (
     <a
       href={href}
