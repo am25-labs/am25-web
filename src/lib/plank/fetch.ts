@@ -48,7 +48,7 @@ export async function getWorks({ onlyFeatured = false } = {}) {
       status: "published",
       sort: "date",
       order: "desc",
-      ...(onlyFeatured && { featured: true }),
+      ...(onlyFeatured && { filters: { featured: { eq: true } } }),
     }),
   );
 }
@@ -57,7 +57,7 @@ export async function getSingleWork(slug: string) {
   return withCache(`work:${slug}`, TTL_WORK, async () => {
     const result = await plank.collection<Work>("works").findMany({
       status: "published",
-      slug,
+      filters: { slug: { eq: slug } },
     });
     return result.data[0];
   });
@@ -84,7 +84,7 @@ export async function getSingleNote(
     async () => {
       const result = await plank.collection<Note>("notes").findMany({
         status: "published",
-        slug,
+        filters: { slug: { eq: slug } },
         ...(locale && { locale }),
       });
       return result.data[0];
