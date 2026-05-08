@@ -9,7 +9,7 @@ const entries = (notes ?? []).slice(0, 4).map((n) => ({
   id: n.id,
   title: n.title,
   slug: n.slug,
-  cover: n.cover,
+  cover: n.cover?.url ?? null,
   categories: n.category ? [n.category] : [],
   publishedAt: n.published_at,
   author: n.author,

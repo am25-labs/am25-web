@@ -2,9 +2,10 @@
 import { ProseRenderer } from "@/components/ProseRenderer";
 import GridContainer from "@/layouts/GridContainer.astro";
 import GridFour from "@/layouts/grids/GridFour.astro";
+import type { PlankMedia } from "@plank-cms/client";
 interface Props {
   title: string;
-  cover: string | null;
+  cover: PlankMedia | null;
   description?: string | null;
 }
 
@@ -14,7 +15,9 @@ const { title, cover, description } = Astro.props;
 <GridContainer>
   <div class="col-span-full">
     <div class="aspect-square relative md:aspect-video">
-      <img src={cover} alt={title} class="object-cover w-full h-full" />
+      {cover && (
+        <img src={cover.url} alt={cover.alt ?? title} class="object-cover w-full h-full" />
+      )}
     </div>
   </div>
 

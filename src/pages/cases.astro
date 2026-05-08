@@ -8,7 +8,7 @@ const entries = works.map((w) => ({
   id: w.id,
   title: w.title,
   slug: w.slug,
-  cover: w.cover,
+  cover: w.cover?.url ?? null,
   categories: w.disciplines,
 }));
 ---

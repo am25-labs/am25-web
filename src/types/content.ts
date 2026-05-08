@@ -1,4 +1,4 @@
-import type { PlankMedia } from "@plank-cms/client";
+import type { PlankMedia, PlankMediaGallery } from "@plank-cms/client";
 
 export interface Author {
   first_name: string;
@@ -45,8 +45,8 @@ export interface Work {
   cover: PlankMedia | null;
   description: string | null;
   quote: string | null;
-  images_before: string[] | null;
-  images_after: string[] | null;
+  images_before: PlankMediaGallery | null;
+  images_after: PlankMediaGallery | null;
   client: string | null;
   campaign: string | null;
   country: string | null;

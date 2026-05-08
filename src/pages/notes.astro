@@ -8,7 +8,7 @@ const entries = notes.map((n) => ({
   id: n.id,
   title: n.title,
   slug: n.slug,
-  cover: n.cover,
+  cover: n.cover?.url ?? null,
   categories: n.category ? [n.category] : [],
   publishedAt: n.published_at,
   author: n.author,

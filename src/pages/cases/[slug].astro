@@ -13,7 +13,7 @@ if (!work) return Astro.redirect("/cases");
 <RootLayout
   title={`${work.title} - AM25`}
   description="We are an independent creative studio."
-  image={work.cover ?? "https://am25.work/og-image.png"}
+  image={work.cover?.url ?? "https://am25.work/og-image.png"}
   url={`https://am25.work/cases/${slug}`}
 >
   <WorkHeader
@@ -25,7 +25,6 @@ if (!work) return Astro.redirect("/cases");
   <WorkMeta
     client={work.client}
     campaign={work.campaign}
-    agency={work.agency}
     country={work.country}
     creative={work.creative}
     strategy={work.strategy}
@@ -35,7 +34,7 @@ if (!work) return Astro.redirect("/cases");
     illustration={work.illustration}
     animation={work.animation}
     photo={work.photo}
-    developer={work.developer}
+    develop={work.develop}
     work_team={work.work_team}
     disciplines={work.disciplines?.map((d) => d.title).join(", ") || null}
   />
