@@ -8,7 +8,7 @@ import { getHome } from "@/lib/plank/fetch";
 import RecentEntries from "@/components/home/RecentEntries.astro";
 import Hero from "@/components/home/Hero.astro";
 
-const { title, description, quote, services } = await getHome();
+const { heading, description, quote, services } = await getHome();
 ---
 
 <RootLayout
@@ -17,7 +17,7 @@ const { title, description, quote, services } = await getHome();
   image="https://am25.work/og-image.png"
   url="https://am25.work"
 >
-  <Hero title={title} description={description} />
+  <Hero heading={heading} description={description} />
 
   <!-- <FeaturedWork /> -->
 

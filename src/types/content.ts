@@ -77,7 +77,7 @@ export interface Note {
 // Single Types
 export interface Home {
   id: string;
-  title: string;
+  heading: string;
   description: string;
   quote: string;
   services: Service[];
