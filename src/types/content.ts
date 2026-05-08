@@ -77,6 +77,8 @@ export interface Service {
 
 export interface Home {
   id: string;
+  title: string;
+  description: string;
   quote: string;
   services: Service[];
   status: string;

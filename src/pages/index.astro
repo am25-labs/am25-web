@@ -2,13 +2,13 @@
 export const prerender = true;
 
 import RootLayout from "@/layouts/RootLayout.astro";
-import PageDescription from "@/components/PageDescription.astro";
 import FeaturedWork from "@/components/home/FeaturedWork.astro";
 import Services from "@/components/home/Services.astro";
 import { getHome } from "@/lib/plank/fetch";
 import RecentEntries from "@/components/home/RecentEntries.astro";
+import Hero from "@/components/home/Hero.astro";
 
-const { quote, services } = await getHome();
+const { title, description, quote, services } = await getHome();
 ---
 
 <RootLayout
@@ -17,9 +17,10 @@ const { quote, services } = await getHome();
   image="https://am25.work/og-image.png"
   url="https://am25.work"
 >
-  <!-- <FeaturedWork /> -->
+  <Hero title={title} description={description} />
 
-  <Services services={services} />
+  <!-- <FeaturedWork /> -->
+  <!-- <Services services={services} /> -->
 
   <RecentEntries />
 </RootLayout>
