@@ -1,3 +1,5 @@
+import type { PlankMedia } from "@plank-cms/client";
+
 export interface Author {
   first_name: string;
   last_name: string;
@@ -40,7 +42,7 @@ export interface Work {
   id: string;
   title: string;
   slug: string;
-  cover: string | null;
+  cover: PlankMedia | null;
   description: string | null;
   quote: string | null;
   images_before: string[] | null;
@@ -68,7 +70,7 @@ export interface Note {
   id: string;
   title: string;
   slug: string;
-  cover: string | null;
+  cover: PlankMedia | null;
   content: string;
   category: NoteCategory | null;
   author: Author;
@@ -95,12 +97,6 @@ export interface LegalPage {
   id: string;
   content: string;
   date?: string;
-}
-
-export interface PlankPage {
-  id: string;
-  logo: string | null;
-  content: string;
 }
 
 export interface Navigation {

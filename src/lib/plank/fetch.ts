@@ -4,7 +4,6 @@ import type {
   Home,
   About,
   LegalPage,
-  PlankPage,
   Navigation,
 } from "@/types/index";
 import plank from "./client";
@@ -118,10 +117,6 @@ export async function getHome() {
 
 export async function getAbout(): Promise<About> {
   return await plank.single<About>("about").find();
-}
-
-export async function getPlank() {
-  return await plank.single<PlankPage>("plank").find();
 }
 
 export async function getPrivacy() {
