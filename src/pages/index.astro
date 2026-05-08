@@ -19,9 +19,9 @@ const { heading, description, quote, services } = await getHome();
 >
   <Hero heading={heading} description={description} />
 
-  <!-- <FeaturedWork /> -->
+  <!-- <FeaturedWork server:defer /> -->
 
   <Services services={services} />
 
-  <RecentEntries />
+  <RecentEntries server:defer />
 </RootLayout>
