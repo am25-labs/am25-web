@@ -18,6 +18,7 @@ export type {
   PlankPage,
   Navigation,
   NavigationItem,
+  Footer,
 } from "./content";
 
 export interface WorkCardProps {

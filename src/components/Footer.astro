@@ -3,22 +3,22 @@ import type { NavProps } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import { ArrowUpRight } from "@lucide/astro";
 import { getFooterNav } from "@/lib/plank/fetch";
+import { getFooter } from "@/lib/plank/fetch";
+import type { Footer } from "@/types";
 
 const year = new Date().getFullYear();
-
 const nav: NavProps[] = await getFooterNav();
+const footer: Footer = await getFooter();
 ---
 
 <Separator />
 
-<footer class="max-w-7xl mx-auto w-full px-4 py-8">
-  <div
-    class="flex flex-col-reverse md:flex-row gap-4 md:items-center justify-between text-neutral-500 group-data-[variant=yellow]:text-black text-xs uppercase"
-  >
-    <p>&copy; {year} AM25</p>
+<footer class="max-w-7xl mx-auto w-full px-4 py-32">
+  <div class="flex flex-col items-center gap-12">
+    <h2 class="text-3xl text-center uppercase">{footer.claim}</h2>
 
-    <nav>
-      <ul class="flex items-center space-x-4">
+    <nav class="mb-8">
+      <ul class="flex items-center space-x-4 md:space-x-12">
         {
           nav.map((opt) => {
             const isExternal = opt.href.startsWith("https");
@@ -28,7 +28,7 @@ const nav: NavProps[] = await getFooterNav();
                   href={opt.href}
                   target={isExternal ? "_blank" : undefined}
                   rel={isExternal ? "noopener" : undefined}
-                  class="flex items-center hover:underline"
+                  class="flex items-center text-sm md:text-base uppercase hover:underline"
                 >
                   {opt.label}
                   {isExternal && <ArrowUpRight size={16} class="shrink-0" />}
@@ -39,5 +39,17 @@ const nav: NavProps[] = await getFooterNav();
         }
       </ul>
     </nav>
+
+    <a href="/">
+      <img
+        src="/am25-logo.svg"
+        alt="AM25 Logo"
+        width="160"
+        title="AM25"
+        class="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
+      />
+    </a>
+
+    <!-- <p>&copy; {year} AM25</p> -->
   </div>
 </footer>

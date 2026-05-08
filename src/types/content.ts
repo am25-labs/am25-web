@@ -7,6 +7,18 @@ export interface Author {
   country: string | null;
 }
 
+// Items
+export interface NavigationItem {
+  label: string;
+  href: string;
+  items?: NavigationItem[];
+}
+
+export interface FaqItem {
+  label: string;
+  description: string;
+}
+
 export interface Discipline {
   id: string;
   title: string;
@@ -19,8 +31,11 @@ export interface NoteCategory {
   slug: string;
 }
 
-// Collections
+export interface Service {
+  label: string;
+}
 
+// Collection Types
 export interface Work {
   id: string;
   title: string;
@@ -47,11 +62,6 @@ export interface Work {
   case_study: boolean;
   work_team: string | null;
   disciplines: Discipline[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface Note {
@@ -61,35 +71,16 @@ export interface Note {
   cover: string | null;
   content: string;
   category: NoteCategory | null;
-  status: string;
   author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 // Single Types
-
-export interface Service {
-  label: string;
-}
-
 export interface Home {
   id: string;
   title: string;
   description: string;
   quote: string;
   services: Service[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface FaqItem {
-  label: string;
-  description: string;
 }
 
 export interface About {
@@ -97,46 +88,27 @@ export interface About {
   quote: string;
   description: string;
   faq: FaqItem[];
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface LegalPage {
   id: string;
   content: string;
   date?: string;
-  status: string;
-  author: Author;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
 }
 
 export interface PlankPage {
   id: string;
   logo: string | null;
   content: string;
-  status: string;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
-}
-
-export interface NavigationItem {
-  label: string;
-  href: string;
-  items?: NavigationItem[];
 }
 
 export interface Navigation {
   id: string;
   main_nav?: NavigationItem[];
   footer_nav?: NavigationItem[];
-  status: string;
-  published_at: string;
-  created_at: string;
-  updated_at: string;
+}
+
+export interface Footer {
+  id: string;
+  claim: string;
 }

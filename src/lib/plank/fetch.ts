@@ -8,6 +8,7 @@ import type {
   Navigation,
 } from "@/types/index";
 import plank from "./client";
+import type { Footer } from "@/types/content";
 
 // TTL cache
 
@@ -132,4 +133,8 @@ export async function getTerms() {
 
 export async function getCopyright() {
   return await plank.single<LegalPage>("copyright").find();
+}
+
+export async function getFooter() {
+  return await plank.single<Footer>("footer").find();
 }
