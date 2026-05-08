@@ -5,6 +5,7 @@ import { ProseRenderer } from "@/components/ProseRenderer";
 import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Note } from "@/types";
+import { Separator } from "@/components/ui/separator";
 
 interface LocalizedNoteTabsProps {
   enNote: Note | null;
@@ -99,16 +100,23 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
           <div className="col-span-full">
             <ProseRenderer content={activeNote.content} />
 
-            <div className="pt-8">
-              <a href="/plank" target="_blank">
-                <BannerPoweredBy
-                  logoSrc="/plank-logo-w.svg"
-                  logoAlt="Plank CMS"
-                  text="Published via Plank CMS"
-                  mode="light"
-                />
+            <div className="flex flex-col items-center py-16">
+              <Separator />
+              <a
+                href="/notes"
+                className="text-center font-bold uppercase mt-8 hover:underline"
+              >
+                Back to all notes
               </a>
             </div>
+
+            <BannerPoweredBy
+              logoSrc="/plank-logo-w.svg"
+              logoAlt="Plank CMS"
+              label="Published via Plank CMS"
+              link="https://plank-cms.com"
+              mode="light"
+            />
           </div>
         </div>
       </section>
