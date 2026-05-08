@@ -35,6 +35,7 @@ const HOUR = 60 * MINUTE;
 const TTL_MISC = 6 * HOUR;
 const TTL_WORK = 4 * HOUR;
 const TTL_NOTES = 5 * MINUTE;
+const TTL_RFRSH = SECOND;
 
 type LocaleOptions = {
   locale?: string;
