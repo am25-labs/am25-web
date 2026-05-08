@@ -72,7 +72,6 @@ export interface Note {
 
 export interface Service {
   label: string;
-  content: string;
 }
 
 export interface Home {
