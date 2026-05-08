@@ -49,7 +49,7 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
             </p>
 
             <div className="flex flex-col mt-8">
-              <div className="flex items-start gap-2">
+              <div className="flex items-center gap-2">
                 {activeNote.author.avatar_url && (
                   <img
                     src={activeNote.author.avatar_url}
@@ -57,13 +57,12 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
                     className="w-9 h-9 rounded-full object-cover"
                   />
                 )}
-                <div className="">
+                <div>
                   <p className="font-bold">
                     {activeNote.author.first_name} {activeNote.author.last_name}
                   </p>
                   <p className="text-muted-foreground text-sm">
-                    {activeNote.author.job_title}
-                    <br />
+                    {activeNote.author.job_title} at{" "}
                     {activeNote.author.organization}
                   </p>
                 </div>

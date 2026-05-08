@@ -72,6 +72,7 @@ export interface Note {
   content: string;
   category: NoteCategory | null;
   author: Author;
+  published_at: string;
 }
 
 // Single Types
