@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Note } from "@/types";
 import { Separator } from "@/components/ui/separator";
 import { ChevronLeftIcon } from "lucide-react";
+import { formatDate } from "@/lib/utils";
 
 interface LocalizedNoteTabsProps {
   enNote: Note | null;
@@ -14,14 +15,6 @@ interface LocalizedNoteTabsProps {
 }
 
 type Locale = "en" | "es";
-
-function formatDateInEnglish(date: string): string {
-  return new Date(date).toLocaleDateString("en-US", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
-}
 
 export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
   const initialLocale: Locale = enNote ? "en" : "es";
@@ -47,7 +40,9 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
               className="flex items-center gap-2 text-muted-foreground mt-4"
               title="Updated At"
             >
-              {formatDateInEnglish(activeNote.published_at)}
+              {formatDate(activeNote.published_at, {
+                locale: locale === "es" ? "es-SV" : "en-US",
+              })}
             </p>
 
             <div className="flex flex-col mt-8">
