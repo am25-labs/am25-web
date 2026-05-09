@@ -38,6 +38,7 @@ const entries = (notes ?? []).slice(0, 4).map((n) => ({
     entries.map((entry) => (
       <div class="col-span-2">
         <NoteCard
+          cover={entry.cover}
           title={entry.title}
           href={`/notes/${entry.slug}`}
           category={entry.categories.map((d) => d.title).join(", ")}

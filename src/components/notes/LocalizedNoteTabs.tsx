@@ -6,6 +6,7 @@ import { BannerPoweredBy } from "@/components/PoweredBy";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import type { Note } from "@/types";
 import { Separator } from "@/components/ui/separator";
+import { ChevronLeftIcon } from "lucide-react";
 
 interface LocalizedNoteTabsProps {
   enNote: Note | null;
@@ -74,24 +75,26 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
       </section>
 
       <section className="col-span-2 md:col-span-4">
+        <div className="aspect-square relative mb-4">
+          {activeNote.cover && (
+            <img
+              src={activeNote.cover.url}
+              alt={activeNote.cover.alt ?? activeNote.title}
+              className="object-cover w-full h-full"
+            />
+          )}
+        </div>
+
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           <Tabs
             value={locale}
             onValueChange={(next) => setLocale(next as Locale)}
           >
             <TabsList>
-              <TabsTrigger
-                value="en"
-                disabled={!enNote}
-                className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
-              >
+              <TabsTrigger value="en" disabled={!enNote}>
                 EN
               </TabsTrigger>
-              <TabsTrigger
-                value="es"
-                disabled={!esNote}
-                className="data-[state=active]:text-black! disabled:text-black! hover:text-black!"
-              >
+              <TabsTrigger value="es" disabled={!esNote}>
                 ES
               </TabsTrigger>
             </TabsList>
@@ -104,8 +107,9 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
               <Separator />
               <a
                 href="/notes"
-                className="text-center font-bold uppercase mt-8 hover:underline"
+                className="flex items-center gap-2 text-center font-bold uppercase mt-8 hover:underline"
               >
+                <ChevronLeftIcon size={21} />
                 Back to all notes
               </a>
             </div>
@@ -115,7 +119,7 @@ export function LocalizedNoteTabs({ enNote, esNote }: LocalizedNoteTabsProps) {
               logoAlt="Plank CMS"
               label="Published via Plank CMS"
               link="https://plank-cms.com"
-              mode="light"
+              mode="dark"
             />
           </div>
         </div>

@@ -31,6 +31,7 @@ export interface WorkCardProps {
 import type { Author } from "./content";
 
 export interface NoteCardProps {
+  cover?: string | null;
   title: string;
   href: string;
   category: string;

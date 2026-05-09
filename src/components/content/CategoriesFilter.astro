@@ -108,6 +108,7 @@ const categories = Array.from(
           />
         ) : (
           <NoteCard
+            cover={entry.cover}
             title={entry.title}
             href={`${baseHref}/${entry.slug}`}
             category={entry.categories.map((c) => c.title).join(", ")}

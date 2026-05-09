@@ -18,7 +18,6 @@ if (!noteForOG) return Astro.redirect("/notes");
   description="We are an independent creative studio."
   image={noteForOG.cover?.url ?? "https://am25.work/og-image.png"}
   url={`https://am25.work/notes/${slug}`}
-  variant="light"
 >
   <LocalizedNoteTabs enNote={enNote} esNote={esNote} client:load />
 </RootLayout>
