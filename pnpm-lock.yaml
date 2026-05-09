@@ -27,8 +27,8 @@ importers:
         specifier: 1.7.0
         version: 1.7.0(astro@6.1.1(@types/node@25.5.2)(jiti@2.6.1)(lightningcss@1.32.0)(rollup@4.60.1)(typescript@5.9.3))
       '@plank-cms/client':
-        specifier: 0.6.0
-        version: 0.6.0
+        specifier: 0.6.1
+        version: 0.6.1
       '@plank-cms/react-renderer':
         specifier: 0.7.0
         version: 0.7.0(react@19.2.4)
@@ -797,8 +797,8 @@ packages:
   '@oslojs/encoding@1.1.0':
     resolution: {integrity: sha512-70wQhgYmndg4GCPxPPxPGevRKqTIJ2Nh4OkiMWmDAVYsTQ+Ta7Sq+rPevXyXGdzr30/qZBnyOalCszoMxlyldQ==}
 
-  '@plank-cms/client@0.6.0':
-    resolution: {integrity: sha512-g+5/dC8rxh05NF9MyXz1VNvQTv3ft5IPk6Zu+14Z+Bhe2kD41mRBwnVYonyzlwqOFYZA2qUll2DtJPGUH6ZgsA==}
+  '@plank-cms/client@0.6.1':
+    resolution: {integrity: sha512-6Gl5O8DLMI65oIEp/5WFkikDR9Xx1FHCCDwBdjST2wZmPtDFyuadCJptG8CHUGoaWBivqP9G1JKenAvN51FtFg==}
 
   '@plank-cms/react-renderer@0.7.0':
     resolution: {integrity: sha512-Lt+j23J9fwQV7uPKI72CpA7KCGEiimtthJAxlJRCTKkq7NlbxJPEV6GS9lLMvUAzRXbyP38dBet06zsAHlyenQ==}
@@ -4607,7 +4607,7 @@ snapshots:
 
   '@oslojs/encoding@1.1.0': {}
 
-  '@plank-cms/client@0.6.0': {}
+  '@plank-cms/client@0.6.1': {}
 
   '@plank-cms/react-renderer@0.7.0(react@19.2.4)':
     dependencies:
