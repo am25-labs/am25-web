@@ -68,9 +68,9 @@ export async function getNotes({ locale }: LocaleOptions = {}) {
   return withCache(`notes:${locale ?? "default"}`, TTL_NOTES, () =>
     plank.collection<Note>("notes").findMany({
       status: "published",
-      sort: "created_at",
+      sort: "published_at",
       order: "desc",
-      ...(locale && { locale }),
+      ...(locale && { locale, fallback: "en" }),
     }),
   );
 }
@@ -86,7 +86,7 @@ export async function getSingleNote(
       const result = await plank.collection<Note>("notes").findMany({
         status: "published",
         filters: { slug: { eq: slug } },
-        ...(locale && { locale }),
+        ...(locale && { locale, fallback: "en" }),
       });
       return result.data[0];
     },
