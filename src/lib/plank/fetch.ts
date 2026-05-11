@@ -77,20 +77,26 @@ export async function getNotes({ locale }: LocaleOptions = {}) {
   );
 }
 
-export async function getPreviewWork(entryId: string) {
-  return plank
-    .collection<Work>("works")
-    .findOne(entryId, { status: "all" }, PREVIEW_FETCH_OPTIONS);
+export async function getPreviewWork(slug: string) {
+  return plank.collection<Work>("works").findMany(
+    {
+      limit: 1,
+      status: "all",
+      filters: { slug: { eq: slug } },
+    },
+    PREVIEW_FETCH_OPTIONS,
+  );
 }
 
 export async function getPreviewNote(
-  entryId: string,
+  slug: string,
   { locale }: LocaleOptions = {},
 ) {
-  return plank.collection<Note>("notes").findOne(
-    entryId,
+  return plank.collection<Note>("notes").findMany(
     {
+      limit: 1,
       status: "all",
+      filters: { slug: { eq: slug } },
       ...(locale && { locale, fallback: "en" }),
     },
     PREVIEW_FETCH_OPTIONS,

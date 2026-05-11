@@ -17,7 +17,11 @@ export async function POST({ request }: { request: Request }) {
     return json({ error: "Invalid payload" }, 400);
   }
 
-  await setPreviewSyncState(payload.content_type, payload.entry_id, {
+  if (!payload.slug) {
+    return json({ error: "Missing slug" }, 400);
+  }
+
+  await setPreviewSyncState(payload.content_type, payload.slug, {
     previewUrl: payload.preview_url,
     triggeredAt: payload.triggered_at,
   });

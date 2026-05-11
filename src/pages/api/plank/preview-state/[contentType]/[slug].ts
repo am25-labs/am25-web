@@ -12,16 +12,16 @@ function json(body: unknown, status = 200) {
 export async function GET({
   params,
 }: {
-  params: { contentType?: string; entryId?: string };
+  params: { contentType?: string; slug?: string };
 }) {
   const contentType = params.contentType;
-  const entryId = params.entryId;
+  const slug = params.slug;
 
-  if (!contentType || !entryId) {
+  if (!contentType || !slug) {
     return json({ error: "Missing preview identifier" }, 400);
   }
 
-  const state = await getPreviewSyncState(contentType, entryId);
+  const state = await getPreviewSyncState(contentType, slug);
 
   return json({
     triggeredAt: state?.triggeredAt ?? null,

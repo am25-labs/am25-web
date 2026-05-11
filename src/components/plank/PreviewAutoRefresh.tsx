@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 
 type PreviewAutoRefreshProps = {
   contentType: string;
-  entryId: string;
+  slug: string;
 };
 
 type PreviewStateResponse = {
@@ -14,7 +14,7 @@ type PreviewStateResponse = {
 
 export function PreviewAutoRefresh({
   contentType,
-  entryId,
+  slug,
 }: PreviewAutoRefreshProps) {
   const lastTriggeredAtRef = useRef<string | null>(null);
 
@@ -24,7 +24,7 @@ export function PreviewAutoRefresh({
     const poll = async () => {
       try {
         const response = await fetch(
-          `/api/plank/preview-state/${contentType}/${entryId}`,
+          `/api/plank/preview-state/${contentType}/${slug}`,
           { cache: "no-store" },
         );
 
@@ -64,7 +64,7 @@ export function PreviewAutoRefresh({
       cancelled = true;
       window.clearInterval(intervalId);
     };
-  }, [contentType, entryId]);
+  }, [contentType, slug]);
 
   return null;
 }
