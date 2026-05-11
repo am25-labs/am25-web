@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 
 type PreviewAutoRefreshProps = {
   contentType: string;
@@ -16,10 +16,9 @@ export function PreviewAutoRefresh({
   contentType,
   slug,
 }: PreviewAutoRefreshProps) {
-  const lastTriggeredAtRef = useRef<string | null>(null);
-
   useEffect(() => {
     let cancelled = false;
+    const storageKey = `plank-preview:${contentType}:${slug}`;
 
     const poll = async () => {
       try {
@@ -34,14 +33,16 @@ export function PreviewAutoRefresh({
 
         if (!state.triggeredAt) return;
 
-        if (!lastTriggeredAtRef.current) {
-          lastTriggeredAtRef.current = state.triggeredAt;
+        const lastTriggeredAt = window.localStorage.getItem(storageKey);
+
+        if (!lastTriggeredAt) {
+          window.localStorage.setItem(storageKey, state.triggeredAt);
           return;
         }
 
-        if (state.triggeredAt === lastTriggeredAtRef.current) return;
+        if (state.triggeredAt === lastTriggeredAt) return;
 
-        lastTriggeredAtRef.current = state.triggeredAt;
+        window.localStorage.setItem(storageKey, state.triggeredAt);
 
         if (state.previewUrl && state.previewUrl !== window.location.href) {
           window.location.assign(state.previewUrl);

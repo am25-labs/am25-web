@@ -18,7 +18,7 @@ export async function POST({ request }: { request: Request }) {
   }
 
   if (!payload.slug) {
-    return json({ error: "Missing slug" }, 400);
+    return json({ ok: true });
   }
 
   await setPreviewSyncState(payload.content_type, payload.slug, {
