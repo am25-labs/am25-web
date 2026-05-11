@@ -40,6 +40,8 @@ type LocaleOptions = {
   locale?: string;
 };
 
+const PREVIEW_FETCH_OPTIONS = { cache: "no-store" } as const;
+
 // Collections
 
 export async function getWorks({ onlyFeatured = false } = {}) {
@@ -72,6 +74,26 @@ export async function getNotes({ locale }: LocaleOptions = {}) {
       order: "desc",
       ...(locale && { locale, fallback: "en" }),
     }),
+  );
+}
+
+export async function getPreviewWork(entryId: string) {
+  return plank
+    .collection<Work>("works")
+    .findOne(entryId, { status: "all" }, PREVIEW_FETCH_OPTIONS);
+}
+
+export async function getPreviewNote(
+  entryId: string,
+  { locale }: LocaleOptions = {},
+) {
+  return plank.collection<Note>("notes").findOne(
+    entryId,
+    {
+      status: "all",
+      ...(locale && { locale, fallback: "en" }),
+    },
+    PREVIEW_FETCH_OPTIONS,
   );
 }
 
