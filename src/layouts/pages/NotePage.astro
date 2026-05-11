@@ -1,0 +1,26 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import { LocalizedNoteTabs } from "@/components/notes/LocalizedNoteTabs";
+import type { Note } from "@/types";
+
+interface Props {
+  enNote: Note | null;
+  esNote: Note | null;
+  slug: string;
+}
+
+const { enNote, esNote, slug } = Astro.props;
+
+const noteForOG = enNote ?? esNote;
+if (!noteForOG) return Astro.redirect("/notes");
+---
+
+<RootLayout
+  title={`${noteForOG.title} - AM25`}
+  description="We are an independent creative studio."
+  image={noteForOG.cover?.url ?? "https://am25.work/og-image.png"}
+  url={`https://am25.work/notes/${slug}`}
+>
+  <slot name="headless" />
+  <LocalizedNoteTabs enNote={enNote} esNote={esNote} client:load />
+</RootLayout>

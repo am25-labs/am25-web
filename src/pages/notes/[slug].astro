@@ -1,6 +1,5 @@
 ---
-import RootLayout from "@/layouts/RootLayout.astro";
-import { LocalizedNoteTabs } from "@/components/notes/LocalizedNoteTabs";
+import NotePage from "@/layouts/pages/NotePage.astro";
 import { getSingleNote } from "@/lib/plank/fetch";
 
 const { slug } = Astro.params;
@@ -8,16 +7,6 @@ const [enNote, esNote] = await Promise.all([
   getSingleNote(slug!),
   getSingleNote(slug!, { locale: "es" }),
 ]);
-
-const noteForOG = enNote ?? esNote;
-if (!noteForOG) return Astro.redirect("/notes");
 ---
 
-<RootLayout
-  title={`${noteForOG.title} - AM25`}
-  description="We are an independent creative studio."
-  image={noteForOG.cover?.url ?? "https://am25.work/og-image.png"}
-  url={`https://am25.work/notes/${slug}`}
->
-  <LocalizedNoteTabs enNote={enNote} esNote={esNote} client:load />
-</RootLayout>
+<NotePage enNote={enNote} esNote={esNote} slug={slug!} />

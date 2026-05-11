@@ -1,0 +1,50 @@
+---
+import RootLayout from "@/layouts/RootLayout.astro";
+import WorkHeader from "@/components/work/WorkHeader.astro";
+import WorkMeta from "@/components/work/WorkMeta.astro";
+import WorkGallery from "@/components/work/WorkGallery.astro";
+import type { Work } from "@/types";
+
+interface Props {
+  work: Work | null;
+  slug: string;
+}
+
+const { work, slug } = Astro.props;
+if (!work) return Astro.redirect("/cases");
+---
+
+<RootLayout
+  title={`${work.title} - AM25`}
+  description="We are an independent creative studio."
+  image={work.cover?.url ?? "https://am25.work/og-image.png"}
+  url={`https://am25.work/cases/${slug}`}
+>
+  <slot name="headless" />
+
+  <WorkHeader
+    title={work.title}
+    cover={work.cover}
+    description={work.description}
+  />
+
+  <WorkMeta
+    client={work.client}
+    campaign={work.campaign}
+    country={work.country}
+    creative={work.creative}
+    strategy={work.strategy}
+    lead_design={work.lead_design}
+    design={work.design}
+    copy={work.copy}
+    illustration={work.illustration}
+    animation={work.animation}
+    photo={work.photo}
+    develop={work.develop}
+    work_team={work.work_team}
+    disciplines={work.disciplines?.map((d) => d.title).join(", ") || null}
+  />
+
+  <WorkGallery images={work.images_before} />
+  <WorkGallery quote={work.quote} images={work.images_after} />
+</RootLayout>

@@ -1,9 +1,6 @@
 ---
-import RootLayout from "@/layouts/RootLayout.astro";
-import WorkHeader from "@/components/work/WorkHeader.astro";
-import WorkMeta from "@/components/work/WorkMeta.astro";
-import WorkGallery from "@/components/work/WorkGallery.astro";
-import { LocalizedNoteTabs } from "@/components/notes/LocalizedNoteTabs";
+import NotePage from "@/layouts/pages/NotePage.astro";
+import WorkPage from "@/layouts/pages/WorkPage.astro";
 import { PreviewAutoRefresh } from "@/components/plank/PreviewAutoRefresh";
 import { getPreviewNote, getPreviewWork } from "@/lib/plank/fetch";
 import type { Note, Work } from "@/types";
@@ -18,8 +15,6 @@ if (!contentType || !slug) {
 
 let notePreview: { enNote: Note | null; esNote: Note | null } | null = null;
 let workPreview: Work | null = null;
-let title = "Draft Preview - AM25";
-let image = "https://am25.work/og-image.png";
 
 if (contentType === "notes") {
   const [enNote, esNote] = await Promise.all([
@@ -33,74 +28,28 @@ if (contentType === "notes") {
   if (!noteForMeta) return Astro.redirect("/notes");
 
   notePreview = { enNote, esNote };
-  title = `${noteForMeta.title} - Draft Preview - AM25`;
-  image = noteForMeta.cover?.url ?? image;
 } else if (contentType === "works") {
   workPreview = await getPreviewWork(slug)
     .then((result) => result.data[0] ?? null)
     .catch(() => null);
   if (!workPreview) return Astro.redirect("/cases");
-
-  title = `${workPreview.title} - Draft Preview - AM25`;
-  image = workPreview.cover?.url ?? image;
 } else {
   return Astro.redirect("/");
 }
-
-const previewUrl = Astro.url.href;
 ---
 
-<RootLayout
-  title={title}
-  description="Draft preview powered by Plank CMS."
-  image={image}
-  url={previewUrl}
->
-  <PreviewAutoRefresh client:load contentType={contentType} slug={slug} />
-
-  <div class="mx-auto max-w-7xl px-4 pt-6">
-    <p class="inline-flex bg-am-y px-3 py-2 text-xs font-bold uppercase tracking-[0.2em] text-black">
-      Draft Preview
-    </p>
-  </div>
-
-  {notePreview && (
-    <LocalizedNoteTabs
-      enNote={notePreview.enNote}
-      esNote={notePreview.esNote}
-      client:load
-    />
-  )}
-
-  {workPreview && (
-    <>
-      <WorkHeader
-        title={workPreview.title}
-        cover={workPreview.cover}
-        description={workPreview.description}
-      />
-
-      <WorkMeta
-        client={workPreview.client}
-        campaign={workPreview.campaign}
-        country={workPreview.country}
-        creative={workPreview.creative}
-        strategy={workPreview.strategy}
-        lead_design={workPreview.lead_design}
-        design={workPreview.design}
-        copy={workPreview.copy}
-        illustration={workPreview.illustration}
-        animation={workPreview.animation}
-        photo={workPreview.photo}
-        develop={workPreview.develop}
-        work_team={workPreview.work_team}
-        disciplines={workPreview.disciplines
-          ?.map((discipline) => discipline.title)
-          .join(", ") || null}
-      />
-
-      <WorkGallery images={workPreview.images_before} />
-      <WorkGallery quote={workPreview.quote} images={workPreview.images_after} />
-    </>
-  )}
-</RootLayout>
+{
+  notePreview ? (
+    <NotePage enNote={notePreview.enNote} esNote={notePreview.esNote} slug={slug}>
+      <Fragment slot="headless">
+        <PreviewAutoRefresh client:load contentType={contentType} slug={slug} />
+      </Fragment>
+    </NotePage>
+  ) : (
+    <WorkPage work={workPreview} slug={slug}>
+      <Fragment slot="headless">
+        <PreviewAutoRefresh client:load contentType={contentType} slug={slug} />
+      </Fragment>
+    </WorkPage>
+  )
+}
