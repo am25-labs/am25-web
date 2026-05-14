@@ -1,6 +1,6 @@
 ---
 import type { NavProps, SocNavProps } from "@/types";
-import { siInstagram, siGithub } from "simple-icons";
+import { siInstagram, siGithub, siBehance } from "simple-icons";
 import { siLinkedin, siFlaskConical } from "@/icons/custom";
 import BrandIcon from "@/components/BrandIcon.astro";
 import MobileMenu from "@/components/MobileMenu.astro";
@@ -11,7 +11,8 @@ const mainNav: NavProps[] = await getMainNav();
 
 const socNav: SocNavProps[] = [
   { href: "https://labs.am25.work", icon: siFlaskConical, size: 20 },
-  { href: "https://www.instagram.com/am25std", icon: siInstagram, size: 20 },
+  { href: "https://www.instagram.com/am25work", icon: siInstagram, size: 20 },
+  { href: "https://www.behance.net/am25work", icon: siBehance, size: 24 },
   { href: "https://github.com/am25-labs", icon: siGithub, size: 20 },
   { href: "https://www.linkedin.com/company/am25", icon: siLinkedin, size: 20 },
 ];
