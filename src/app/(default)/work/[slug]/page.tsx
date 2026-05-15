@@ -34,16 +34,16 @@ export async function generateMetadata({
 
   return {
     ...baseMetadata,
-    title: `${title} | Alejandro Mártir`,
+    title: `${title} - AM25`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${title} | Alejandro Mártir`,
+      title: `${title} - AM25`,
       url: `${baseUrl}/work/${slug}`,
       images: imageObj ? [imageObj] : baseMetadata.openGraph?.images,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${title} | Alejandro Mártir`,
+      title: `${title} - AM25`,
       images: imageObj ? [imageObj] : baseMetadata.twitter?.images,
     },
   };
@@ -82,11 +82,7 @@ export default async function WorkPage({ params }: PageProps) {
 
   return (
     <>
-      <WorkHeader
-        title={title}
-        cover={cover}
-        description={description}
-      />
+      <WorkHeader title={title} cover={cover} description={description} />
 
       <WorkMeta
         client={client}

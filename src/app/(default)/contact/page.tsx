@@ -7,15 +7,15 @@ const pageTitle = "Contact";
 export function generateMetadata(): Metadata {
   return {
     ...baseMetadata,
-    title: `${pageTitle} | Alejandro Mártir`,
+    title: `${pageTitle} - AM25`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${pageTitle} | Alejandro Mártir`,
+      title: `${pageTitle} - AM25`,
       url: `${baseUrl}/contact`,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${pageTitle} | Alejandro Mártir`,
+      title: `${pageTitle} - AM25`,
     },
   };
 }

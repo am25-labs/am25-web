@@ -9,15 +9,15 @@ export async function generateMetadata(): Promise<Metadata> {
 
   return {
     ...baseMetadata,
-    title: `${title} | Alejandro Mártir`,
+    title: `${title} - AM25`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${title} | Alejandro Mártir`,
+      title: `${title} - AM25`,
       url: baseUrl,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${title} | Alejandro Mártir`,
+      title: `${title} - AM25`,
     },
   };
 }

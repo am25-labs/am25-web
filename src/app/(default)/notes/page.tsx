@@ -9,15 +9,15 @@ const pageTitle = "Notes";
 export function generateMetadata(): Metadata {
   return {
     ...baseMetadata,
-    title: `${pageTitle} | Alejandro Mártir`,
+    title: `${pageTitle} - AM25`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${pageTitle} | Alejandro Mártir`,
+      title: `${pageTitle} - AM25`,
       url: `${baseUrl}/notes`,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${pageTitle} | Alejandro Mártir`,
+      title: `${pageTitle} - AM25`,
     },
   };
 }
@@ -37,10 +37,14 @@ export default async function NotesPage() {
   return (
     <>
       <div className="col-span-full mb-16 px-4">
-        <h1 className="text-6xl font-bold uppercase md:text-9xl">{pageTitle}</h1>
+        <h1 className="text-6xl font-bold uppercase md:text-9xl">
+          {pageTitle}
+        </h1>
       </div>
 
-      {entries.length > 0 ? <NotesFilter entries={entries} baseHref="/notes" /> : null}
+      {entries.length > 0 ? (
+        <NotesFilter entries={entries} baseHref="/notes" />
+      ) : null}
     </>
   );
 }

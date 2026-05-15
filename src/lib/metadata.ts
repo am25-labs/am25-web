@@ -1,35 +1,32 @@
-import type { Metadata } from "next"
+import type { Metadata } from "next";
 
-const baseUrl = process.env.BASE_URL
+const baseUrl = process.env.BASE_URL;
 
 export const baseMetadata: Metadata = {
-  title: "Alejandro Mártir",
-  description:
-    "Diseñador gráfico, creador digital y músico ocasional. Ideas claras, irreverencia controlada y curiosidad insaciable.",
+  title: "AM25 - Design & Web Studio",
+  description: "We are an independent creative studio.",
   metadataBase: new URL(`${baseUrl}`),
   openGraph: {
-    title: "Alejandro Mártir",
-    description:
-      "Diseñador gráfico, creador digital y músico ocasional. Ideas claras, irreverencia controlada y curiosidad insaciable.",
+    title: "AM25 - Design & Web Studio",
+    description: "We are an independent creative studio.",
     url: baseUrl,
     type: "website",
     images: [
       {
-        url: "/alemartir-default-cover.webp",
-        width: 1200,
-        height: 630,
-        alt: "Alejandro Mártir",
+        url: "/og-image.png",
+        width: 1920,
+        height: 1080,
+        alt: "AM25 - Design & Web Studio",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Alejandro Mártir",
-    description:
-      "Diseñador gráfico, creador digital y músico ocasional. Ideas claras, irreverencia controlada y curiosidad insaciable.",
-    images: ["/alemartir-default-cover.webp"],
+    title: "AM25 - Design & Web Studio",
+    description: "We are an independent creative studio.",
+    images: ["/og-image.png"],
   },
   icons: {
     icon: "/favicon.png",
   },
-}
+};

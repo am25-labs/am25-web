@@ -27,17 +27,21 @@ export async function generateMetadata({
 
   return {
     ...baseMetadata,
-    title: `${noteForMeta.title} | Alejandro Mártir`,
+    title: `${noteForMeta.title} - AM25`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${noteForMeta.title} | Alejandro Mártir`,
+      title: `${noteForMeta.title} - AM25`,
       url: `${baseUrl}/notes/${slug}`,
-      images: noteForMeta.cover?.url ? [noteForMeta.cover.url] : baseMetadata.openGraph?.images,
+      images: noteForMeta.cover?.url
+        ? [noteForMeta.cover.url]
+        : baseMetadata.openGraph?.images,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${noteForMeta.title} | Alejandro Mártir`,
-      images: noteForMeta.cover?.url ? [noteForMeta.cover.url] : baseMetadata.twitter?.images,
+      title: `${noteForMeta.title} - AM25`,
+      images: noteForMeta.cover?.url
+        ? [noteForMeta.cover.url]
+        : baseMetadata.twitter?.images,
     },
   };
 }
