@@ -1,107 +1,52 @@
-import { Children } from "react";
-import type { ReactNode } from "react";
 import { PlankRenderer } from "@plank-cms/react-renderer";
 import type { NodeComponents, TiptapDoc } from "@plank-cms/react-renderer";
-import { InfoIcon, MoveUpRightIcon } from "lucide-react";
-import VimeoEmbed from "@/components/embeds/VimeoEmbed";
-import YouTubeEmbed from "@/components/embeds/YouTubeEmbeds";
-
-const embedPattern = /^\[\[(yt|vm):(https:\/\/.+?)\]\]$/;
-
-function getEmbed(children: ReactNode) {
-  const parts = Children.toArray(children);
-
-  if (parts.length !== 1 || typeof parts[0] !== "string") {
-    return null;
-  }
-
-  const match = parts[0].trim().match(embedPattern);
-
-  if (!match) {
-    return null;
-  }
-
-  const [, provider, url] = match;
-
-  if (provider === "yt") {
-    return <YouTubeEmbed url={url} />;
-  }
-
-  if (provider === "vm") {
-    return <VimeoEmbed url={url} />;
-  }
-
-  return null;
-}
+import { ArrowUpRightIcon } from "lucide-react";
 
 const components: NodeComponents = {
   heading: ({ level, children }) => {
     const Tag = `h${level}` as "h1" | "h2" | "h3";
     const className =
       level === 1
-        ? "text-4xl! font-bricolage font-black font-stretch-condensed uppercase pt-4 first:pt-0!"
+        ? "text-3xl uppercase pt-6"
         : level === 2
-          ? "text-4xl! font-bricolage font-black font-stretch-condensed uppercase pt-4 first:pt-0!"
-          : "text-3xl! font-bricolage font-black font-stretch-condensed uppercase pt-2 first:pt-0!";
-
+          ? "text-2xl uppercase pt-6"
+          : level === 3
+            ? "text-xl uppercase pt-4"
+            : undefined;
     return <Tag className={className}>{children}</Tag>;
   },
-  paragraph: ({ children }) => {
-    const embed = getEmbed(children);
-
-    if (embed) {
-      return <div className="pb-4">{embed}</div>;
-    }
-
-    return <p>{children}</p>;
-  },
+  bulletList: ({ children }) => (
+    <ul className="marker:text-am-y group-data-[variant=yellow]:marker:text-black group-data-[variant=light]:marker:text-black">
+      {children}
+    </ul>
+  ),
+  orderedList: ({ children }) => (
+    <ol className="marker:text-am-y group-data-[variant=yellow]:marker:text-black group-data-[variant=light]:marker:text-black">
+      {children}
+    </ol>
+  ),
   link: ({ href, target, rel, children }) => (
     <a
       href={href}
       target={target ?? undefined}
       rel={rel ?? undefined}
-      className="inline-flex items-center hover:font-bold! transition-all duration-300"
+      className="inline-flex items-center hover:font-bold"
     >
       {children}
-      <MoveUpRightIcon size={16} className="shrink-0 mt-0.5" />
+      <ArrowUpRightIcon
+        size={20}
+        className="text-am-y group-data-[variant=yellow]:text-black group-data-[variant=light]:text-black shrink-0"
+      />
     </a>
   ),
-  image: ({ src, alt, title, width, height }) => {
-    if (!title) {
-      return (
-        <img
-          src={src}
-          alt={alt ?? ""}
-          width={width ?? undefined}
-          height={height ?? undefined}
-          className="w-full h-auto"
-        />
-      );
-    }
-
-    return (
-      <figure>
-        <img
-          src={src}
-          alt={alt ?? ""}
-          title={title ?? undefined}
-          width={width ?? undefined}
-          height={height ?? undefined}
-          className="w-full h-auto"
-        />
-        <figcaption className="text-xs text-center -mt-2 mb-6">
-          <InfoIcon size={14} className="inline-block align-middle mr-1" />
-          <span className="align-middle">{title}</span>
-        </figcaption>
-      </figure>
-    );
-  },
 };
 
-interface ContentRendererProps {
+interface Props {
   content: string | TiptapDoc;
 }
 
-export default function ContentRenderer({ content }: ContentRendererProps) {
+export function ContentRenderer({ content }: Props) {
   return <PlankRenderer content={content} components={components} />;
 }
+
+export default ContentRenderer;
