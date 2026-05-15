@@ -9,7 +9,7 @@ import { AlertWrap } from "@/components/ui/custom/AlertWrap";
 import Link from "next/link";
 
 const baseUrl = process.env.BASE_URL;
-const pageTitle = "Project Inquiries";
+const pageTitle = "Project inquiries";
 
 export function generateMetadata(): Metadata {
   return {
@@ -44,7 +44,11 @@ export default function ContactPage() {
           <ContactForm mode="services" />
 
           <Link href="/contact/general">
-            <AlertWrap className="mt-4" variant="info" title="General inquiries?">
+            <AlertWrap
+              className="mt-4"
+              variant="info"
+              title="General inquiries?"
+            >
               <p>
                 This contact form one&apos;s for projects. If that&apos;s not
                 you, GO HERE INSTEAD.

@@ -9,7 +9,7 @@ import { getTerms } from "@/lib/plank/fetch";
 import { formatDate } from "@/lib/utils";
 
 const baseUrl = process.env.BASE_URL;
-const pageTitle = "Terms & Conditions";
+const pageTitle = "Terms & conditions";
 
 export async function generateMetadata(): Promise<Metadata> {
   return {

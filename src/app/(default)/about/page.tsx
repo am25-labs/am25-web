@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 const baseUrl = process.env.BASE_URL;
-const pageTitle = "About Us";
+const pageTitle = "About us";
 
 export function generateMetadata(): Metadata {
   return {

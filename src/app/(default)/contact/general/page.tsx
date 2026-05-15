@@ -7,7 +7,7 @@ import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 
 const baseUrl = process.env.BASE_URL;
-const pageTitle = "General Inquiries";
+const pageTitle = "General inquiries";
 
 export function generateMetadata(): Metadata {
   return {
