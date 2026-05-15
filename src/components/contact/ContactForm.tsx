@@ -178,7 +178,7 @@ export default function ContactForm({ mode }: ContactFormProps) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Card className="gap-6 overflow-hidden rounded-2xl bg-card py-6 text-sm text-card-foreground ring-1 ring-foreground/10 group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:text-black">
+      <Card className="gap-6 overflow-hidden rounded-2xl border-foreground/10 bg-card py-6 text-sm text-card-foreground shadow-none ring-0 group-data-[variant=yellow]:bg-am-y group-data-[variant=yellow]:text-black">
         <div className="px-6">
           <FieldSet>
             <div className="flex flex-col gap-2">

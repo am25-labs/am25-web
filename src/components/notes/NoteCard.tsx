@@ -35,7 +35,11 @@ export default function NoteCard({
         {cover ? (
           <>
             <div className="aspect-[5/4] overflow-hidden">
-              <img src={cover} alt={title} className="h-full w-full object-cover" />
+              <img
+                src={cover}
+                alt={title}
+                className="h-full w-full object-cover"
+              />
             </div>
             <Separator />
           </>
@@ -52,7 +56,7 @@ export default function NoteCard({
               ) : null}
             </div>
 
-            <p className="mb-8 text-2xl font-bold uppercase group-hover/card:underline">
+            <p className="mb-8 min-h-[4rem] text-2xl font-bold uppercase group-hover/card:underline">
               {title}
             </p>
           </div>
@@ -60,7 +64,10 @@ export default function NoteCard({
           {author ? (
             <div className="flex items-center gap-3">
               <Avatar>
-                <AvatarImage src={author.avatar_url ?? undefined} alt={authorName} />
+                <AvatarImage
+                  src={author.avatar_url ?? undefined}
+                  alt={authorName}
+                />
                 <AvatarFallback>{authorInitials}</AvatarFallback>
               </Avatar>
 
