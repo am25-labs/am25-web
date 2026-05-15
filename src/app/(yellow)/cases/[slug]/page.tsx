@@ -1,10 +1,10 @@
+import { notFound } from "next/navigation";
+import type { Metadata } from "next";
+import { baseMetadata } from "@/lib/metadata";
+import { getSingleWork } from "@/lib/plank/fetch";
 import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
-import { notFound } from "next/navigation";
-import { baseMetadata } from "@/lib/metadata";
-import type { Metadata } from "next";
-import { getSingleWork } from "@/lib/plank/fetch";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -38,7 +38,7 @@ export async function generateMetadata({
     openGraph: {
       ...baseMetadata.openGraph,
       title: `${title} - AM25`,
-      url: `${baseUrl}/work/${slug}`,
+      url: `${baseUrl}/cases/${slug}`,
       images: imageObj ? [imageObj] : baseMetadata.openGraph?.images,
     },
     twitter: {
@@ -49,7 +49,7 @@ export async function generateMetadata({
   };
 }
 
-export default async function WorkPage({ params }: PageProps) {
+export default async function CaseDetailPage({ params }: PageProps) {
   const { slug } = await params;
   const work = await getSingleWork(slug);
 

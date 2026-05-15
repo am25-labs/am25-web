@@ -14,7 +14,7 @@ export default function WorksIndex({ works }: WorksIndexProps) {
           const { id, title, slug, cover, disciplines } = work;
 
           return (
-            <Link key={id} href={`/work/${slug}`} className="block group/card">
+            <Link key={id} href={`/cases/${slug}`} className="block group/card">
               <div className="relative w-full aspect-[4/5] overflow-hidden">
                 <Image
                   src={cover!.url}
