@@ -56,7 +56,7 @@ export interface Note {
   title: string;
   slug: string;
   cover: PlankMedia | null;
-  content: string;
+  content: RichContent;
   category: Category | null;
   author: Author;
   published_at: string;
