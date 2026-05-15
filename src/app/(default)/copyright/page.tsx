@@ -4,38 +4,38 @@ import type { Metadata } from "next";
 import GridContainer from "@/components/grids/GridContainer";
 import GridTwo from "@/components/grids/GridTwo";
 import GridFour from "@/components/grids/GridFour";
-import { getCopyright } from "@/lib/strapi/fetchSingle";
+import { getCopyright } from "@/lib/plank/fetch";
 
 const baseUrl = process.env.BASE_URL;
+const pageTitle = "Copyright";
 
 export async function generateMetadata(): Promise<Metadata> {
-  const copyright = await getCopyright();
-  const { title } = copyright.data;
-
   return {
     ...baseMetadata,
-    title: `${title} | Alejandro Mártir`,
+    title: `${pageTitle} | Alejandro Mártir`,
     openGraph: {
       ...baseMetadata.openGraph,
-      title: `${title} | Alejandro Mártir`,
+      title: `${pageTitle} | Alejandro Mártir`,
       url: `${baseUrl}/copyright`,
     },
     twitter: {
       ...baseMetadata.twitter,
-      title: `${title} | Alejandro Mártir`,
+      title: `${pageTitle} | Alejandro Mártir`,
     },
   };
 }
 
 export default async function CopyrightPage() {
   const copyright = await getCopyright();
-  const { title, content } = copyright.data;
+  const { content } = copyright;
 
   return (
     <GridContainer>
       <GridTwo className="mb-8">
         <div className="col-span-full">
-          <h1 className="text-3xl md:text-4xl font-bold uppercase">{title}</h1>
+          <h1 className="text-3xl md:text-4xl font-bold uppercase">
+            {pageTitle}
+          </h1>
         </div>
       </GridTwo>
 
