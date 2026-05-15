@@ -9,7 +9,7 @@ export default function GridContainer({
   return (
     <section
       className={cn(
-        "grid grid-cols-2 md:grid-cols-8 px-4 mt-32 mb-8",
+        "grid grid-cols-2 md:grid-cols-8 px-4 mb-8",
         gap,
         className,
       )}

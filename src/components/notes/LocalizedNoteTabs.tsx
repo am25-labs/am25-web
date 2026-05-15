@@ -66,7 +66,8 @@ export default function LocalizedNoteTabs({
                     {activeNote.author.first_name} {activeNote.author.last_name}
                   </p>
                   <p className="text-sm text-muted-foreground">
-                    {activeNote.author.job_title} at {activeNote.author.organization}
+                    {activeNote.author.job_title} at{" "}
+                    {activeNote.author.organization}
                   </p>
                 </div>
               </div>
@@ -76,7 +77,7 @@ export default function LocalizedNoteTabs({
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        <div className="relative mb-4 aspect-square">
+        {/* <div className="relative mb-4 aspect-square">
           {activeNote.cover ? (
             <img
               src={activeNote.cover.url}
@@ -84,10 +85,13 @@ export default function LocalizedNoteTabs({
               className="h-full w-full object-cover"
             />
           ) : null}
-        </div>
+        </div> */}
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-          <Tabs value={locale} onValueChange={(next) => setLocale(next as Locale)}>
+          <Tabs
+            value={locale}
+            onValueChange={(next) => setLocale(next as Locale)}
+          >
             <TabsList>
               <TabsTrigger value="en" disabled={!enNote}>
                 EN
