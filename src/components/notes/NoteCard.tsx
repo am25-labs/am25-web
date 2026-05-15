@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import type { NoteCardProps } from "@/types/domain";
@@ -15,6 +16,12 @@ export default function NoteCard({
   author,
 }: NoteCardProps) {
   const isExternal = href.startsWith("https");
+  const authorName = author
+    ? `${author.first_name} ${author.last_name}`.trim()
+    : "";
+  const authorInitials = author
+    ? `${author.first_name?.[0] ?? ""}${author.last_name?.[0] ?? ""}`.toUpperCase()
+    : "";
 
   return (
     <Link
@@ -52,13 +59,10 @@ export default function NoteCard({
 
           {author ? (
             <div className="flex items-center gap-3">
-              {author.avatar_url ? (
-                <img
-                  src={author.avatar_url}
-                  alt={`${author.first_name} ${author.last_name}`}
-                  className="size-8 rounded-full object-cover"
-                />
-              ) : null}
+              <Avatar>
+                <AvatarImage src={author.avatar_url ?? undefined} alt={authorName} />
+                <AvatarFallback>{authorInitials}</AvatarFallback>
+              </Avatar>
 
               <div>
                 <div className="font-bold">
