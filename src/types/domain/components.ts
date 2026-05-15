@@ -13,6 +13,11 @@ export interface Footer {
 }
 
 // Accordions
+export interface AccordionWrapItem {
+  label: string;
+  content: string;
+}
+
 export interface FaqItem {
   label: string;
   description: string;
