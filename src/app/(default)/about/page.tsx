@@ -34,7 +34,7 @@ export default async function AboutPage() {
       <GenericContent title={pageTitle} quote={entry.quote}>
         <ContentRenderer content={entry.description} />
 
-        <Link href="/branding">
+        <Link href="/brand">
           <AlertWrap className="mt-8" variant="info" title="Curious enough?">
             <p>Fine. Meet AM25 and see what we actually do.</p>
           </AlertWrap>
