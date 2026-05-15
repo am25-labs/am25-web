@@ -1,7 +1,7 @@
 import { revalidatePath } from "next/cache";
 import { NextResponse } from "next/server";
 import { isPlankPreviewSyncWebhookPayload } from "@plank-cms/client";
-import { setPreviewSyncState } from "@/lib/preview-sync-store";
+import { setPreviewSyncState } from "@/lib/plank/preview-sync-store";
 
 export async function POST(request: Request) {
   const body = await request.json().catch(() => null);

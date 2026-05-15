@@ -2,7 +2,6 @@ import type { FaqItem } from "./index";
 
 // Home
 export interface Home {
-  id: string;
   heading: string;
   description: string;
   quote: string;
@@ -15,7 +14,6 @@ export interface Service {
 
 // About
 export interface About {
-  id: string;
   quote: string;
   description: string;
   faq: FaqItem[];
@@ -23,7 +21,6 @@ export interface About {
 
 // Legales
 export interface LegalPage {
-  id: string;
   content: string;
   date?: string;
 }

@@ -1,5 +1,10 @@
 import type { Author } from "./index";
 
+// Footer
+export interface Footer {
+  claim: string;
+}
+
 // Accordions
 export interface FaqItem {
   label: string;

@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { getPreviewSyncState } from "@/lib/preview-sync-store";
+import { getPreviewSyncState } from "@/lib/plank/preview-sync-store";
 
 export async function GET(
   _request: Request,
