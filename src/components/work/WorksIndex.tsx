@@ -12,16 +12,22 @@ export default function WorksIndex({ works }: WorksIndexProps) {
       <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-4">
         {works.map((work) => {
           const { id, title, slug, cover, disciplines } = work;
+          const coverUrl = cover?.url;
+          const coverAlt = cover?.alt ?? title;
 
           return (
             <Link key={id} href={`/cases/${slug}`} className="block group/card">
               <div className="relative w-full aspect-[4/5] overflow-hidden">
-                <Image
-                  src={cover!.url}
-                  alt="Cover"
-                  fill
-                  className="object-cover group-hover/card:scale-110 transition-transform duration-200"
-                />
+                {coverUrl ? (
+                  <Image
+                    src={coverUrl}
+                    alt={coverAlt}
+                    fill
+                    className="object-cover group-hover/card:scale-110 transition-transform duration-200"
+                  />
+                ) : (
+                  <div className="h-full w-full bg-muted-foreground/10" />
+                )}
               </div>
 
               <div className="space-y-2 mt-2 mb-4">
@@ -29,9 +35,7 @@ export default function WorksIndex({ works }: WorksIndexProps) {
                   {title}
                 </h2>
                 <p className="text-muted-foreground text-sm">
-                  {Array.isArray(disciplines)
-                    ? disciplines.map((d) => d.title).join(", ")
-                    : disciplines}
+                  {disciplines.map((discipline) => discipline.title).join(", ")}
                 </p>
               </div>
             </Link>

@@ -29,15 +29,20 @@ export default function WorkGallery({
       )}
 
       {groups.map((group, groupIndex) => {
+        const firstImage = group[0];
         const pair = group.slice(1);
+
+        if (!firstImage) {
+          return null;
+        }
 
         return (
           <div key={groupIndex} className="col-span-full">
             <Image
-              src={group[0]!.url}
-              alt={group[0]!.alt ?? ""}
-              width={group[0]!.width ?? 0}
-              height={group[0]!.height ?? 0}
+              src={firstImage.url}
+              alt={firstImage.alt ?? ""}
+              width={firstImage.width ?? 1600}
+              height={firstImage.height ?? 1200}
               sizes="100vw"
               className="w-full h-auto object-contain"
             />
@@ -49,8 +54,8 @@ export default function WorkGallery({
                     key={image.id ?? i}
                     src={image.url}
                     alt={image.alt ?? ""}
-                    width={image.width ?? 0}
-                    height={image.height ?? 0}
+                    width={image.width ?? 1600}
+                    height={image.height ?? 1200}
                     sizes="100vw"
                     className="w-full h-auto object-contain"
                   />

@@ -7,7 +7,7 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 
-interface AlertWrapProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AlertWrapProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
   variant?: "default" | "info" | "success" | "warning" | "destructive";
   title?: React.ReactNode;
   icon?: React.ReactNode;

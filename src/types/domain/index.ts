@@ -4,5 +4,6 @@ export type { PlankListResponse, PlankParams } from "@plank-cms/client";
 
 export type * from "./components";
 export type * from "./content";
+export type * from "./forms";
 export type * from "./pages";
 export type * from "./navigation";

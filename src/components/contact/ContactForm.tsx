@@ -26,6 +26,7 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { emailRegex, nameRegex } from "@/lib/validation";
+import type { ContactFormMode } from "@/types/domain";
 
 const LANGUAGE_OPTIONS = ["Spanish", "English"];
 const SUBJECT_OPTIONS = [
@@ -40,8 +41,6 @@ const SERVICE_OPTIONS = [
   "Multimedia",
   "Outside our scope",
 ];
-
-type ContactFormMode = "general" | "services";
 
 interface ContactFormProps {
   mode: ContactFormMode;
