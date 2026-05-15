@@ -1,4 +1,8 @@
+import type { SimpleIcon } from "simple-icons";
 import type { Author } from "./index";
+import type { CustomIcon } from "@/icons/custom";
+
+export type BrandIconData = SimpleIcon | CustomIcon;
 
 // Grids
 export interface GridProps {
@@ -46,4 +50,10 @@ export interface LogoTileProps {
   logo: string;
   title: string;
   href?: string;
+}
+
+export interface BrandIconProps {
+  icon: BrandIconData;
+  size?: number;
+  "aria-label"?: string;
 }
