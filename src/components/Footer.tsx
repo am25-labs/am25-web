@@ -11,7 +11,7 @@ export default async function Footer() {
     <>
       <Separator />
 
-      <footer className="mx-auto w-full max-w-8xl px-4 py-32">
+      <footer className="mx-auto w-full max-w-8xl px-4 pt-32 pb-8">
         <div className="flex flex-col items-center gap-12">
           <h2 className="text-center text-3xl font-bold uppercase">
             {footer.claim}
@@ -50,6 +50,10 @@ export default async function Footer() {
               className="group-data-[variant=yellow]:brightness-0 group-data-[variant=light]:brightness-0"
             />
           </Link>
+
+          <p className="text-muted-foreground text-xs pt-16">
+            &copy; 2026 AM25
+          </p>
         </div>
       </footer>
     </>
