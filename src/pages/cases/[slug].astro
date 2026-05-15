@@ -1,9 +1,0 @@
----
-import WorkPage from "@/layouts/pages/WorkPage.astro";
-import { getSingleWork } from "@/lib/plank/fetch";
-
-const { slug } = Astro.params;
-const work = await getSingleWork(slug!);
----
-
-<WorkPage work={work} slug={slug!} />
