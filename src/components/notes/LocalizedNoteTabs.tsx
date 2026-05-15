@@ -77,7 +77,7 @@ export default function LocalizedNoteTabs({
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        {/* <div className="relative mb-4 aspect-square">
+        <div className="relative mb-4 aspect-square">
           {activeNote.cover ? (
             <img
               src={activeNote.cover.url}
@@ -85,7 +85,7 @@ export default function LocalizedNoteTabs({
               className="h-full w-full object-cover"
             />
           ) : null}
-        </div> */}
+        </div>
 
         <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <Tabs
