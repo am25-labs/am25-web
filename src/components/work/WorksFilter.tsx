@@ -24,7 +24,7 @@ export default function WorksFilter({ works }: WorksFilterProps) {
     new Map(
       works
         .flatMap((w) => (Array.isArray(w.disciplines) ? w.disciplines : []))
-        .map((d) => [d.name, d]),
+        .map((d) => [d.slug, d]),
     ).values(),
   );
 
@@ -34,7 +34,7 @@ export default function WorksFilter({ works }: WorksFilterProps) {
       : works.filter(
           (w) =>
             Array.isArray(w.disciplines) &&
-            w.disciplines.some((d) => d.name === active),
+            w.disciplines.some((d) => d.title === active),
         );
 
   const handleSelect = (value: string | null) => {
@@ -75,14 +75,14 @@ export default function WorksFilter({ works }: WorksFilterProps) {
             </button>
             {disciplines.map((d) => (
               <button
-                key={d.name}
-                onClick={() => handleSelect(d.name)}
+                key={d.id}
+                onClick={() => handleSelect(d.title)}
                 className={clsx(
                   "text-sm py-2 text-left",
-                  active === d.name ? "font-bold" : "text-muted-foreground",
+                  active === d.title ? "font-bold" : "text-muted-foreground",
                 )}
               >
-                {d.name}
+                {d.title}
               </button>
             ))}
           </div>
@@ -106,16 +106,16 @@ export default function WorksFilter({ works }: WorksFilterProps) {
             </button>
             {disciplines.map((d) => (
               <button
-                key={d.name}
-                onClick={() => setActive(d.name)}
+                key={d.id}
+                onClick={() => setActive(d.title)}
                 className={clsx(
                   "text-sm cursor-pointer",
-                  active === d.name
+                  active === d.title
                     ? "font-bold"
                     : "text-muted-foreground hover:text-foreground",
                 )}
               >
-                {d.name}
+                {d.title}
               </button>
             ))}
           </div>

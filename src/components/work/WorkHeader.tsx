@@ -1,27 +1,32 @@
 import Image from "next/image";
-import type { PlankMedia, RichContent } from "@/types/domain";
+import type { Work } from "@/types/domain";
 import ContentRenderer from "@/components/ContentRenderer";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 
 interface WorkHeaderProps {
-  title: string;
-  cover: PlankMedia;
-  video?: string;
-  description?: RichContent | null;
+  title: Work["title"];
+  cover: Work["cover"];
+  description?: Work["description"];
 }
 
 export default function WorkHeader({
   title,
   cover,
-  video,
   description,
 }: WorkHeaderProps) {
   return (
     <GridContainer>
       <div className="col-span-full">
         <div className="aspect-square relative md:aspect-video">
-          <Image src={cover.url} fill alt="Cover" className="object-cover" />
+          {cover && (
+            <Image
+              src={cover.url}
+              fill
+              alt={cover.alt ?? title}
+              className="object-cover w-full h-full"
+            />
+          )}
         </div>
       </div>
 

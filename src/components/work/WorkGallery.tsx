@@ -1,37 +1,29 @@
 import Image from "next/image";
-import type { MediaImage } from "@/types/domain";
+import type { PlankMediaGallery, Work } from "@/types/domain";
 import GridContainer from "../grids/GridContainer";
-import GridFour from "../grids/GridFour";
 
 interface WorkGalleryProps {
-  quote?: string;
-  imagesBefore?: MediaImage[];
-  imagesAfter?: MediaImage[];
+  images?: PlankMediaGallery | null;
+  quote?: Work["quote"];
 }
 
-export default function WorkGallery({
-  quote,
-  imagesBefore,
-  imagesAfter,
-}: WorkGalleryProps) {
-  const images = imagesBefore ?? imagesAfter ?? [];
+export default function WorkGallery({ images: rawImages, quote }: WorkGalleryProps) {
+  const images = rawImages ?? [];
 
-  const groups: MediaImage[][] = [];
+  const groups: PlankMediaGallery[] = [];
   for (let i = 0; i < images.length; i += 3) {
     groups.push(images.slice(i, i + 3));
   }
 
   return (
-    <GridContainer className="mt-0">
-      <div className="col-span-full">
-        {quote && (
-          <div className="py-8 md:py-16">
-            <blockquote className="text-lg md:text-xl text-center italic max-w-4xl mx-auto">
-              "{quote}"
-            </blockquote>
-          </div>
-        )}
-      </div>
+    <GridContainer className="mb-2">
+      {quote && (
+        <div className="col-span-full py-16">
+          <blockquote className="text-lg md:text-xl text-center italic max-w-4xl mx-auto">
+            "{quote}"
+          </blockquote>
+        </div>
+      )}
 
       {groups.map((group, groupIndex) => {
         const pair = group.slice(1);
@@ -39,10 +31,10 @@ export default function WorkGallery({
         return (
           <div key={groupIndex} className="col-span-full">
             <Image
-              src={group[0].url}
-              alt="project-image"
-              width={0}
-              height={0}
+              src={group[0]!.url}
+              alt={group[0]!.alt ?? ""}
+              width={group[0]!.width ?? 0}
+              height={group[0]!.height ?? 0}
               sizes="100vw"
               className="w-full h-auto object-contain"
             />
@@ -53,9 +45,9 @@ export default function WorkGallery({
                   <Image
                     key={image.id ?? i}
                     src={image.url}
-                    alt="project-image"
-                    width={0}
-                    height={0}
+                    alt={image.alt ?? ""}
+                    width={image.width ?? 0}
+                    height={image.height ?? 0}
                     sizes="100vw"
                     className="w-full h-auto object-contain"
                   />
@@ -66,26 +58,5 @@ export default function WorkGallery({
         );
       })}
     </GridContainer>
-
-    // <div className="w-full mb-2">
-
-    //   {groups.map((group, groupIndex) => {
-    //     const pair = group.slice(1);
-
-    //     return (
-    //       <div key={groupIndex} className="w-full">
-    //         <Image
-    //           src={group[0].url}
-    //           alt=""
-    //           width={0}
-    //           height={0}
-    //           sizes="100vw"
-    //           className="w-full h-auto object-contain"
-    //         />
-
-    //       </div>
-    //     );
-    //   })}
-    // </div>
   );
 }

@@ -1,5 +1,5 @@
 import WorksFilter from "@/components/work/WorksFilter";
-import { getWorks } from "@/lib/strapi/fetchCollection";
+import { getWorks } from "@/lib/plank/fetch";
 
 export default async function WorksPage() {
   const works = await getWorks();

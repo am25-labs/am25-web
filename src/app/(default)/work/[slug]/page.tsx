@@ -4,7 +4,7 @@ import WorkMeta from "@/components/work/WorkMeta";
 import { notFound } from "next/navigation";
 import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
-import { getSingleWork } from "@/lib/strapi/fetchCollection";
+import { getSingleWork } from "@/lib/plank/fetch";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -16,8 +16,7 @@ export async function generateMetadata({
   params,
 }: PageProps): Promise<Metadata> {
   const { slug } = await params;
-  const workResponse = await getSingleWork(slug);
-  const work = workResponse.data[0];
+  const work = await getSingleWork(slug);
 
   if (!work) {
     return baseMetadata;
@@ -29,7 +28,7 @@ export async function generateMetadata({
         url: `${cover.url}`,
         width: 1200,
         height: 630,
-        alt: cover.caption || title,
+        alt: title,
       }
     : undefined;
 
@@ -52,8 +51,7 @@ export async function generateMetadata({
 
 export default async function WorkPage({ params }: PageProps) {
   const { slug } = await params;
-  const workResponse = await getSingleWork(slug);
-  const work = workResponse.data[0];
+  const work = await getSingleWork(slug);
 
   if (!work) {
     notFound();
@@ -62,25 +60,23 @@ export default async function WorkPage({ params }: PageProps) {
   const {
     title,
     cover,
-    video,
     description,
     quote,
-    imagesBefore,
-    imagesAfter,
+    images_before,
+    images_after,
     client,
     campaign,
-    agency,
     country,
     creative,
     strategy,
-    lead,
+    lead_design,
     design,
-    copywriting,
+    copy,
     illustration,
     animation,
-    photography,
-    developer,
-    team,
+    photo,
+    develop,
+    work_team,
     disciplines,
   } = work;
 
@@ -88,31 +84,29 @@ export default async function WorkPage({ params }: PageProps) {
     <>
       <WorkHeader
         title={title}
-        cover={cover!}
-        video={video}
+        cover={cover}
         description={description}
       />
 
       <WorkMeta
         client={client}
         campaign={campaign}
-        agency={agency}
         country={country}
         creative={creative}
         strategy={strategy}
-        lead={lead}
+        lead_design={lead_design}
         design={design}
-        copywriting={copywriting}
+        copy={copy}
         illustration={illustration}
         animation={animation}
-        photography={photography}
-        developer={developer}
-        team={team}
+        photo={photo}
+        develop={develop}
+        work_team={work_team}
         disciplines={disciplines}
       />
 
-      <WorkGallery imagesBefore={imagesBefore} />
-      <WorkGallery quote={quote} imagesAfter={imagesAfter} />
+      <WorkGallery images={images_before} />
+      <WorkGallery quote={quote} images={images_after} />
     </>
   );
 }

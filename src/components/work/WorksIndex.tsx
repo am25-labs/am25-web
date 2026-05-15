@@ -1,4 +1,3 @@
-import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
 import type { Work } from "@/types/domain";
@@ -31,7 +30,7 @@ export default function WorksIndex({ works }: WorksIndexProps) {
                 </h2>
                 <p className="text-muted-foreground text-sm">
                   {Array.isArray(disciplines)
-                    ? disciplines.map((d) => d.name).join(", ")
+                    ? disciplines.map((d) => d.title).join(", ")
                     : disciplines}
                 </p>
               </div>

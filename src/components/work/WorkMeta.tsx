@@ -1,109 +1,87 @@
-"use client";
-
-import clsx from "clsx";
-import { useState } from "react";
-import type { Discipline } from "@/types/domain";
+import type { Work } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
+import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
 
 interface WorkMetaProps {
-  client?: string;
-  campaign?: string;
-  agency?: string;
-  country?: string;
-  creative?: string;
-  strategy?: string;
-  lead?: string;
-  design?: string;
-  copywriting?: string;
-  illustration?: string;
-  animation?: string;
-  photography?: string;
-  developer?: string;
-  team?: string;
-  disciplines?: Discipline[] | string;
+  client?: Work["client"];
+  campaign?: Work["campaign"];
+  country?: Work["country"];
+  creative?: Work["creative"];
+  strategy?: Work["strategy"];
+  lead_design?: Work["lead_design"];
+  design?: Work["design"];
+  copy?: Work["copy"];
+  illustration?: Work["illustration"];
+  animation?: Work["animation"];
+  photo?: Work["photo"];
+  develop?: Work["develop"];
+  work_team?: Work["work_team"];
+  disciplines?: Work["disciplines"] | string | null;
 }
 
 export default function WorkMeta({
   client,
   campaign,
-  agency,
   country,
   creative,
   strategy,
-  lead,
+  lead_design,
   design,
-  copywriting,
+  copy,
   illustration,
   animation,
-  photography,
-  developer,
-  team,
+  photo,
+  develop,
+  work_team,
   disciplines,
 }: WorkMetaProps) {
-  const [expanded, setExpanded] = useState(false);
-
-  const infoItems = [
+  const items = [
     { label: "Client", value: client },
     { label: "Campaign", value: campaign },
-    { label: "Agency", value: agency },
     { label: "Country", value: country },
     { label: "Creative", value: creative },
     { label: "Strategy", value: strategy },
-    { label: "Lead", value: lead },
+    { label: "Lead", value: lead_design },
     { label: "Design", value: design },
-    { label: "Copywriting", value: copywriting },
+    { label: "Copy", value: copy },
     { label: "Illustration", value: illustration },
     { label: "Animation", value: animation },
-    { label: "Photography", value: photography },
-    { label: "Developer", value: developer },
-    { label: "Team", value: team },
+    { label: "Photo", value: photo },
+    { label: "Develop", value: develop },
+    { label: "Team", value: work_team },
     {
       label: "Disciplines",
       value: Array.isArray(disciplines)
-        ? disciplines.map((d) => d.name).join(", ")
+        ? disciplines.map((d) => d.title).join(", ")
         : disciplines,
     },
-  ];
+  ].filter((item) => item.value);
+
+  if (items.length === 0) {
+    return null;
+  }
 
   return (
     <GridContainer className="my-0">
       <GridFour />
       <GridFour>
-        <div className="col-span-full">
-          {!expanded ? (
-            <button
-              className="mb-4 font-bold cursor-pointer"
-              onClick={() => setExpanded(true)}
-            >
-              More details
-            </button>
-          ) : (
-            <div className="flex flex-col gap-3">
-              {infoItems
-                .filter(
-                  (item) =>
-                    item.value !== undefined &&
-                    item.value !== null &&
-                    item.value !== "",
-                )
-                .map((item) => (
-                  <p key={item.label} className="border-b pb-3">
-                    <span className="font-bold uppercase mr-1">
-                      {item.label}:
-                    </span>
-                    {item.value}
-                  </p>
-                ))}
-
-              <button
-                className="my-4 font-bold cursor-pointer self-start"
-                onClick={() => setExpanded(false)}
-              >
-                Less details
-              </button>
-            </div>
-          )}
+        <div className="col-span-full my-8">
+          <Table>
+            <TableBody>
+              {items.map((item) => (
+                <TableRow
+                  key={item.label}
+                  className="group-data-[variant=yellow]:hover:bg-muted/10 group-data-[variant=light]:hover:bg-muted/10"
+                >
+                  <TableCell className="font-bold uppercase">
+                    {item.label}
+                  </TableCell>
+                  <TableCell>{item.value}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </div>
       </GridFour>
     </GridContainer>
