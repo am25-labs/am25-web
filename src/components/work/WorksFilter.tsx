@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/collapsible";
 import WorksIndex from "./WorksIndex";
 import type { Work, Discipline } from "@/types/domain";
-import GridContainer from "../grids/GridContainer";
+import GridContainer from "@/components/grids/GridContainer";
 
 interface WorksFilterProps {
   works: Work[];

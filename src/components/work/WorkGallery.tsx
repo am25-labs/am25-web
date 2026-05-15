@@ -1,13 +1,16 @@
 import Image from "next/image";
 import type { PlankMediaGallery, Work } from "@/types/domain";
-import GridContainer from "../grids/GridContainer";
+import GridContainer from "@/components/grids/GridContainer";
 
 interface WorkGalleryProps {
   images?: PlankMediaGallery | null;
   quote?: Work["quote"];
 }
 
-export default function WorkGallery({ images: rawImages, quote }: WorkGalleryProps) {
+export default function WorkGallery({
+  images: rawImages,
+  quote,
+}: WorkGalleryProps) {
   const images = rawImages ?? [];
 
   const groups: PlankMediaGallery[] = [];
