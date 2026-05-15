@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
-import { getSingleWork } from "@/lib/plank/fetch";
+import { getSingleWork, getWorks } from "@/lib/plank/fetch";
 import WorkGallery from "@/components/work/WorkGallery";
 import WorkHeader from "@/components/work/WorkHeader";
 import WorkMeta from "@/components/work/WorkMeta";
@@ -10,6 +10,11 @@ const baseUrl = process.env.BASE_URL;
 
 interface PageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const { data: works } = await getWorks();
+  return works.map((work) => ({ slug: work.slug }));
 }
 
 export async function generateMetadata({

@@ -2,12 +2,17 @@ import { notFound } from "next/navigation";
 import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
-import { getSingleNote } from "@/lib/plank/fetch";
+import { getNotes, getSingleNote } from "@/lib/plank/fetch";
 
 const baseUrl = process.env.BASE_URL;
 
 interface NotePageProps {
   params: Promise<{ slug: string }>;
+}
+
+export async function generateStaticParams() {
+  const { data: notes } = await getNotes();
+  return notes.map((note) => ({ slug: note.slug }));
 }
 
 export async function generateMetadata({

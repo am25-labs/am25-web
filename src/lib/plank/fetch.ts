@@ -9,29 +9,22 @@ import type {
   Footer,
 } from "@/types/domain";
 
-// TTL Cache
-const cache = new Map<string, { data: unknown; expiresAt: number }>();
-
-function withCache<T>(
-  key: string,
-  ttlMs: number,
-  fetcher: () => Promise<T>,
-): Promise<T> {
-  const cached = cache.get(key);
-  if (cached && Date.now() < cached.expiresAt)
-    return Promise.resolve(cached.data as T);
-  return fetcher().then((data) => {
-    cache.set(key, { data, expiresAt: Date.now() + ttlMs });
-    return data;
-  });
-}
-
 const SECOND = 1000;
 const MINUTE = 60 * SECOND;
 const HOUR = 60 * MINUTE;
 
 const TTL_GENERAL = 6 * HOUR;
 const TTL_NOTES = 5 * MINUTE;
+
+const CACHE_GENERAL_OPTIONS = {
+  cache: "force-cache",
+  revalidate: TTL_GENERAL / SECOND,
+} as const;
+
+const CACHE_NOTES_OPTIONS = {
+  cache: "force-cache",
+  revalidate: TTL_NOTES / SECOND,
+} as const;
 
 type LocaleOptions = {
   locale?: string;
@@ -41,25 +34,26 @@ const PREVIEW_FETCH_OPTIONS = { cache: "no-store" } as const;
 
 // CT: Works
 export async function getWorks({ onlyFeatured = false } = {}) {
-  const key = `works:${onlyFeatured}`;
-  return withCache(key, TTL_GENERAL, () =>
-    plank.collection<Work>("works").findMany({
+  return plank.collection<Work>("works").findMany(
+    {
       status: "published",
       sort: "date",
       order: "desc",
       ...(onlyFeatured && { filters: { featured: { eq: true } } }),
-    }),
+    },
+    CACHE_GENERAL_OPTIONS,
   );
 }
 
 export async function getSingleWork(slug: string) {
-  return withCache(`work:${slug}`, TTL_GENERAL, async () => {
-    const result = await plank.collection<Work>("works").findMany({
+  const result = await plank.collection<Work>("works").findMany(
+    {
       status: "published",
       filters: { slug: { eq: slug } },
-    });
-    return result.data[0];
-  });
+    },
+    CACHE_GENERAL_OPTIONS,
+  );
+  return result.data[0];
 }
 
 export async function getPreviewWork(slug: string) {
@@ -75,13 +69,14 @@ export async function getPreviewWork(slug: string) {
 
 // CT: Notes
 export async function getNotes({ locale }: LocaleOptions = {}) {
-  return withCache(`notes:${locale ?? "default"}`, TTL_NOTES, () =>
-    plank.collection<Note>("notes").findMany({
+  return plank.collection<Note>("notes").findMany(
+    {
       status: "published",
       sort: "published_at",
       order: "desc",
       ...(locale && { locale, fallback: "en" }),
-    }),
+    },
+    CACHE_NOTES_OPTIONS,
   );
 }
 
@@ -89,18 +84,15 @@ export async function getSingleNote(
   slug: string,
   { locale }: LocaleOptions = {},
 ) {
-  return withCache(
-    `note:${slug}:${locale ?? "default"}`,
-    TTL_NOTES,
-    async () => {
-      const result = await plank.collection<Note>("notes").findMany({
-        status: "published",
-        filters: { slug: { eq: slug } },
-        ...(locale && { locale, fallback: "en" }),
-      });
-      return result.data[0];
+  const result = await plank.collection<Note>("notes").findMany(
+    {
+      status: "published",
+      filters: { slug: { eq: slug } },
+      ...(locale && { locale, fallback: "en" }),
     },
+    CACHE_NOTES_OPTIONS,
   );
+  return result.data[0];
 }
 
 export async function getPreviewNote(
@@ -120,8 +112,9 @@ export async function getPreviewNote(
 
 // ST: Navigation
 async function getNavigation() {
-  return withCache("single:navigation", TTL_GENERAL, () =>
-    plank.single<Navigation>("navigation").find(),
+  return plank.single<Navigation>("navigation").find(
+    undefined,
+    CACHE_GENERAL_OPTIONS,
   );
 }
 
@@ -137,27 +130,31 @@ export async function getFooterNav() {
 
 // Home
 export async function getHome() {
-  return await plank.single<Home>("home").find();
+  return plank.single<Home>("home").find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 // About
 export async function getAbout(): Promise<About> {
-  return await plank.single<About>("about").find();
+  return plank.single<About>("about").find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 // Legals
 export async function getPrivacy() {
-  return await plank.single<LegalPage>("privacy").find();
+  return plank
+    .single<LegalPage>("privacy")
+    .find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getTerms() {
-  return await plank.single<LegalPage>("terms").find();
+  return plank.single<LegalPage>("terms").find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getCopyright() {
-  return await plank.single<LegalPage>("copyright").find();
+  return plank
+    .single<LegalPage>("copyright")
+    .find(undefined, CACHE_GENERAL_OPTIONS);
 }
 
 export async function getFooter() {
-  return await plank.single<Footer>("footer").find();
+  return plank.single<Footer>("footer").find(undefined, CACHE_GENERAL_OPTIONS);
 }
