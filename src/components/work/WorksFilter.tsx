@@ -1,25 +1,14 @@
 "use client";
 
-import { useState } from "react";
-import clsx from "clsx";
-import { ChevronDownIcon } from "lucide-react";
-import {
-  Collapsible,
-  CollapsibleContent,
-  CollapsibleTrigger,
-} from "@/components/ui/collapsible";
 import WorksIndex from "./WorksIndex";
 import type { Work, Discipline } from "@/types/domain";
-import GridContainer from "@/components/grids/GridContainer";
+import ContentFilter from "@/components/ContentFilter";
 
 interface WorksFilterProps {
   works: Work[];
 }
 
 export default function WorksFilter({ works }: WorksFilterProps) {
-  const [active, setActive] = useState<string | null>(null);
-  const [open, setOpen] = useState(false);
-
   const disciplines: Discipline[] = Array.from(
     new Map(
       works
@@ -28,101 +17,21 @@ export default function WorksFilter({ works }: WorksFilterProps) {
     ).values(),
   );
 
-  const filtered =
-    active === null
-      ? works
-      : works.filter(
-          (w) =>
-            Array.isArray(w.disciplines) &&
-            w.disciplines.some((d) => d.title === active),
-        );
-
-  const handleSelect = (value: string | null) => {
-    setActive(value);
-    setOpen(false);
-  };
-
-  const activeLabel = active ?? "ALL";
-
   return (
-    <>
-      <GridContainer>
-        <div className="col-span-full">
-          <h1 className="text-3xl md:text-4xl font-bold uppercase">Work</h1>
-        </div>
-      </GridContainer>
-
-      {/* Mobile */}
-      <Collapsible
-        open={open}
-        onOpenChange={setOpen}
-        className="md:hidden border-b"
-      >
-        <CollapsibleTrigger className="w-full flex items-center justify-between px-5 py-3">
-          <span className="text-sm uppercase font-bold">{activeLabel}</span>
-          <ChevronDownIcon className={clsx("size-4", open && "rotate-180")} />
-        </CollapsibleTrigger>
-        <CollapsibleContent className="border-t">
-          <div className="flex flex-col px-5 py-2">
-            <button
-              onClick={() => handleSelect(null)}
-              className={clsx(
-                "text-sm py-2 text-left",
-                active === null ? "font-bold" : "text-muted-foreground",
-              )}
-            >
-              ALL
-            </button>
-            {disciplines.map((d) => (
-              <button
-                key={d.id}
-                onClick={() => handleSelect(d.title)}
-                className={clsx(
-                  "text-sm py-2 text-left",
-                  active === d.title ? "font-bold" : "text-muted-foreground",
-                )}
-              >
-                {d.title}
-              </button>
-            ))}
-          </div>
-        </CollapsibleContent>
-      </Collapsible>
-
-      {/* Desktop */}
-      <GridContainer className="hidden md:block my-0">
-        <div className="col-span-full border-t">
-          <div className="w-full mx-auto flex flex-wrap items-center gap-6 py-4">
-            <button
-              onClick={() => setActive(null)}
-              className={clsx(
-                "text-sm uppercase cursor-pointer",
-                active === null
-                  ? "font-bold"
-                  : "text-muted-foreground hover:text-foreground",
-              )}
-            >
-              All
-            </button>
-            {disciplines.map((d) => (
-              <button
-                key={d.id}
-                onClick={() => setActive(d.title)}
-                className={clsx(
-                  "text-sm cursor-pointer",
-                  active === d.title
-                    ? "font-bold"
-                    : "text-muted-foreground hover:text-foreground",
-                )}
-              >
-                {d.title}
-              </button>
-            ))}
-          </div>
-        </div>
-      </GridContainer>
-
-      <WorksIndex key={active ?? "all"} works={filtered} />
-    </>
+    <ContentFilter
+      title="Work"
+      options={disciplines.map((discipline) => ({
+        id: discipline.id,
+        label: discipline.title,
+        value: discipline.title,
+      }))}
+      items={works}
+      matches={(work, active) =>
+        active === null ||
+        work.disciplines.some((discipline) => discipline.title === active)
+      }
+    >
+      {(filteredWorks) => <WorksIndex works={filteredWorks} />}
+    </ContentFilter>
   );
 }
