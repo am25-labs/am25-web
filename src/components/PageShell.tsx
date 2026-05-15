@@ -1,4 +1,4 @@
-import Header from "@/components/header/Header";
+// import Header from "@/components/header/Header";
 import Footer from "@/components/Footer";
 import { TooltipProvider } from "@/components/ui/tooltip";
 
@@ -19,7 +19,7 @@ export default function PageShell({
         data-variant={variant}
         className="group min-h-screen flex flex-col bg-background text-foreground"
       >
-        <Header />
+        {/* <Header /> */}
         <main className="max-w-8xl mx-auto w-full flex-1">{children}</main>
         <Footer />
       </div>
