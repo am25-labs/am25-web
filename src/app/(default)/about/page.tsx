@@ -1,8 +1,14 @@
+import ContentRenderer from "@/components/ContentRenderer";
+import Faq from "@/components/about/Faq";
+import GenericContent from "@/components/GenericContent";
+import { AlertWrap } from "@/components/ui/custom/AlertWrap";
 import { baseMetadata } from "@/lib/metadata";
+import { getAbout } from "@/lib/plank/fetch";
 import type { Metadata } from "next";
+import Link from "next/link";
 
 const baseUrl = process.env.BASE_URL;
-const pageTitle = "About";
+const pageTitle = "About Us";
 
 export function generateMetadata(): Metadata {
   return {
@@ -20,10 +26,22 @@ export function generateMetadata(): Metadata {
   };
 }
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const entry = await getAbout();
+
   return (
-    <main className="mx-auto w-full max-w-8xl px-4 py-8">
-      <h1 className="text-3xl font-bold uppercase md:text-4xl">{pageTitle}</h1>
-    </main>
+    <>
+      <GenericContent title={pageTitle} quote={entry.quote}>
+        <ContentRenderer content={entry.description} />
+
+        <Link href="/branding">
+          <AlertWrap className="mt-8" variant="info" title="Curious enough?">
+            <p>Fine. Meet AM25 and see what we actually do.</p>
+          </AlertWrap>
+        </Link>
+      </GenericContent>
+
+      <Faq items={entry.faq} />
+    </>
   );
 }
