@@ -1,4 +1,4 @@
-import type { PodcastLink } from "@/lib/types";
+import type { PodcastLink } from "@/types/domain";
 import { getGlobals } from "@/lib/strapi/fetchSingle";
 
 export async function getPodcastLinks(): Promise<PodcastLink[]> {

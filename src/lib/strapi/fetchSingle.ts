@@ -5,7 +5,7 @@ import type {
   Home,
   Privacy,
   StrapiResponse,
-} from "@/lib/types";
+} from "@/types/domain";
 import {
   getAboutContent,
   getCopyrightContent,

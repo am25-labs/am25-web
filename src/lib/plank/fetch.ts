@@ -11,7 +11,7 @@ import type {
   Privacy,
   Project,
   Work,
-} from "@/lib/types";
+} from "@/types/domain";
 
 interface PlankSingle<T> {
   status?: string;
@@ -302,13 +302,15 @@ export async function getCopyrightContent(): Promise<Copyright> {
 }
 
 export async function getProjectsContent(): Promise<Project[]> {
-  const { data } = await plank.collection<PlankProjectEntry>("projects").findMany(
-    {
-      sort: "year",
-      order: "asc",
-    },
-    publishedCache,
-  );
+  const { data } = await plank
+    .collection<PlankProjectEntry>("projects")
+    .findMany(
+      {
+        sort: "year",
+        order: "asc",
+      },
+      publishedCache,
+    );
 
   return data.map((entry) => ({
     id: entry.id,
@@ -320,13 +322,15 @@ export async function getProjectsContent(): Promise<Project[]> {
 }
 
 export async function getDesktopObjectsContent(): Promise<DesktopObj[]> {
-  const { data } = await plank.collection<PlankDesktopEntry>("desktop").findMany(
-    {
-      sort: "title",
-      order: "asc",
-    },
-    publishedCache,
-  );
+  const { data } = await plank
+    .collection<PlankDesktopEntry>("desktop")
+    .findMany(
+      {
+        sort: "title",
+        order: "asc",
+      },
+      publishedCache,
+    );
 
   return data.map((entry) => ({
     id: entry.id,

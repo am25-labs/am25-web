@@ -1,4 +1,4 @@
-import type { NavLink } from "@/lib/types";
+import type { NavLink } from "@/types/domain";
 
 export const getLeftNavLinks = (pathname: string): NavLink[] =>
   [

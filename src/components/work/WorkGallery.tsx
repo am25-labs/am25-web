@@ -1,5 +1,5 @@
 import Image from "next/image";
-import type { MediaImage } from "@/lib/types";
+import type { MediaImage } from "@/types/domain";
 import GridContainer from "../grids/GridContainer";
 import GridFour from "../grids/GridFour";
 

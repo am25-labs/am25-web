@@ -1,7 +1,7 @@
 import clsx from "clsx";
 import Link from "next/link";
 import Image from "next/image";
-import type { Work } from "@/lib/types";
+import type { Work } from "@/types/domain";
 
 interface WorksIndexProps {
   works: Work[];

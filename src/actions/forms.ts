@@ -1,6 +1,6 @@
 "use server";
 
-import type { ContactFormData, ActionResult } from "@/lib/types";
+import type { ContactFormData, ActionResult } from "@/types/domain";
 
 export async function submitContactForm(
   formData: ContactFormData,

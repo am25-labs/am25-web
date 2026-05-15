@@ -9,7 +9,7 @@ import {
   CollapsibleTrigger,
 } from "@/components/ui/collapsible";
 import WorksIndex from "./WorksIndex";
-import type { Work, Discipline } from "@/lib/types";
+import type { Work, Discipline } from "@/types/domain";
 import GridContainer from "../grids/GridContainer";
 
 interface WorksFilterProps {

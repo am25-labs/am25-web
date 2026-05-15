@@ -1,4 +1,4 @@
-import type { DesktopObj, Project, StrapiResponse, Work } from "@/lib/types";
+import type { DesktopObj, Project, StrapiResponse, Work } from "@/types/domain";
 import {
   getDesktopObjectsContent,
   getProjectsContent,

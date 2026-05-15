@@ -5,7 +5,7 @@ import clsx from "clsx";
 import { InfoIcon, QuoteIcon, ArrowUpRightIcon } from "lucide-react";
 import YouTubeEmbed from "./embeds/YouTubeEmbeds";
 import VimeoEmbed from "./embeds/VimeoEmbed";
-import type { RichTextBlock, RichTextInlineNode } from "@/lib/types";
+import type { RichTextBlock, RichTextInlineNode } from "@/types/domain";
 
 const headingClasses: Record<number, string> = {
   1: "text-4xl md:text-5xl font-bold leading-tight uppercase pt-5",

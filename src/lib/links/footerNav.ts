@@ -1,4 +1,4 @@
-import type { FooterLink } from "@/lib/types";
+import type { FooterLink } from "@/types/domain";
 
 export const getFooterLinks = (): FooterLink[] =>
   [

@@ -9,7 +9,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import ContentRenderer from "@/components/ContentRenderer";
-import type { DesktopObj } from "@/lib/types";
+import type { DesktopObj } from "@/types/domain";
 
 const CELL_SPANS: Record<string, string> = {
   "1:1": "col-span-1 row-span-1",

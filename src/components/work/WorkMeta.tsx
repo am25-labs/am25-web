@@ -2,7 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
-import type { Discipline } from "@/lib/types";
+import type { Discipline } from "@/types/domain";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 

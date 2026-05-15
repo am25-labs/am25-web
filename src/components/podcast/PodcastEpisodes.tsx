@@ -4,7 +4,7 @@ import { useSearchParams, useRouter } from "next/navigation";
 import { useCurrentEpisode } from "@/hooks/podcast/useEpisodeProvider";
 import clsx from "clsx";
 import { MicIcon, CalendarIcon } from "lucide-react";
-import type { PodcastEpisode } from "@/lib/types";
+import type { PodcastEpisode } from "@/types/domain";
 
 interface PodcastEpisodesProps {
   episodes: PodcastEpisode[];
