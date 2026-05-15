@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import PageShell from "@/components/PageShell";
 import PreviewAutoRefresh from "@/components/PreviewAutoRefresh";
 import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
 import WorkGallery from "@/components/work/WorkGallery";
@@ -15,7 +16,7 @@ async function renderWorkDraftPreview(slug: string) {
   }
 
   return (
-    <>
+    <PageShell>
       <PreviewAutoRefresh contentType="works" slug={slug} />
 
       <WorkHeader
@@ -43,7 +44,7 @@ async function renderWorkDraftPreview(slug: string) {
 
       <WorkGallery images={work.images_before} />
       <WorkGallery quote={work.quote} images={work.images_after} />
-    </>
+    </PageShell>
   );
 }
 
@@ -62,10 +63,10 @@ async function renderNoteDraftPreview(slug: string) {
   }
 
   return (
-    <>
+    <PageShell>
       <PreviewAutoRefresh contentType="notes" slug={slug} />
       <LocalizedNoteTabs enNote={enNote} esNote={esNote} />
-    </>
+    </PageShell>
   );
 }
 

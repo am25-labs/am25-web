@@ -66,7 +66,7 @@ export default function WorkMeta({
     <GridContainer className="my-0">
       <GridFour />
       <GridFour>
-        <div className="col-span-full my-8">
+        <div className="col-span-full mt-4 mb-8">
           <Table>
             <TableBody>
               {items.map((item) => (
