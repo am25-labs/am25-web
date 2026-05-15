@@ -86,7 +86,7 @@ export default function ContentFilter<T>({
       </Collapsible>
 
       <GridContainer className="my-0 hidden md:block">
-        <div className="col-span-full border-t">
+        <div className="col-span-full border-b">
           <div className="mx-auto flex w-full flex-wrap items-center gap-6 py-4">
             <button
               onClick={() => setActive(null)}

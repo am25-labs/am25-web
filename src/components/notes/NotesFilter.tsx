@@ -48,14 +48,16 @@ export default function NotesFilter({ entries, baseHref }: NotesFilterProps) {
       }
     >
       {(filteredEntries) => (
-        <GridContainer className="pt-4 pb-8">
+        <GridContainer className="mt-4 pb-8">
           {filteredEntries.map((entry) => (
             <div key={entry.id} className="col-span-2">
               <NoteCard
                 cover={entry.cover}
                 title={entry.title}
                 href={`${baseHref}/${entry.slug}`}
-                category={entry.categories.map((category) => category.title).join(", ")}
+                category={entry.categories
+                  .map((category) => category.title)
+                  .join(", ")}
                 publishedAt={entry.publishedAt}
                 author={entry.author}
               />
