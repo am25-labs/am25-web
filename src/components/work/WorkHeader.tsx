@@ -1,12 +1,12 @@
 import Image from "next/image";
-import type { MediaImage, RichContent } from "@/types/domain";
+import type { PlankMedia, RichContent } from "@/types/domain";
 import ContentRenderer from "@/components/ContentRenderer";
 import GridContainer from "@/components/grids/GridContainer";
 import GridFour from "@/components/grids/GridFour";
 
 interface WorkHeaderProps {
   title: string;
-  cover: MediaImage;
+  cover: PlankMedia;
   video?: string;
   description?: RichContent | null;
 }
