@@ -14,9 +14,9 @@ const nextConfig: NextConfig = {
               "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://analytics.alemartir.com https://challenges.cloudflare.com https://static.cloudflareinsights.com",
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
-              "img-src 'self' data: blob: https://cms.alemartir.com https://cdn.alemartir.com https://d3t3ozftmdmh3i.cloudfront.net",
-              "connect-src 'self' https://cms.alemartir.com https://cdn.alemartir.com https://analytics.alemartir.com https://challenges.cloudflare.com https://cloudflareinsights.com https://podcasters.alemartir.com https://anchor.fm",
-              "media-src 'self' blob: https://podcasters.alemartir.com https://anchor.fm https://d3ctxlq1ktw2nl.cloudfront.net",
+              "img-src 'self' data: blob: https://cms.am25.app https://cdn.am25.app https://d3t3ozftmdmh3i.cloudfront.net",
+              "connect-src 'self' https://cms.am25.app https://cdn.am25.app https://analytics.alemartir.com https://challenges.cloudflare.com https://cloudflareinsight",
+              "media-src 'self'",
               "frame-src https://challenges.cloudflare.com https://www.youtube.com https://player.vimeo.com",
               "object-src 'none'",
               "base-uri 'self'",
@@ -40,17 +40,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "https",
-        hostname: "cms.alemartir.com",
+        hostname: "cms.am25.app",
         pathname: "/**",
       },
       {
         protocol: "https",
-        hostname: "cdn.alemartir.com",
-        pathname: "/**",
-      },
-      {
-        protocol: "https",
-        hostname: "d3t3ozftmdmh3i.cloudfront.net",
+        hostname: "cdn.am25.app",
         pathname: "/**",
       },
     ],
