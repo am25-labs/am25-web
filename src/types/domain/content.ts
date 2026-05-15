@@ -12,6 +12,7 @@ export interface Author {
   job_title: string | null;
   organization: string | null;
   country: string | null;
+  slug?: string | null;
 }
 
 // Works

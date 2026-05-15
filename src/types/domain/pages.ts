@@ -20,3 +20,10 @@ export interface About {
   description: string;
   faq: FaqItem[];
 }
+
+// Legales
+export interface LegalPage {
+  id: string;
+  content: string;
+  date?: string;
+}

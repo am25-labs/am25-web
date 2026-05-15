@@ -43,7 +43,7 @@ export async function renderDraftPreview(
         illustration={work.illustration}
         animation={work.animation}
         photography={work.photography}
-        developer={work.developer}
+        develop={work.developer}
         team={work.team}
         disciplines={work.disciplines}
       />
