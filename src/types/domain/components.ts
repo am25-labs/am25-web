@@ -1,5 +1,12 @@
 import type { Author } from "./index";
 
+// Grids
+export interface GridProps {
+  className?: string;
+  gap?: string;
+  children?: React.ReactNode;
+}
+
 // Footer
 export interface Footer {
   claim: string;
