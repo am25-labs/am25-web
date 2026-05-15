@@ -17,7 +17,7 @@ export default async function FeaturedWork() {
               Featured work
             </h2>
             <Link
-              href="/branding"
+              href="/brand"
               className="flex items-center text-sm font-bold uppercase text-muted-foreground hover:underline group-data-[variant=yellow]:text-black"
             >
               OUR BRANDING
