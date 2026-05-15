@@ -1,0 +1,4 @@
+Contact: mailto:security@am25.work
+Expires: 2027-04-06T00:00:00Z
+Canonical: https://alemartir.com/.well-known/security.txt
+Preferred-Languages: es, en
