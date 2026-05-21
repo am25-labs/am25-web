@@ -10,7 +10,7 @@ export default function Hero({ heading, description }: HeroProps) {
     <GridContainer className="min-h-dvh mt-4 md:-mt-32 md:items-center">
       <div className="col-span-full space-y-8">
         <div className="mx-auto w-full max-w-8xl">
-          <h2 className="whitespace-pre-line text-6xl font-bold uppercase md:text-center md:text-7xl xl:text-9xl">
+          <h2 className="whitespace-pre-line text-6xl md:text-9xl 2xl:text-[10rem] font-bold uppercase md:text-center">
             {heading}
           </h2>
         </div>

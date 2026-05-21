@@ -6,6 +6,7 @@ import { baseMetadata } from "@/lib/metadata";
 import { getAbout } from "@/lib/plank/fetch";
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Separator } from "@/components/ui/separator";
 
 const baseUrl = process.env.BASE_URL;
 const pageTitle = "About us";
@@ -40,6 +41,8 @@ export default async function AboutPage() {
           </AlertWrap>
         </Link>
       </GenericContent>
+
+      <Separator />
 
       <Faq items={entry.faq} />
     </>

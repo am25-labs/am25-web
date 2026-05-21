@@ -15,10 +15,10 @@ export default function Faq({ items }: FaqProps) {
   }));
 
   return (
-    <GridContainer className="pb-16">
+    <GridContainer className="mt-4 pb-16">
       <GridTwo>
         <span className="col-span-full">
-          <h2 className="text-sm font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
+          <h2 className="font-bold uppercase text-muted-foreground group-data-[variant=yellow]:text-black">
             Studio FAQs
           </h2>
         </span>
