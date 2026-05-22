@@ -1,5 +1,6 @@
 import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
+import PageContainer from "@/components/PageContainer";
 import NotesFilter from "@/components/notes/NotesFilter";
 import { getNotes } from "@/lib/plank/fetch";
 
@@ -36,11 +37,13 @@ export default async function NotesPage() {
 
   return (
     <>
-      <div className="col-span-full mb-16 px-4">
-        <h1 className="text-6xl font-bold uppercase md:text-9xl">
-          {pageTitle}
-        </h1>
-      </div>
+      <PageContainer>
+        <div className="col-span-full mb-16 px-4">
+          <h1 className="text-6xl font-bold uppercase md:text-9xl">
+            {pageTitle}
+          </h1>
+        </div>
+      </PageContainer>
 
       {entries.length > 0 ? (
         <NotesFilter entries={entries} baseHref="/notes" />

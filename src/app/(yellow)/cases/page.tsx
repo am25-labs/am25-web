@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { baseMetadata } from "@/lib/metadata";
+import PageContainer from "@/components/PageContainer";
 import CasesFilter from "@/components/work/CasesFilter";
 import { getWorks } from "@/lib/plank/fetch";
 
@@ -27,9 +28,13 @@ export default async function CasesPage() {
 
   return (
     <>
-      <div className="col-span-full mb-16 px-4">
-        <h1 className="text-6xl font-bold uppercase md:text-9xl">{pageTitle}</h1>
-      </div>
+      <PageContainer>
+        <div className="col-span-full mb-16 px-4">
+          <h1 className="text-6xl font-bold uppercase md:text-9xl">
+            {pageTitle}
+          </h1>
+        </div>
+      </PageContainer>
 
       {works.length > 0 ? <CasesFilter works={works} /> : null}
     </>

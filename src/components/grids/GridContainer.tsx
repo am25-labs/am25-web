@@ -1,3 +1,4 @@
+import PageContainer from "@/components/PageContainer";
 import { cn } from "@/lib/utils";
 import type { GridProps } from "@/types/domain";
 
@@ -7,14 +8,16 @@ export default function GridContainer({
   children,
 }: GridProps) {
   return (
-    <section
-      className={cn(
-        "grid grid-cols-2 md:grid-cols-8 px-4 mb-8",
-        gap,
-        className,
-      )}
-    >
-      {children}
-    </section>
+    <PageContainer>
+      <section
+        className={cn(
+          "grid grid-cols-2 md:grid-cols-8 px-4 mb-8",
+          gap,
+          className,
+        )}
+      >
+        {children}
+      </section>
+    </PageContainer>
   );
 }

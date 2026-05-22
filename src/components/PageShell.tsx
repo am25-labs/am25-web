@@ -20,7 +20,7 @@ export default function PageShell({
         className="group min-h-screen flex flex-col bg-background text-foreground"
       >
         <Header />
-        <main className="max-w-8xl mx-auto w-full flex-1">{children}</main>
+        <main className="w-full flex-1">{children}</main>
         <Footer />
       </div>
     </TooltipProvider>
