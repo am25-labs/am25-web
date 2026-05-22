@@ -7,7 +7,10 @@ import {
   TriangleAlertIcon,
 } from "lucide-react";
 
-interface AlertWrapProps extends Omit<React.HTMLAttributes<HTMLDivElement>, "title"> {
+interface AlertWrapProps extends Omit<
+  React.HTMLAttributes<HTMLDivElement>,
+  "title"
+> {
   variant?: "default" | "info" | "success" | "warning" | "destructive";
   title?: React.ReactNode;
   icon?: React.ReactNode;
@@ -48,7 +51,7 @@ export function AlertWrap({
       data-slot="alert"
       role="alert"
       className={cn(
-        "relative grid w-full grid-cols-[calc(var(--spacing)*4)_1fr] items-start gap-x-3 gap-y-0.5 rounded-lg border px-4 py-3 text-sm [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
+        "relative grid w-full grid-cols-[calc(var(--spacing)*4)_1fr] items-start gap-x-3 gap-y-0.5 rounded-lg border-none px-4 py-3 text-sm [&>svg]:size-4 [&>svg]:translate-y-0.5 [&>svg]:text-current",
         variantStyles[variant],
         className,
       )}
