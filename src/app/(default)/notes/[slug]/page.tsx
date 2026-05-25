@@ -3,6 +3,7 @@ import { baseMetadata } from "@/lib/metadata";
 import type { Metadata } from "next";
 import LocalizedNoteTabs from "@/components/notes/LocalizedNoteTabs";
 import { getNotes, getSingleNote } from "@/lib/plank/fetch";
+import PageContainer from "@/components/PageContainer";
 
 const baseUrl = process.env.BASE_URL;
 
@@ -62,5 +63,9 @@ export default async function NotePage({ params }: NotePageProps) {
     notFound();
   }
 
-  return <LocalizedNoteTabs enNote={enNote} esNote={esNote} />;
+  return (
+    <PageContainer>
+      <LocalizedNoteTabs enNote={enNote} esNote={esNote} />
+    </PageContainer>
+  );
 }
