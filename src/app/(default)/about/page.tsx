@@ -33,6 +33,12 @@ export default async function AboutPage() {
   return (
     <>
       <GenericContent title={pageTitle} quote={entry.quote}>
+        <img
+          src={entry.profile.url}
+          alt={entry.profile.alt ?? pageTitle}
+          className="h-auto w-full object-cover mb-8"
+        />
+
         <ContentRenderer content={entry.description} />
 
         <Link href="/brand">

@@ -1,4 +1,4 @@
-import type { FaqItem } from "./index";
+import type { PlankMedia, FaqItem } from "./index";
 
 // Home
 export interface Home {
@@ -15,6 +15,7 @@ export interface Service {
 // About
 export interface About {
   quote: string;
+  profile: PlankMedia;
   description: string;
   faq: FaqItem[];
 }
