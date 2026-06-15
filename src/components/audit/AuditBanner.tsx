@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { Dialog } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { SendIcon } from "lucide-react";
+import { ScanSearchIcon } from "lucide-react";
 import { AuditForm } from "./AuditForm";
 
 export function AuditBanner() {
@@ -37,7 +37,7 @@ export function AuditBanner() {
               size="lg"
               className="rounded-full font-bold uppercase"
             >
-              <SendIcon />
+              <ScanSearchIcon />
               <span>Start Now</span>
             </Button>
           </div>
