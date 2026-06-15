@@ -19,3 +19,17 @@ export interface ServicesContactPayload extends ContactBasePayload {
 export interface TurnstileVerificationResponse {
   success: boolean;
 }
+
+export interface AuditFormData {
+  name: string;
+  email: string;
+  brand: string;
+  website: string;
+  instagram: string;
+  sector: string;
+  offer: string;
+  audience: string;
+  problem: string;
+  goal: string;
+  language: string;
+}

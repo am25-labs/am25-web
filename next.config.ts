@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
               "style-src 'self' 'unsafe-inline'",
               "font-src 'self' data:",
               "img-src 'self' data: blob: https://cms.am25.app https://cdn.am25.app https://d3t3ozftmdmh3i.cloudfront.net",
-              "connect-src 'self' https://cms.am25.app https://cdn.am25.app https://analytics.alemartir.com https://challenges.cloudflare.com https://cloudflareinsight",
+              "connect-src 'self' https://cms.am25.app https://cdn.am25.app https://analytics.alemartir.com https://challenges.cloudflare.com https://cloudflareinsight https://n8n.am25.app",
               "media-src 'self'",
               "frame-src https://challenges.cloudflare.com https://www.youtube.com https://player.vimeo.com",
               "object-src 'none'",

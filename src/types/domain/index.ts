@@ -7,3 +7,4 @@ export type * from "./content";
 export type * from "./forms";
 export type * from "./pages";
 export type * from "./navigation";
+export type * from "./audit";
