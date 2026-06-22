@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { AuditResult } from "./AuditResult";
+import TurnstileWrap from "@/components/contact/Turnstile";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -18,7 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScanSearchIcon } from "lucide-react";
-import type { AuditFormData, AuditResponse } from "@/types/domain";
+import type { AuditFormPayload, AuditResponse } from "@/types/domain";
 
 interface AuditFormProps {
   onClose?: () => void;
@@ -28,6 +29,7 @@ interface AuditFormProps {
 export function AuditForm({ onClose, resetKey }: AuditFormProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [language, setLanguage] = useState<"en" | "es">("en");
+  const [captchaToken, setCaptchaToken] = useState("");
   const [result, setResult] = useState<AuditResponse | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
@@ -38,7 +40,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
     try {
       const formData = new FormData(e.currentTarget);
-      const data: AuditFormData = {
+      const data: AuditFormPayload = {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
         brand: formData.get("brand") as string,
@@ -50,6 +52,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
         problem: formData.get("problem") as string,
         goal: formData.get("goal") as string,
         language,
+        token: captchaToken,
       };
 
       const response = await fetch("/api/audit", {
@@ -64,6 +67,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
       if (response.ok) {
         setResult(result);
+        setCaptchaToken("");
         formRef.current?.reset();
       }
     } catch (error) {
@@ -75,6 +79,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
   useEffect(() => {
     setResult(null);
+    setCaptchaToken("");
     formRef.current?.reset();
   }, [resetKey]);
 
@@ -213,10 +218,16 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
             />
           </div>
 
+          <TurnstileWrap
+            key={resetKey}
+            onVerify={setCaptchaToken}
+            onExpire={() => setCaptchaToken("")}
+          />
+
           <Button
             type="submit"
-            disabled={isLoading}
-            className="w-full font-bold uppercase rounded-full"
+            disabled={isLoading || !captchaToken}
+            className="w-full rounded-full font-bold uppercase"
           >
             <ScanSearchIcon />
             {isLoading ? "Auditing..." : "Start Audit"}

@@ -33,3 +33,7 @@ export interface AuditFormData {
   goal: string;
   language: string;
 }
+
+export interface AuditFormPayload extends AuditFormData {
+  token: string;
+}
