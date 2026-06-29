@@ -1,3 +1,5 @@
+import type { AuditFormData } from "./forms";
+
 export type AuditLanguage = "es" | "en";
 
 export type AuditLead = {
@@ -27,4 +29,9 @@ export type AuditResponse = {
   ok: true;
   lead: AuditLead;
   diagnosis: AuditDiagnosis;
+};
+
+export type AuditLeadRequest = {
+  form: AuditFormData;
+  audit: AuditResponse;
 };

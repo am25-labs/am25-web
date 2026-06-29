@@ -1,42 +1,43 @@
 "use client";
 
 import { useState } from "react";
-import { CopyIcon, CheckIcon } from "lucide-react";
+import { CheckIcon, SendIcon } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import type { AuditResponse } from "@/types/domain";
+import type { AuditFormData, AuditResponse } from "@/types/domain";
 
 interface AuditResultProps {
   result: AuditResponse;
+  form: AuditFormData | null;
 }
 
-export function AuditResult({ result }: AuditResultProps) {
+export function AuditResult({ result, form }: AuditResultProps) {
   const { lead, diagnosis } = result;
-  const [copied, setCopied] = useState(false);
+  const [status, setStatus] = useState<"idle" | "loading" | "sent" | "error">(
+    "idle",
+  );
 
-  const copyAudit = async () => {
-    const text = [
-      `Brand: ${lead.brand}`,
-      `Website: ${lead.website}`,
-      ``,
-      `Clarity: ${diagnosis.clarity}/5`,
-      `Trust: ${diagnosis.trust}/5`,
-      `Consistency: ${diagnosis.consistency}/5`,
-      ``,
-      `Evidence: ${diagnosis.evidence}`,
-      ``,
-      `Summary: ${diagnosis.summary}`,
-      ``,
-      `Recommendation: ${diagnosis.recommendation}`,
-      ``,
-      `Next Step: ${diagnosis.nextStep}`,
-    ].join("\n");
+  const requestAudit = async () => {
+    if (!form) return;
 
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
+    setStatus("loading");
 
-    window.setTimeout(() => {
-      setCopied(false);
-    }, 1800);
+    try {
+      const response = await fetch("/api/audit/lead", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          form,
+          audit: result,
+        }),
+      });
+
+      setStatus(response.ok ? "sent" : "error");
+    } catch (error) {
+      console.error("Lead request error:", error);
+      setStatus("error");
+    }
   };
 
   return (
@@ -66,12 +67,23 @@ export function AuditResult({ result }: AuditResultProps) {
 
         <Button
           type="button"
-          onClick={copyAudit}
+          onClick={requestAudit}
+          disabled={!form || status === "loading" || status === "sent"}
           className="mt-4 w-full rounded-full font-bold uppercase"
         >
-          {copied ? <CheckIcon /> : <CopyIcon />}
-          {copied ? "Copied" : "Copy Audit"}
+          {status === "sent" ? <CheckIcon /> : <SendIcon />}
+          {status === "loading"
+            ? "Sending..."
+            : status === "sent"
+              ? "Request Sent"
+              : "Request Full Audit"}
         </Button>
+
+        {status === "error" ? (
+          <p className="mt-3 text-sm font-medium text-destructive">
+            We could not send your request. Please try again.
+          </p>
+        ) : null}
       </div>
     </div>
   );

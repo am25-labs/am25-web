@@ -19,7 +19,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { ScanSearchIcon } from "lucide-react";
-import type { AuditFormPayload, AuditResponse } from "@/types/domain";
+import type {
+  AuditFormData,
+  AuditFormPayload,
+  AuditResponse,
+} from "@/types/domain";
 
 interface AuditFormProps {
   onClose?: () => void;
@@ -31,6 +35,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
   const [language, setLanguage] = useState<"en" | "es">("en");
   const [captchaToken, setCaptchaToken] = useState("");
   const [result, setResult] = useState<AuditResponse | null>(null);
+  const [leadData, setLeadData] = useState<AuditFormData | null>(null);
   const formRef = useRef<HTMLFormElement>(null);
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -40,7 +45,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
     try {
       const formData = new FormData(e.currentTarget);
-      const data: AuditFormPayload = {
+      const leadData: AuditFormData = {
         name: formData.get("name") as string,
         email: formData.get("email") as string,
         brand: formData.get("brand") as string,
@@ -52,6 +57,9 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
         problem: formData.get("problem") as string,
         goal: formData.get("goal") as string,
         language,
+      };
+      const data: AuditFormPayload = {
+        ...leadData,
         token: captchaToken,
       };
 
@@ -67,6 +75,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
       if (response.ok) {
         setResult(result);
+        setLeadData(leadData);
         setCaptchaToken("");
         formRef.current?.reset();
       }
@@ -79,6 +88,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
 
   useEffect(() => {
     setResult(null);
+    setLeadData(null);
     setCaptchaToken("");
     formRef.current?.reset();
   }, [resetKey]);
@@ -93,7 +103,7 @@ export function AuditForm({ onClose, resetKey }: AuditFormProps) {
       </DialogHeader>
 
       {result ? (
-        <AuditResult result={result} />
+        <AuditResult result={result} form={leadData} />
       ) : (
         <form ref={formRef} onSubmit={handleFormSubmit} className="space-y-4">
           <div className="space-y-1">
