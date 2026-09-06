@@ -6,19 +6,29 @@ import { BannerPoweredBy } from "@/components/powered-by";
 import { Separator } from "@/components/ui/separator";
 import { getCopy, withLocale, type Locale } from "@/lib/i18n";
 
-export default function WorkBackLink({ locale }: { locale: Locale }) {
+interface WorkBackLinkProps {
+  locale: Locale;
+  destination?: "works" | "notes";
+}
+
+export default function WorkBackLink({
+  locale,
+  destination = "works",
+}: WorkBackLinkProps) {
   const copy = getCopy(locale);
+  const isNotesDestination = destination === "notes";
+
   return (
     <GridContainer>
       <ScrollReveal className="col-span-full">
         <div className="flex flex-col items-center py-16">
           <Separator />
           <Link
-            href={withLocale(locale, "/work")}
+            href={withLocale(locale, isNotesDestination ? "/notes" : "/work")}
             className="mt-8 flex items-center gap-2 text-center font-bold uppercase hover:underline"
           >
             <ChevronLeftIcon size={21} />
-            {copy.backToWorks}
+            {isNotesDestination ? copy.backToNotes : copy.backToWorks}
           </Link>
         </div>
 

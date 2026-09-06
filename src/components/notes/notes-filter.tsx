@@ -11,7 +11,7 @@ import type { Locale } from "@/lib/i18n";
 type Entry = {
   id: string;
   title: string;
-  slug: string;
+  href: string;
   cover: string | null;
   categories: Category[];
   publishedAt?: string;
@@ -20,13 +20,11 @@ type Entry = {
 
 interface NotesFilterProps {
   entries: Entry[];
-  baseHref: string;
   locale: Locale;
 }
 
 export default function NotesFilter({
   entries,
-  baseHref,
   locale,
 }: NotesFilterProps) {
   const categories = useMemo(
@@ -67,7 +65,7 @@ export default function NotesFilter({
               <NoteCard
                 cover={entry.cover}
                 title={entry.title}
-                href={`${baseHref}/${entry.slug}`}
+                href={entry.href}
                 category={entry.categories
                   .map((category) => category.title)
                   .join(", ")}

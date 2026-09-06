@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import PageContainer from "@/components/page-container";
 import ScrollReveal from "@/components/scroll-reveal";
 import NotesFilter from "@/components/notes/notes-filter";
-import { getNotes } from "@/lib/plank/fetch";
+import { getCaseStudies, getNotes } from "@/lib/plank/fetch";
 import { getCopy, getRouteLocale, withLocale } from "@/lib/i18n";
 
 const baseUrl = process.env.BASE_URL;
@@ -18,17 +18,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function NotesPage({ params }: Props) {
   const locale = await getRouteLocale(params);
-  const { data: notes } = await getNotes({ locale });
+  const [{ data: notes }, { data: caseStudies }] = await Promise.all([
+    getNotes({ locale }),
+    getCaseStudies({ locale }),
+  ]);
   const title = getCopy(locale).notes;
-  const entries = notes.map((note) => ({
-    id: note.id,
-    title: note.title,
-    slug: note.slug,
-    cover: note.cover?.url ?? null,
-    categories: note.category ? [note.category] : [],
-    publishedAt: note.published_at,
-    author: note.author,
-  }));
+  const entries = [
+    ...notes.map((note) => ({
+      id: note.id,
+      title: note.title,
+      href: withLocale(locale, `/notes/${note.slug}`),
+      cover: note.cover?.url ?? null,
+      categories: note.category ? [note.category] : [],
+      publishedAt: note.published_at,
+      author: note.author,
+    })),
+    ...caseStudies.map((caseStudy) => ({
+      id: caseStudy.id,
+      title: caseStudy.title,
+      href: withLocale(locale, `/case/${caseStudy.slug}`),
+      cover: caseStudy.cover?.url ?? null,
+      categories: caseStudy.category ? [caseStudy.category] : [],
+      publishedAt: caseStudy.date ?? undefined,
+      author: null,
+    })),
+  ].sort((first, second) =>
+    (second.publishedAt ?? "").localeCompare(first.publishedAt ?? ""),
+  );
 
   return (
     <>
@@ -41,7 +57,7 @@ export default async function NotesPage({ params }: Props) {
       </PageContainer>
 
       {entries.length > 0 ? (
-        <NotesFilter entries={entries} baseHref={withLocale(locale, "/notes")} locale={locale} />
+        <NotesFilter entries={entries} locale={locale} />
       ) : null}
     </>
   );

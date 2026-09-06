@@ -3,12 +3,12 @@
 import ContentFilter from "@/components/content-filter";
 import GridContainer from "@/components/grids/grid-container";
 import ScrollReveal from "@/components/scroll-reveal";
-import type { CaseStudy, Discipline, Work } from "@/types/domain";
+import type { Discipline, Work } from "@/types/domain";
 import WorkCard from "./work-card";
 import type { Locale } from "@/lib/i18n";
 
 interface CasesFilterProps {
-  works: Array<(Work | CaseStudy) & { href: string }>;
+  works: Array<Work & { href: string }>;
   locale: Locale;
 }
 

@@ -1,4 +1,6 @@
 import { notFound } from "next/navigation";
+import CaseStudyContent from "@/components/case-study/case-study-content";
+import CaseStudyHeader from "@/components/case-study/case-study-header";
 import PageShell from "@/components/page-shell";
 import PreviewAutoRefresh from "@/components/preview-auto-refresh";
 import NoteDetail from "@/components/notes/note-detail";
@@ -6,7 +8,11 @@ import WorkBackLink from "@/components/work/work-back-link";
 import WorkGallery from "@/components/work/work-gallery";
 import WorkHeader from "@/components/work/work-header";
 import WorkMeta from "@/components/work/work-meta";
-import { getPreviewNote, getPreviewWork } from "./fetch";
+import {
+  getPreviewCaseStudy,
+  getPreviewNote,
+  getPreviewWork,
+} from "./fetch";
 import { defaultLocale, type Locale } from "@/lib/i18n";
 
 async function renderWorkDraftPreview(slug: string, locale: Locale) {
@@ -68,6 +74,58 @@ async function renderNoteDraftPreview(slug: string, locale: Locale) {
   );
 }
 
+async function renderCaseStudyDraftPreview(slug: string, locale: Locale) {
+  const caseStudy = await getPreviewCaseStudy(slug, { locale })
+    .then((result) => result.data[0] ?? null)
+    .catch(() => null);
+
+  if (!caseStudy) {
+    notFound();
+  }
+
+  return (
+    <PageShell locale={locale}>
+      <PreviewAutoRefresh contentType="case-studies" slug={slug} />
+
+      <CaseStudyHeader
+        title={caseStudy.title}
+        cover={caseStudy.cover}
+        description={caseStudy.description}
+      />
+
+      <WorkMeta
+        locale={locale}
+        client={caseStudy.client}
+        campaign={caseStudy.campaign}
+        country={caseStudy.country}
+        creative={caseStudy.creative}
+        strategy={caseStudy.strategy}
+        lead_design={caseStudy.lead_design}
+        design={caseStudy.design}
+        copy={caseStudy.copy}
+        illustration={caseStudy.illustration}
+        animation={caseStudy.animation}
+        photo={caseStudy.photo}
+        develop={caseStudy.develop}
+        work_team={caseStudy.work_team}
+        disciplines={caseStudy.disciplines}
+      />
+
+      <CaseStudyContent
+        locale={locale}
+        scope={caseStudy.scope}
+        problem={caseStudy.problem}
+        research={caseStudy.research}
+        solution={caseStudy.solution}
+        outcome={caseStudy.outcome}
+        learnings={caseStudy.learnings}
+      />
+
+      <WorkBackLink locale={locale} destination="notes" />
+    </PageShell>
+  );
+}
+
 export async function renderDraftPreview(
   contentType: string,
   slug: string,
@@ -79,6 +137,10 @@ export async function renderDraftPreview(
 
   if (contentType === "notes") {
     return renderNoteDraftPreview(slug, locale);
+  }
+
+  if (contentType === "case-studies") {
+    return renderCaseStudyDraftPreview(slug, locale);
   }
 
   return null;

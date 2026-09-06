@@ -120,6 +120,21 @@ export async function getSingleCaseStudy(
   return result.data[0];
 }
 
+export async function getPreviewCaseStudy(
+  slug: string,
+  { locale }: LocaleOptions = {},
+) {
+  return plank.collection<CaseStudy>("case-studies").findMany(
+    {
+      limit: 1,
+      status: "all",
+      filters: { slug: { eq: slug } },
+      ...(locale && { locale, fallback: "en" }),
+    },
+    PREVIEW_FETCH_OPTIONS,
+  );
+}
+
 // CT: Notes
 export async function getNotes({ locale }: LocaleOptions = {}) {
   const activeLocale = locale ?? "es";

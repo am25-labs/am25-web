@@ -131,7 +131,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         learnings={learnings}
       />
 
-      <WorkBackLink locale={locale} />
+      <WorkBackLink locale={locale} destination="notes" />
     </>
   );
 }
