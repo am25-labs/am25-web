@@ -73,7 +73,7 @@ export default function NoteDetail({ note, locale }: NoteDetailProps) {
           viewportAmount={0.01}
         >
           <div className="col-span-full">
-            <ContentRenderer content={note.content} />
+            <ContentRenderer content={note.content} revealBlocks />
 
             <div className="flex flex-col items-center py-16">
               <Separator />
