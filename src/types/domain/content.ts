@@ -67,6 +67,7 @@ export interface CaseStudy {
   work_team: string | null;
   disciplines: Discipline[];
   category: Category | null;
+  author: Author;
   scope: string | null;
   problem: string | null;
   research: string | null;

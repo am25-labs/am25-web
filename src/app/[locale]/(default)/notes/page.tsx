@@ -40,7 +40,7 @@ export default async function NotesPage({ params }: Props) {
       cover: caseStudy.cover?.url ?? null,
       categories: caseStudy.category ? [caseStudy.category] : [],
       publishedAt: caseStudy.date ?? undefined,
-      author: null,
+      author: caseStudy.author,
     })),
   ].sort((first, second) =>
     (second.publishedAt ?? "").localeCompare(first.publishedAt ?? ""),
