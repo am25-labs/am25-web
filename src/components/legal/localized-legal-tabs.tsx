@@ -38,13 +38,13 @@ export default function LocalizedLegalTabs({ title, page, locale }: Props) {
       </section>
 
       <section className="col-span-2 md:col-span-4">
-        <ScrollReveal className="grid grid-cols-2 gap-4 md:grid-cols-4" delay={0.15}>
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
           <div className="col-span-full">
             {page.content && (
-              <ContentRenderer content={page.content} />
+              <ContentRenderer content={page.content} revealBlocks />
             )}
           </div>
-        </ScrollReveal>
+        </div>
       </section>
     </div>
   );
