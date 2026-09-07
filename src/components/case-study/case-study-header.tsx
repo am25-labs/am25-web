@@ -39,7 +39,7 @@ export default function CaseStudyHeader({
       {description ? (
         <GridFour className="mt-4">
           <ScrollReveal className="col-span-full" delay={0.25}>
-            <p>{description}</p>
+            <p className="text-xl">{description}</p>
           </ScrollReveal>
         </GridFour>
       ) : null}
