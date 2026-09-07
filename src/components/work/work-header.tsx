@@ -25,7 +25,7 @@ export default function WorkHeader({
               src={cover.url}
               fill
               alt={cover.alt ?? title}
-              className="object-cover w-full h-full"
+              className="object-cover border w-full h-full"
             />
           )}
         </div>

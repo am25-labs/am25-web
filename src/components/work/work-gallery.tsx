@@ -50,7 +50,7 @@ export default function WorkGallery({
                 width={firstImage.width ?? 1600}
                 height={firstImage.height ?? 1200}
                 sizes="100vw"
-                className="h-full w-full object-cover md:h-auto md:object-contain"
+                className="h-full w-full object-cover md:h-auto md:object-contain border"
               />
             </div>
 
@@ -67,7 +67,7 @@ export default function WorkGallery({
                       width={image.width ?? 1600}
                       height={image.height ?? 1200}
                       sizes="100vw"
-                      className="h-full w-full object-cover md:h-auto md:object-contain"
+                      className="h-full w-full object-cover md:h-auto md:object-contain border"
                     />
                   </div>
                 ))}

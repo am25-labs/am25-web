@@ -75,7 +75,7 @@ export default function CaseStudyContent({
           <h3 className="mt-8 mb-6 text-base md:text-lg font-bold uppercase text-neutral-500">
             {section.label}
           </h3>
-          <ContentRenderer content={section.content} />
+          <ContentRenderer content={section.content} revealBlocks />
         </ScrollReveal>
       ))}
     </GridContainer>

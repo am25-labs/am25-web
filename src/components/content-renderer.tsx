@@ -55,11 +55,7 @@ function revealBlock(
     return element;
   }
 
-  return (
-    <ScrollReveal viewportAmount={0.01}>
-      {element}
-    </ScrollReveal>
-  );
+  return <ScrollReveal viewportAmount={0.01}>{element}</ScrollReveal>;
 }
 
 const revealedComponents: NodeComponents = {
@@ -127,6 +123,7 @@ const revealedComponents: NodeComponents = {
             title={title}
             width={width ?? undefined}
             height={height ?? undefined}
+            className="border"
           />
           <figcaption>{title}</figcaption>
         </figure>
@@ -136,6 +133,7 @@ const revealedComponents: NodeComponents = {
           alt={alt ?? ""}
           width={width ?? undefined}
           height={height ?? undefined}
+          className="border"
         />
       ),
       isLast,

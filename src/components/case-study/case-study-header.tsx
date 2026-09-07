@@ -24,7 +24,7 @@ export default function CaseStudyHeader({
               src={cover.url}
               fill
               alt={cover.alt ?? title}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover border"
             />
           ) : null}
         </div>
