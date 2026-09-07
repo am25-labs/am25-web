@@ -65,10 +65,10 @@ export default function CaseStudyContent({
   }
 
   return (
-    <GridContainer className="mb-2">
+    <GridContainer>
       {populatedSections.map((section, index) => (
         <ScrollReveal
-          className="col-span-full py-8 md:py-12"
+          className="col-span-full py-8"
           delay={index * 0.1}
           key={section.label}
         >
