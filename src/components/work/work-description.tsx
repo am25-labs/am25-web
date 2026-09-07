@@ -4,9 +4,11 @@ import { useMemo, useState } from "react";
 import type { TiptapDoc } from "@plank-cms/react-renderer";
 import ContentRenderer from "@/components/content-renderer";
 import { Button } from "@/components/ui/button";
+import { getCopy, type Locale } from "@/lib/i18n";
 
 interface WorkDescriptionProps {
   content: string | TiptapDoc;
+  locale: Locale;
 }
 
 const paragraphLimit = 2;
@@ -60,9 +62,13 @@ function trimDoc(doc: TiptapDoc) {
   return { content: { ...doc, content }, hasMore: true };
 }
 
-export default function WorkDescription({ content }: WorkDescriptionProps) {
+export default function WorkDescription({
+  content,
+  locale,
+}: WorkDescriptionProps) {
   const [expanded, setExpanded] = useState(false);
   const doc = useMemo(() => getDoc(content), [content]);
+  const copy = getCopy(locale);
 
   if (!doc) {
     return <ContentRenderer content={content} />;
@@ -81,7 +87,7 @@ export default function WorkDescription({ content }: WorkDescriptionProps) {
           className="h-auto p-0 uppercase"
           onClick={() => setExpanded((value) => !value)}
         >
-          {expanded ? "View less" : "View more"}
+          {expanded ? copy.viewLess : copy.viewMore}
         </Button>
       )}
     </div>

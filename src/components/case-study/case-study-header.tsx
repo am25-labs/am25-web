@@ -31,8 +31,10 @@ export default function CaseStudyHeader({
       </ScrollReveal>
 
       <GridFour className="mt-4">
-        <ScrollReveal className="col-span-full" delay={0.15}>
-          <h1 className="text-3xl font-bold uppercase md:text-4xl">{title}</h1>
+        <ScrollReveal className="col-span-full md:pr-32 xl:pr-60" delay={0.15}>
+          <h1 className="text-3xl font-bold uppercase md:text-4xl leading-tight">
+            {title}
+          </h1>
         </ScrollReveal>
       </GridFour>
 

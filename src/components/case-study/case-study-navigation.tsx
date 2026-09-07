@@ -10,7 +10,9 @@ interface CaseStudyNavigationProps {
 export default function CaseStudyNavigation({
   sections,
 }: CaseStudyNavigationProps) {
-  const [activeId, setActiveId] = useState(sections[0]?.id ?? null);
+  const [activeId, setActiveId] = useState<string | null>(
+    sections[0]?.id ?? null,
+  );
 
   useEffect(() => {
     const updateActiveSection = () => {

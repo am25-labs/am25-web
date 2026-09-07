@@ -31,6 +31,7 @@ async function renderWorkDraftPreview(slug: string, locale: Locale) {
         title={work.title}
         cover={work.cover}
         description={work.description}
+        locale={locale}
       />
 
       <WorkMeta locale={locale}

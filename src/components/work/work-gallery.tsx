@@ -20,7 +20,7 @@ export default function WorkGallery({
   }
 
   return (
-    <GridContainer className="mb-2">
+    <GridContainer className="mt-8 mb-2">
       {quote && (
         <ScrollReveal className="col-span-full py-32">
           <blockquote className="text-lg md:text-3xl text-center italic max-w-4xl mx-auto">

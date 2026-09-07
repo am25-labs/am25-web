@@ -94,7 +94,12 @@ export default async function CaseDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <WorkHeader title={title} cover={cover} description={description} />
+      <WorkHeader
+        title={title}
+        cover={cover}
+        description={description}
+        locale={locale}
+      />
 
       <WorkMeta
         locale={locale}

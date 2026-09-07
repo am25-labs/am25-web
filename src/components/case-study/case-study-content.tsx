@@ -69,8 +69,8 @@ export default function CaseStudyContent({
   }
 
   return (
-    <GridContainer>
-      <GridTwo className="hidden md:block md:[&>div]:h-full">
+    <GridContainer className="mt-8">
+      <GridTwo className="hidden md:block md:[&>div]:h-full pt-8">
         <CaseStudyNavigation sections={populatedSections} />
       </GridTwo>
 

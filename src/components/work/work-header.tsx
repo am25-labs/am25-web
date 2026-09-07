@@ -4,17 +4,20 @@ import GridContainer from "@/components/grids/grid-container";
 import GridFour from "@/components/grids/grid-four";
 import ScrollReveal from "@/components/scroll-reveal";
 import WorkDescription from "@/components/work/work-description";
+import type { Locale } from "@/lib/i18n";
 
 interface WorkHeaderProps {
   title: Work["title"];
   cover: Work["cover"];
   description?: Work["description"];
+  locale: Locale;
 }
 
 export default function WorkHeader({
   title,
   cover,
   description,
+  locale,
 }: WorkHeaderProps) {
   return (
     <GridContainer>
@@ -39,7 +42,9 @@ export default function WorkHeader({
 
       <GridFour className="mt-4">
         <ScrollReveal className="col-span-full" delay={0.25}>
-          {description && <WorkDescription content={description} />}
+          {description && (
+            <WorkDescription content={description} locale={locale} />
+          )}
         </ScrollReveal>
       </GridFour>
     </GridContainer>
