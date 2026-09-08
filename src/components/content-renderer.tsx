@@ -125,7 +125,7 @@ const revealedComponents: NodeComponents = {
             height={height ?? undefined}
             className="border"
           />
-          <figcaption>{title}</figcaption>
+          <figcaption className="text-xs text-neutral-500">{title}</figcaption>
         </figure>
       ) : (
         <img
